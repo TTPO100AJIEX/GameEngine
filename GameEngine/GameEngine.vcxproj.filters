@@ -22,6 +22,9 @@
     <Filter Include="src\Engine\Definitions\KeyCodes\GLFW">
       <UniqueIdentifier>{A2BE41CE-8EA5-03C6-37F6-69E323BC7C2C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Engine\Definitions\libs">
+      <UniqueIdentifier>{569FA4D5-C2AC-D2BB-4B93-CEA6B79F9E72}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Engine\Events">
       <UniqueIdentifier>{B624EAB0-223B-E846-6BB2-7368D707B9CE}</UniqueIdentifier>
     </Filter>
@@ -60,6 +63,9 @@
     <ClInclude Include="src\Engine\Definitions\KeyCodes\GLFW\GLFW.h">
       <Filter>src\Engine\Definitions\KeyCodes\GLFW</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Definitions\libs\unordered_map.h">
+      <Filter>src\Engine\Definitions\libs</Filter>
+    </ClInclude>
     <ClInclude Include="src\Engine\Engine.h">
       <Filter>src\Engine</Filter>
     </ClInclude>
@@ -81,14 +87,18 @@
     <ClInclude Include="src\Engine\Layers\LayersList\LayersList.h">
       <Filter>src\Engine\Layers\LayersList</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Window\DesktopWindow.h">
+      <Filter>src\Engine\Window</Filter>
+    </ClInclude>
     <ClInclude Include="src\Engine\Window\Windows\WindowsWindow.h">
       <Filter>src\Engine\Window\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\EntryPoint.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Log\Log.h" />
-    <ClInclude Include="src\Engine\Definitions\libs\unordered_map.h" />
+    <ClInclude Include="src\Log\Log.h">
+      <Filter>src\Log</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dependencies\PrecompiledHeaders\PrecompiledHeaders.cpp">
@@ -109,9 +119,14 @@
     <ClCompile Include="src\Engine\Layers\LayersList\LayersList.cpp">
       <Filter>src\Engine\Layers\LayersList</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Window\DesktopWindow.cpp">
+      <Filter>src\Engine\Window</Filter>
+    </ClCompile>
     <ClCompile Include="src\Engine\Window\Windows\WindowsWindow.cpp">
       <Filter>src\Engine\Window\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Log\Log.cpp" />
+    <ClCompile Include="src\Log\Log.cpp">
+      <Filter>src\Log</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

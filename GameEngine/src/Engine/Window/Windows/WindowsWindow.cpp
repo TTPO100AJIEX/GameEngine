@@ -136,11 +136,6 @@ namespace Engine
 			}
 		});
 	}
-	void WindowsWindow::SetOnEventCallback(std::function<void(Event&)> callback)
-	{
-		WindowData.OnEventCallback = callback;
-		RegisterEvents();
-	}
 
 	WindowsWindow::WindowsWindow(unsigned int width, unsigned int height, std::string title)
 	{
@@ -196,15 +191,5 @@ namespace Engine
 		double xpos, ypos;
 		glfwGetCursorPos(Window, &xpos, &ypos);
 		return {xpos, ypos};
-	}
-	inline double WindowsWindow::GetMouseX()
-	{
-		auto[x, y] = GetMousePosition();
-		return(x);
-	}
-	inline double WindowsWindow::GetMouseY()
-	{
-		auto[x, y] = GetMousePosition();
-		return(y);
 	}
 }
