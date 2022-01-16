@@ -1,0 +1,47 @@
+#pragma once
+
+#include "KeyCodes/GLFW/GLFW.h"
+
+namespace Engine
+{
+	namespace KeyCodes
+	{
+		enum class Keys
+		{
+			UNKNOWN,
+
+			MOUSE_BUTTON_1, MOUSE_BUTTON_2, MOUSE_BUTTON_3, MOUSE_BUTTON_4, MOUSE_BUTTON_5, MOUSE_BUTTON_6, MOUSE_BUTTON_7, MOUSE_BUTTON_8,
+			MOUSE_BUTTON_LEFT = MOUSE_BUTTON_1, MOUSE_BUTTON_RIGHT = MOUSE_BUTTON_2, MOUSE_BUTTON_MIDDLE = MOUSE_BUTTON_3,
+
+			SPACE, APOSTROPHE/*'*/, COMMA/*,*/, MINUS/*-*/, PERIOD/*.*/, SLASH/*/*/,
+
+			D0/*0*/, D1/*1*/, D2/*2*/, D3/*3*/, D4/*4*/, D5/*5*/, D6/*6*/, D7/*7*/, D8/*8*/, D9/*9*/,
+
+			SEMICOLON/*;*/, EQUAL/*=*/,
+
+			A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z,
+
+			LEFTBRACKET/*[*/, BACKSLASH/*\*/, RIGHTBRACKET/*]*/, GRAVEACCENT/*`*/,
+
+			WORLD1/*non-US #1*/, WORLD2/*non-US #2*/,
+
+			ESCAPE, ENTER, TAB, BACKSPACE, INSERT, DEL, RIGHT, LEFT, DOWN, UP,
+			PAGEUP, PAGEDOWN, HOME, END, CAPSLOCK, SCROLLLOCK, NUMLOCK, PRINTSCREEN, PAUSE,
+			F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F16, F17, F18, F19, F20, F21, F22, F23, F24, F25,
+
+			/*keypad*/
+			KP0, KP1, KP2, KP3, KP4, KP5, KP6, KP7, KP8, KP9,
+			KPDECIMAL, KPDIVIDE, KPMULTIPLY, KPSUBTRACT, KPADD, KPEQUAL, KPENTER,
+
+			LETSHIFT, LEFTCONTROL, LEFTALT, LEFTSUPER, RIGHTSHFIT, RIGHTCONTROL, RIGHTALT, RIGHTSUPER,
+			MENU
+		};
+
+		#ifdef DEBUG
+			API inline std::string ToString(Keys keycode);
+		#endif
+
+		API inline GLFWKeys ToGLFW(Keys keycode);
+		API inline Keys FromGLFW(GLFWKeys keycode);
+	}
+}
