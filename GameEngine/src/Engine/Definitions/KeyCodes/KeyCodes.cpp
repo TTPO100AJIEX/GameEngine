@@ -1,8 +1,8 @@
 #include <PrecompiledHeaders.h>
 
-#ifdef DEBUG
-	#include "../KeyCodes.h"
+#include "../KeyCodes.h"
 
+#ifdef DEBUG
 	namespace Engine::KeyCodes
 	{
 		const std::unordered_map <Keys, std::string> To_String({
@@ -45,7 +45,7 @@
 			{ Keys::MENU, "MENU" }
 		});
 
-		API inline std::string ToString(Keys keycode)
+		std::string ToString(Keys keycode)
 		{
 			std::unordered_map<Keys, std::string>::const_iterator element = To_String.find(keycode);
 			if (element == To_String.end()) return("Unknown");

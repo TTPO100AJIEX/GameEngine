@@ -4,7 +4,7 @@
 
 namespace Engine
 {
-	class API LayersList
+	class LayersList
 	{
 	private:
 		std::vector <Layer*> Layers;

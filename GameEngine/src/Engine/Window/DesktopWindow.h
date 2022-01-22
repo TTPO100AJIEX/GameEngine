@@ -1,17 +1,14 @@
 #pragma once
 
-#include "../Events/Events.h"
 #include "../Events/Window.h"
 #include "../Events/Keyboard.h"
 #include "../Events/Mouse.h"
-
-#include "../Definitions/KeyCodes.h"
 
 #include <GLFW/glfw3.h>
 
 namespace Engine
 {
-	class API DesktopWindow
+	class DesktopWindow
 	{
 	protected:
 		GLFWwindow* Window;

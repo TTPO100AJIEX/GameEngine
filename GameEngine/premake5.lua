@@ -1,8 +1,8 @@
 project "GameEngine"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C++"
 	cppdialect "C++20"
-	staticruntime "off"
+	staticruntime "on"
 
     targetdir ("%{wks.location}/bin/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}/%{prj.name}")
     objdir ("%{wks.location}/bin/intermediates/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}/%{prj.name}")
@@ -29,12 +29,13 @@ project "GameEngine"
     {
         "GLFW",
         "opengl32.lib",
+        "Dwmapi.lib",
         "GLAD"
     }
 
 	defines
 	{
-		"BUILD_DLL", "GLFW_INCLUDE_NONE"
+		"GLFW_INCLUDE_NONE"
 	}
 
     filter "system:windows"
@@ -45,17 +46,12 @@ project "GameEngine"
             "PLATFORM_WINDOWS"
         }
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"%{wks.location}/bin/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}/Game/\"")
-		}
-
     filter "configurations:Debug"
         defines "DEBUG"
         runtime "Debug"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Release"
         defines "RELEASE"
         runtime "Release"
-        optimize "On"
+        optimize "on"

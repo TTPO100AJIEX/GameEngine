@@ -7,7 +7,7 @@
 
 	namespace Engine
 	{
-		class API Log
+		class Log
 		{
 		public:
 			static void Init();

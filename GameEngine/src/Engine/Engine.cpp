@@ -78,7 +78,7 @@ namespace Engine
 		Layers.Remove(index);
 	}
 
-	inline bool Engine::IsKeyPressed(KeyCodes::Keys keycode) { return(Window->IsKeyPressed(keycode)); }
+	/**/inline bool Engine::IsKeyPressed(KeyCodes::Keys keycode) { return(Window->IsKeyPressed(keycode)); }
 	inline bool Engine::IsMouseButtonPressed(KeyCodes::Keys keycode) { return(Window->IsMouseButtonPressed(keycode)); }
 	inline std::pair<double, double> Engine::GetMousePosition() { return(Window->GetMousePosition()); }
 	inline double Engine::GetMouseX() { return(Window->GetMouseX()); }

@@ -10,7 +10,7 @@ namespace Engine
 		MouseMove, MouseScroll, MouseButtonPress, MouseButtonRelease
 	};
 
-	class API Event
+	class Event
 	{
 
 	protected:

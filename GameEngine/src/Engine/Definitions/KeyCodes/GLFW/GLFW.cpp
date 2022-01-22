@@ -1,6 +1,5 @@
 #include <PrecompiledHeaders.h>
 
-#include "GLFW.h"
 #include "../../KeyCodes.h"
 
 namespace Engine::KeyCodes
@@ -52,13 +51,13 @@ namespace Engine::KeyCodes
 	const std::unordered_map <GLFWKeys, Keys> From_GLFW = traverse_unordered_map<GLFWKeys, Keys>(To_GLFW);
 
 		
-	API inline GLFWKeys ToGLFW(Keys keycode)
+	GLFWKeys ToGLFW(Keys keycode)
 	{
 		std::unordered_map<Keys, GLFWKeys>::const_iterator element = To_GLFW.find(keycode);
 		if (element == To_GLFW.end()) return(GLFWKeys::Unknown);
 		return(element->second);
 	}
-	API inline Keys FromGLFW(GLFWKeys keycode)
+	Keys FromGLFW(GLFWKeys keycode)
 	{
 		std::unordered_map<GLFWKeys, Keys>::const_iterator element = From_GLFW.find(keycode);
 		if (element == From_GLFW.end()) return(Keys::UNKNOWN);

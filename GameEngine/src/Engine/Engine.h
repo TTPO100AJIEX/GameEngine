@@ -7,7 +7,7 @@
 
 namespace Engine
 {
-	class API Engine
+	class Engine
 	{
 	private:
 		#ifdef PLATFORM_WINDOWS

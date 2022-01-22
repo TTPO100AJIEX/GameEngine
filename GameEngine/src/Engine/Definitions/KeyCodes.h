@@ -36,9 +36,9 @@ namespace Engine::KeyCodes
 	};
 
 	#ifdef DEBUG
-		API inline std::string ToString(Keys keycode);
+		std::string ToString(Keys keycode);
 	#endif
 
-	API inline GLFWKeys ToGLFW(Keys keycode);
-	API inline Keys FromGLFW(GLFWKeys keycode);
+	GLFWKeys ToGLFW(Keys keycode);
+	Keys FromGLFW(GLFWKeys keycode);
 }

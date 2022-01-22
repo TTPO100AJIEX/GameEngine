@@ -4,7 +4,7 @@
 
 namespace Engine
 {
-	class API Layer
+	class Layer
 	{
 	protected: 
 		unsigned int ID;

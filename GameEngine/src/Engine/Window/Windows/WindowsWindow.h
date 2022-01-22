@@ -4,7 +4,7 @@
 
 namespace Engine
 {
-	class API WindowsWindow : public DesktopWindow
+	class WindowsWindow : public DesktopWindow
 	{
 	private:
 		virtual void Create(unsigned int width, unsigned int height, std::string& title) override;
@@ -16,9 +16,9 @@ namespace Engine
 		~WindowsWindow();
 
 
-		virtual void StartUpdate();
-		virtual void Update();
-		virtual void FinishUpdate();
+		virtual void StartUpdate() override;
+		virtual void Update() override;
+		virtual void FinishUpdate() override;
 
 
 		virtual inline bool IsKeyPressed(KeyCodes::Keys& keycode) override;
