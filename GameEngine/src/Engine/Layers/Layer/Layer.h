@@ -9,8 +9,7 @@ namespace Engine
 	protected: 
 		unsigned int ID;
 	public:
-		Layer() { ID = UINT_MAX; };
-		virtual ~Layer() = default;
+		Layer() : ID(UINT_MAX) {};
 
 		virtual void OnAdd() {};
 		virtual void OnRemove() {};

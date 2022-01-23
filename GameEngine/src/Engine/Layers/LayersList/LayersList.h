@@ -9,7 +9,6 @@ namespace Engine
 	private:
 		std::vector <Layer*> Layers;
 	public:
-		LayersList();
 		~LayersList();
 
 		inline std::vector <Layer*>::iterator begin() { return(Layers.begin()); }

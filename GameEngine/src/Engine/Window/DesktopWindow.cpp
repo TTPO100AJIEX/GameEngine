@@ -4,6 +4,11 @@
 
 namespace Engine
 {
+	inline GLFWwindow* DesktopWindow::GetWindow()
+	{
+		return(Window);
+	}
+
 	void DesktopWindow::SetOnEventCallback(std::function<void(Event&)> callback)
 	{
 		WindowData.OnEventCallback = callback;

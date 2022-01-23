@@ -4,10 +4,6 @@
 
 namespace Engine
 {
-	LayersList::LayersList()
-	{
-
-	}
 	LayersList::~LayersList()
 	{
 		for (int i = 0; i < Layers.size(); i++)

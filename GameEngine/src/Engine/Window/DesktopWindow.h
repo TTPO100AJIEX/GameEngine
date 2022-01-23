@@ -4,6 +4,8 @@
 #include "../Events/Keyboard.h"
 #include "../Events/Mouse.h"
 
+#include "../Renderer/General/Context.h"
+
 #include <GLFW/glfw3.h>
 
 namespace Engine
@@ -12,6 +14,7 @@ namespace Engine
 	{
 	protected:
 		GLFWwindow* Window;
+		std::unique_ptr<Renderer::Context> RenderingContext;
 		bool EventsRegistered;
 
 		struct windowData
@@ -27,6 +30,8 @@ namespace Engine
 		virtual void RegisterEvents() = 0;
 
 	public:
+		inline GLFWwindow* GetWindow();
+
 		void SetOnEventCallback(std::function<void(Event&)> callback);
 
 		virtual void StartUpdate() = 0;

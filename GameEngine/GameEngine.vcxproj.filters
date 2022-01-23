@@ -99,6 +99,8 @@
     <ClInclude Include="src\Log\Log.h">
       <Filter>src\Log</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\General\Context.h" />
+    <ClInclude Include="src\Engine\Renderer\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dependencies\PrecompiledHeaders\PrecompiledHeaders.cpp">
@@ -113,9 +115,6 @@
     <ClCompile Include="src\Engine\Engine.cpp">
       <Filter>src\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Layers\Layer\Layer.cpp">
-      <Filter>src\Engine\Layers\Layer</Filter>
-    </ClCompile>
     <ClCompile Include="src\Engine\Layers\LayersList\LayersList.cpp">
       <Filter>src\Engine\Layers\LayersList</Filter>
     </ClCompile>
@@ -128,5 +127,6 @@
     <ClCompile Include="src\Log\Log.cpp">
       <Filter>src\Log</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Renderer\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>

@@ -2,7 +2,7 @@
 
 #include "WindowsWindow.h"
 
-#include <GLAD/glad.h>
+#include "../../Renderer/OpenGL/OpenGLContext.h"
 
 namespace Engine
 {
@@ -38,11 +38,7 @@ namespace Engine
 		WindowData.OnEventCallback = nullptr;
 
 		Window = glfwCreateWindow(WindowData.Width, WindowData.Height, WindowData.Title.c_str(), NULL, NULL);
-		glfwMakeContextCurrent(Window);
-/*-----------------------------------------------*/
-		int status = gladLoadGLLoader((GLADloadproc)(glfwGetProcAddress));
-		ENGINE_INFO("GLAD status: {0}", status);
-/*-----------------------------------------------*/
+		RenderingContext = std::make_unique<Renderer::OpenGLContext>(Window);
 		glfwSwapInterval(1);
 		glfwSetWindowUserPointer(Window, &WindowData);
 	}
@@ -161,16 +157,14 @@ namespace Engine
 
 	void WindowsWindow::StartUpdate()
 	{
-		glClearColor(0.0f, 1.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		RenderingContext->Clear();
 	}
 	void WindowsWindow::Update()
 	{
 	}
 	void WindowsWindow::FinishUpdate()
 	{
-		glfwSwapBuffers(Window);
-		glfwPollEvents();
+		RenderingContext->SwapBuffers();
 	}
 
 
