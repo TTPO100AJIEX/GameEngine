@@ -98,23 +98,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Dependencies\PrecompiledHeaders\PrecompiledHeaders.h" />
-    <ClInclude Include="src\Engine.h" />
-    <ClInclude Include="src\Engine\Definitions\Core.h" />
-    <ClInclude Include="src\Engine\Definitions\KeyCodes.h" />
     <ClInclude Include="src\Engine\Definitions\KeyCodes\GLFW\GLFW.h" />
-    <ClInclude Include="src\Engine\Definitions\libs\unordered_map.h" />
+    <ClInclude Include="src\Engine\Definitions\KeyCodes\KeyCodes.h" />
     <ClInclude Include="src\Engine\Engine.h" />
+    <ClInclude Include="src\Engine\Events\App.h" />
     <ClInclude Include="src\Engine\Events\Events.h" />
     <ClInclude Include="src\Engine\Events\Keyboard.h" />
     <ClInclude Include="src\Engine\Events\Mouse.h" />
     <ClInclude Include="src\Engine\Events\Window.h" />
-    <ClInclude Include="src\Engine\Layers\Layer\Layer.h" />
-    <ClInclude Include="src\Engine\Layers\LayersList\LayersList.h" />
+    <ClInclude Include="src\Engine\Renderer\Context.h" />
     <ClInclude Include="src\Engine\Renderer\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Engine\Renderer\General\Context.h" />
-    <ClInclude Include="src\Engine\Window\DesktopWindow.h" />
+    <ClInclude Include="src\Engine\Window\Window.h" />
     <ClInclude Include="src\Engine\Window\Windows\WindowsWindow.h" />
-    <ClInclude Include="src\EntryPoint.h" />
     <ClInclude Include="src\Log\Log.h" />
   </ItemGroup>
   <ItemGroup>
@@ -124,10 +119,9 @@
     <ClCompile Include="src\Engine\Definitions\KeyCodes\GLFW\GLFW.cpp" />
     <ClCompile Include="src\Engine\Definitions\KeyCodes\KeyCodes.cpp" />
     <ClCompile Include="src\Engine\Engine.cpp" />
-    <ClCompile Include="src\Engine\Layers\LayersList\LayersList.cpp" />
     <ClCompile Include="src\Engine\Renderer\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\Engine\Window\DesktopWindow.cpp" />
     <ClCompile Include="src\Engine\Window\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\EntryPoint.cpp" />
     <ClCompile Include="src\Log\Log.cpp" />
   </ItemGroup>
   <ItemGroup>

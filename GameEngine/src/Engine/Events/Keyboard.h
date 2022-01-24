@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Events.h"
-#include "../Definitions/KeyCodes.h"
+#include "../Definitions/KeyCodes/KeyCodes.h"
 
 namespace Engine
 {
@@ -48,12 +48,12 @@ namespace Engine
 		KeyType(char symbol) : Symbol(symbol) { EventType = EventTypes::KeyType; }
 
 		#ifdef DEBUG
-				virtual std::string ToString() const override
-				{
-					std::stringstream ss;
-					ss << "KeyType: " << Symbol;
-					return(ss.str());
-				}
+			virtual std::string ToString() const override
+			{
+				std::stringstream ss;
+				ss << "KeyType: " << Symbol;
+				return(ss.str());
+			}
 		#endif
 	};
 }

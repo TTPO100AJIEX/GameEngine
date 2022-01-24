@@ -13,7 +13,7 @@ namespace Engine
 		WindowOpen(int width, int height) : Width(width), Height(height) { EventType = EventTypes::WindowOpen; }
 
 		#ifdef DEBUG
-			virtual std::string ToString() const override 
+			virtual std::string ToString() const override
 			{
 				std::stringstream ss;
 				ss << "WindowOpen: " << Width << " " << Height;

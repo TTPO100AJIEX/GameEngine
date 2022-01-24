@@ -22,20 +22,14 @@
     <Filter Include="src\Engine\Definitions\KeyCodes\GLFW">
       <UniqueIdentifier>{A2BE41CE-8EA5-03C6-37F6-69E323BC7C2C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Definitions\libs">
-      <UniqueIdentifier>{569FA4D5-C2AC-D2BB-4B93-CEA6B79F9E72}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Engine\Events">
       <UniqueIdentifier>{B624EAB0-223B-E846-6BB2-7368D707B9CE}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Layers">
-      <UniqueIdentifier>{910FCDBF-FD25-CB55-469D-5677B2F29BDD}</UniqueIdentifier>
+    <Filter Include="src\Engine\Renderer">
+      <UniqueIdentifier>{F838018B-649A-DE98-ED07-254B59681558}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Layers\Layer">
-      <UniqueIdentifier>{1DB5115C-89EC-59F3-92F6-BD16FEAC80EC}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Engine\Layers\LayersList">
-      <UniqueIdentifier>{ECEB5C10-D8A6-4CBC-815E-C5066DF8964C}</UniqueIdentifier>
+    <Filter Include="src\Engine\Renderer\OpenGL">
+      <UniqueIdentifier>{2C1B9528-182B-41F9-81E4-A5176D133092}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Engine\Window">
       <UniqueIdentifier>{B98500DA-259C-FE6F-6E13-8A91DA68CFF7}</UniqueIdentifier>
@@ -51,23 +45,17 @@
     <ClInclude Include="Dependencies\PrecompiledHeaders\PrecompiledHeaders.h">
       <Filter>Dependencies\PrecompiledHeaders</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Definitions\Core.h">
-      <Filter>src\Engine\Definitions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Definitions\KeyCodes.h">
-      <Filter>src\Engine\Definitions</Filter>
-    </ClInclude>
     <ClInclude Include="src\Engine\Definitions\KeyCodes\GLFW\GLFW.h">
       <Filter>src\Engine\Definitions\KeyCodes\GLFW</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Definitions\libs\unordered_map.h">
-      <Filter>src\Engine\Definitions\libs</Filter>
+    <ClInclude Include="src\Engine\Definitions\KeyCodes\KeyCodes.h">
+      <Filter>src\Engine\Definitions\KeyCodes</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Engine.h">
       <Filter>src\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Events\App.h">
+      <Filter>src\Engine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Events\Events.h">
       <Filter>src\Engine\Events</Filter>
@@ -81,26 +69,21 @@
     <ClInclude Include="src\Engine\Events\Window.h">
       <Filter>src\Engine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Layers\Layer\Layer.h">
-      <Filter>src\Engine\Layers\Layer</Filter>
+    <ClInclude Include="src\Engine\Renderer\Context.h">
+      <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Layers\LayersList\LayersList.h">
-      <Filter>src\Engine\Layers\LayersList</Filter>
+    <ClInclude Include="src\Engine\Renderer\OpenGL\OpenGLContext.h">
+      <Filter>src\Engine\Renderer\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Window\DesktopWindow.h">
+    <ClInclude Include="src\Engine\Window\Window.h">
       <Filter>src\Engine\Window</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Window\Windows\WindowsWindow.h">
       <Filter>src\Engine\Window\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\EntryPoint.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\Log\Log.h">
       <Filter>src\Log</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Renderer\General\Context.h" />
-    <ClInclude Include="src\Engine\Renderer\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dependencies\PrecompiledHeaders\PrecompiledHeaders.cpp">
@@ -115,18 +98,17 @@
     <ClCompile Include="src\Engine\Engine.cpp">
       <Filter>src\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Layers\LayersList\LayersList.cpp">
-      <Filter>src\Engine\Layers\LayersList</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\Window\DesktopWindow.cpp">
-      <Filter>src\Engine\Window</Filter>
+    <ClCompile Include="src\Engine\Renderer\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Engine\Renderer\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Window\Windows\WindowsWindow.cpp">
       <Filter>src\Engine\Window\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\EntryPoint.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="src\Log\Log.cpp">
       <Filter>src\Log</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Renderer\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>

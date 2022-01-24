@@ -1,6 +1,5 @@
 #pragma once
 
-
 template <typename type1, typename type2> const std::unordered_map<type1, type2> traverse_unordered_map(const std::unordered_map<type2, type1>& src)
 {
 	std::unordered_map<type1, type2> dest;

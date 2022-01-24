@@ -1,86 +1,48 @@
 #include <PrecompiledHeaders.h>
 
 #include "Engine.h"
+#include "Window/Windows/WindowsWindow.h"
+
+#include "Events/App.h"
 
 namespace Engine
 {
-	Engine::Engine()
-	{
-
-	}
-
-	Engine::~Engine()
-	{
-
-	}
-
 	void Engine::Run()
 	{
 		ENGINE_INFO("Started!");
 
-		#ifdef PLATFORM_WINDOWS
-			Window = std::make_unique<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent, this, std::placeholders::_1));
-			//If no callback is specified, Running should be manually set to true
-		#endif
+		m_Window = std::make_unique<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent, this, std::placeholders::_1));
 
 		while (Running)
 		{
-			Window->StartUpdate();
-
-			for (std::vector <Layer*>::iterator i = Layers.begin(); i != Layers.end(); i++)
-			{
-				(*i)->Update();
-			}
-			Window->Update();
-
-			Window->FinishUpdate();
+			AppTick AppTickEvent;
+			OnEvent(AppTickEvent);
 		}
 
 		ENGINE_INFO("Terminated!");
 	}
 
-	void Engine::OnEvent(Event& New_Event)
+	void Engine::OnEvent(Event& event)
 	{
-		switch (New_Event.GetEventType())
+		switch (event.GetEventType())
 		{
-			[[unlikely]] case(EventTypes::WindowOpen):
+			case (EventTypes::WindowOpen):
 			{
 				Running = true;
-				ENGINE_INFO("Window Created! Running: {0}", Running);
+				ENGINE_INFO("Window Created ({0})! Running: {1}", event.ToString(), Running);
 				break;
 			}
-			[[unlikely]] case (EventTypes::WindowClose):
+			case (EventTypes::WindowClose):
 			{
+				ENGINE_INFO("Window Destroyed ({0})! Running: {1}", event.ToString(), Running);
+				m_Window.reset();
 				Running = false;
-				ENGINE_INFO("Window Destroyed! Running: {0}", Running);
 				break;
 			}
-			[[likely]] default:
+			default:
 			{
-				ENGINE_TRACE("{0}", New_Event.ToString());
-
-				for (std::vector <Layer*>::reverse_iterator i = Layers.rbegin(); i != Layers.rend(); i++)
-				{
-					(*i)->OnEvent(New_Event);
-					if (New_Event.IsHandled()) break;
-				}
+				m_Window->OnEvent(event);
 			}
 		}
 	}
-
-	
-	void Engine::RegisterLayer(Layer* layer, int index)
-	{
-		Layers.Push(layer, index);
-	}
-	void Engine::RemoveLayer(unsigned int index)
-	{
-		Layers.Remove(index);
-	}
-
-	inline bool Engine::IsKeyPressed(KeyCodes::Keys keycode) { return(Window->IsKeyPressed(keycode)); }
-	inline bool Engine::IsMouseButtonPressed(KeyCodes::Keys keycode) { return(Window->IsMouseButtonPressed(keycode)); }
-	inline std::pair<double, double> Engine::GetMousePosition() { return(Window->GetMousePosition()); }
-	inline double Engine::GetMouseX() { return(Window->GetMouseX()); }
-	inline double Engine::GetMouseY() { return(Window->GetMouseY()); }
 }

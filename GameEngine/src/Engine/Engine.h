@@ -1,37 +1,22 @@
 #pragma once
 
-#include "Window/Windows/WindowsWindow.h"
+#include "Window/Window.h"
 #include "Events/Events.h"
-#include "Layers/Layer/Layer.h"
-#include "Layers/LayersList/LayersList.h"
 
 namespace Engine
 {
 	class Engine
 	{
 	private:
-		#ifdef PLATFORM_WINDOWS
-			std::unique_ptr<WindowsWindow> Window;
-		#endif
+		std::unique_ptr<Window> m_Window;
 		bool Running = false;
-		LayersList Layers;
 
 	public:
-		Engine();
-		~Engine();
+		inline std::unique_ptr<Window>& GetWindow() { return(m_Window); }
 
 		void Run();
 
-		void OnEvent(Event& New_Event);
-
-		void RegisterLayer(Layer* layer, int index);
-		void RemoveLayer(unsigned int index);
-
-		inline bool IsKeyPressed(KeyCodes::Keys keycode);
-		inline bool IsMouseButtonPressed(KeyCodes::Keys keycode);
-		inline std::pair<double, double> GetMousePosition();
-		inline double GetMouseX();
-		inline double GetMouseY();
+		void OnEvent(Event& event);
 	};
 
 	//To be defined in client

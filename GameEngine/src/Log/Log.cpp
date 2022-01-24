@@ -3,19 +3,15 @@
 #ifdef DEBUG
 	#include <spdlog/sinks/stdout_color_sinks.h>
 
-	namespace Engine
+	namespace Engine::Log
 	{
-		std::shared_ptr<spdlog::logger> Log::EngineLogger;
-		std::shared_ptr<spdlog::logger> Log::GameLogger;
+		std::shared_ptr<spdlog::logger> EngineLogger = spdlog::stdout_color_mt("Engine");
+		std::shared_ptr<spdlog::logger> GameLogger = spdlog::stdout_color_mt("Game");
 
-		void Log::Init()
+		void set_pattern(std::string pattern)
 		{
-			spdlog::set_pattern("%^[%T] %n: %v%$");
-
-			EngineLogger = spdlog::stdout_color_mt("Engine");
+			spdlog::set_pattern(pattern);
 			EngineLogger->set_level(spdlog::level::trace);
-
-			GameLogger = spdlog::stdout_color_mt("Game");
 			GameLogger->set_level(spdlog::level::trace);
 		}
 	}

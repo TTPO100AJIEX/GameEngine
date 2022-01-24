@@ -1,6 +1,6 @@
 #pragma once
 
-#include "KeyCodes/GLFW/GLFW.h"
+#include "GLFW/GLFW.h"
 
 namespace Engine::KeyCodes
 {

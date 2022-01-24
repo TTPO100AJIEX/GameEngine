@@ -6,6 +6,7 @@ namespace Engine
 	{
 		None = 0,
 		WindowOpen, WindowResize, WindowClose,
+		AppTick,
 		KeyPress, KeyRelease, KeyType,
 		MouseMove, MouseScroll, MouseButtonPress, MouseButtonRelease
 	};
