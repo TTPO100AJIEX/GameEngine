@@ -57,7 +57,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeaders.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;PLATFORM_WINDOWS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RENDERER_USE_OPENGL;GLFW_INCLUDE_NONE;PLATFORM_WINDOWS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>Dependencies;Dependencies\PrecompiledHeaders;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -77,7 +77,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeaders.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;PLATFORM_WINDOWS;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RENDERER_USE_OPENGL;GLFW_INCLUDE_NONE;PLATFORM_WINDOWS;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>Dependencies;Dependencies\PrecompiledHeaders;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -106,8 +106,7 @@
     <ClInclude Include="src\Engine\Events\Keyboard.h" />
     <ClInclude Include="src\Engine\Events\Mouse.h" />
     <ClInclude Include="src\Engine\Events\Window.h" />
-    <ClInclude Include="src\Engine\Renderer\Context.h" />
-    <ClInclude Include="src\Engine\Renderer\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Engine\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Engine\Window\Window.h" />
     <ClInclude Include="src\Engine\Window\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Log\Log.h" />
@@ -119,7 +118,7 @@
     <ClCompile Include="src\Engine\Definitions\KeyCodes\GLFW\GLFW.cpp" />
     <ClCompile Include="src\Engine\Definitions\KeyCodes\KeyCodes.cpp" />
     <ClCompile Include="src\Engine\Engine.cpp" />
-    <ClCompile Include="src\Engine\Renderer\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Engine\Window\Windows\RegisterEvents.cpp" />
     <ClCompile Include="src\Engine\Window\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\EntryPoint.cpp" />
     <ClCompile Include="src\Log\Log.cpp" />

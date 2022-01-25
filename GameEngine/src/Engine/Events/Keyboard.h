@@ -10,6 +10,7 @@ namespace Engine
 	private:
 		KeyCodes::Keys KeyCode;
 		unsigned int RepeatCount;
+
 	public:
 		KeyPress(KeyCodes::Keys keyCode, unsigned int repeatCount) : KeyCode(keyCode), RepeatCount(repeatCount) { EventType = EventTypes::KeyPress; }
 
@@ -27,6 +28,7 @@ namespace Engine
 	{
 	private:
 		KeyCodes::Keys KeyCode;
+
 	public:
 		KeyRelease(KeyCodes::Keys keyCode) : KeyCode(keyCode) { EventType = EventTypes::KeyRelease; }
 
@@ -44,6 +46,7 @@ namespace Engine
 	{
 	private:
 		char Symbol;
+
 	public:
 		KeyType(char symbol) : Symbol(symbol) { EventType = EventTypes::KeyType; }
 

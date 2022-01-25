@@ -11,6 +11,11 @@ public:
 	{
 
 	}
+
+	virtual void OnEvent(::Engine::Event& event) override
+	{
+		//GAME_TRACE(event.ToString());
+	}
 };
 
 

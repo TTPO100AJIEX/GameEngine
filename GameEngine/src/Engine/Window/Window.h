@@ -1,30 +1,27 @@
 #pragma once
 
-#include "../Definitions/KeyCodes/KeyCodes.h"
 #include "../Events/Events.h"
-#include "../Renderer/Context.h"
+#include "../Definitions/KeyCodes/KeyCodes.h"
 
 namespace Engine
 {
 	class Window
 	{
 	protected:
-		std::shared_ptr<Renderer::Context> RenderingContext;
-
-		struct windowData
-		{
-			std::string Title;
-			unsigned int Width;
-			unsigned int Height;
-			std::function<void(Event&)> Callback;
-		};
-		windowData WindowData;
+		std::string title;
+		unsigned int width;
+		unsigned int height;
+		std::function<void(Event&)> event_callback;
 
 	public:
 		virtual ~Window() = default;
 
 		virtual void RegisterEvents() = 0;
-		virtual void OnEvent(Event& event) = 0;
+
+		virtual void SetSize(unsigned int Width, unsigned int Height) = 0;
+
+		virtual void Use(bool vSync) = 0;
+		virtual void Update() = 0;
 
 		
 		virtual inline bool IsKeyPressed(KeyCodes::Keys& keycode) = 0;

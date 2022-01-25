@@ -13,7 +13,6 @@ namespace Engine
 
 	class Event
 	{
-
 	protected:
 		bool handled = false;
 		EventTypes EventType;

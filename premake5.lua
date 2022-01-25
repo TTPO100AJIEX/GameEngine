@@ -6,9 +6,11 @@ workspace "GameEngine"
     {
         "Debug", "Release"
     }
+    
+group "Dependencies"
+    include "GameEngine/Dependencies/GLFW"
+    include "GameEngine/Dependencies/GLAD"
 
-include "GameEngine/Dependencies/GLFW"
-include "GameEngine/Dependencies/GLAD"
-
-include "GameEngine"
-include "Game"
+group ""
+    include "GameEngine"
+    include "Game"

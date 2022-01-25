@@ -28,9 +28,6 @@
     <Filter Include="src\Engine\Renderer">
       <UniqueIdentifier>{F838018B-649A-DE98-ED07-254B59681558}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Renderer\OpenGL">
-      <UniqueIdentifier>{2C1B9528-182B-41F9-81E4-A5176D133092}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Engine\Window">
       <UniqueIdentifier>{B98500DA-259C-FE6F-6E13-8A91DA68CFF7}</UniqueIdentifier>
     </Filter>
@@ -69,11 +66,8 @@
     <ClInclude Include="src\Engine\Events\Window.h">
       <Filter>src\Engine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Renderer\Context.h">
+    <ClInclude Include="src\Engine\Renderer\Renderer2D.h">
       <Filter>src\Engine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Renderer\OpenGL\OpenGLContext.h">
-      <Filter>src\Engine\Renderer\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Window\Window.h">
       <Filter>src\Engine\Window</Filter>
@@ -98,8 +92,8 @@
     <ClCompile Include="src\Engine\Engine.cpp">
       <Filter>src\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Renderer\OpenGL\OpenGLContext.cpp">
-      <Filter>src\Engine\Renderer\OpenGL</Filter>
+    <ClCompile Include="src\Engine\Window\Windows\RegisterEvents.cpp">
+      <Filter>src\Engine\Window\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Window\Windows\WindowsWindow.cpp">
       <Filter>src\Engine\Window\Windows</Filter>

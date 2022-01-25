@@ -8,7 +8,7 @@
 	{
 		#ifdef DEBUG
 			Engine::Log::set_pattern("[%d-%m-%Y %T.%e] [%n]-[%L:%l] %^%v%$");
-			ENGINE_INFO("Initialized log!");
+			ENGINE_WARN("Initialized log!");
 		#endif
 
 		Engine::Engine* game = Engine::CreateGame();

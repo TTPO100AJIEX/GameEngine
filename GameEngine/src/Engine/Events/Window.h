@@ -9,6 +9,7 @@ namespace Engine
 	private:
 		int Width;
 		int Height;
+
 	public:
 		WindowOpen(int width, int height) : Width(width), Height(height) { EventType = EventTypes::WindowOpen; }
 
@@ -27,6 +28,7 @@ namespace Engine
 	private:
 		int Width;
 		int Height;
+
 	public:
 		WindowResize(int width, int height) : Width(width), Height(height) { EventType = EventTypes::WindowResize; }
 

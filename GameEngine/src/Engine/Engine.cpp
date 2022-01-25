@@ -1,28 +1,38 @@
 #include <PrecompiledHeaders.h>
 
 #include "Engine.h"
-#include "Window/Windows/WindowsWindow.h"
 
+#include "Window/Windows/WindowsWindow.h"
 #include "Events/App.h"
 
 namespace Engine
 {
+	Engine::Engine()
+	{
+		window = std::make_unique<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
+		//renderer2D = std::make_unique<OpenGLRenderer2D>()
+	}
+	Engine::~Engine()
+	{
+
+	}
+
 	void Engine::Run()
 	{
 		ENGINE_INFO("Started!");
 
-		m_Window = std::make_unique<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent, this, std::placeholders::_1));
+		//m_Window = std::make_unique<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
 
 		while (Running)
 		{
 			AppTick AppTickEvent;
-			OnEvent(AppTickEvent);
+			OnEvent_Internal(AppTickEvent);
 		}
 
 		ENGINE_INFO("Terminated!");
 	}
 
-	void Engine::OnEvent(Event& event)
+	void Engine::OnEvent_Internal(Event& event)
 	{
 		switch (event.GetEventType())
 		{
@@ -34,14 +44,15 @@ namespace Engine
 			}
 			case (EventTypes::WindowClose):
 			{
-				ENGINE_INFO("Window Destroyed ({0})! Running: {1}", event.ToString(), Running);
-				m_Window.reset();
 				Running = false;
+				window.reset();
+				ENGINE_INFO("Window Destroyed ({0})! Running: {1}", event.ToString(), Running);
 				break;
 			}
+			case (EventTypes::AppTick): { window->Update(); [[fallthrough]]; }
 			default:
 			{
-				m_Window->OnEvent(event);
+				OnEvent(event);
 			}
 		}
 	}

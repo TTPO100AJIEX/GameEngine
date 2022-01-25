@@ -24,6 +24,11 @@ project "Game"
 	{
 		"GameEngine"
 	}
+
+	defines
+	{
+        "RENDERER_USE_OPENGL"
+	}
 	
 	filter "system:windows"
 		systemversion "latest"

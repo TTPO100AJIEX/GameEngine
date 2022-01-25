@@ -10,6 +10,7 @@ namespace Engine
 	private:
 		double X;
 		double Y;
+
 	public:
 		MouseMove(double x, double y) : X(x), Y(y) { EventType = EventTypes::MouseMove; }
 
@@ -28,6 +29,7 @@ namespace Engine
 	private:
 		double X;
 		double Y;
+
 	public:
 		MouseScroll(double x, double y) : X(x), Y(y) { EventType = EventTypes::MouseScroll; }
 
@@ -45,6 +47,7 @@ namespace Engine
 	{
 	private:
 		KeyCodes::Keys Key;
+
 	public:
 		MouseButtonPress(KeyCodes::Keys key) : Key(key) { EventType = EventTypes::MouseButtonPress; }
 
@@ -62,6 +65,7 @@ namespace Engine
 	{
 	private:
 		KeyCodes::Keys Key;
+
 	public:
 		MouseButtonRelease(KeyCodes::Keys key) : Key(key) { EventType = EventTypes::MouseButtonRelease; }
 
