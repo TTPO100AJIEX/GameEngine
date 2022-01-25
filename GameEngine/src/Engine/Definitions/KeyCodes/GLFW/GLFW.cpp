@@ -56,13 +56,13 @@ namespace Engine::KeyCodes
 	GLFWKeys ToGLFW(Keys keycode)
 	{
 		std::unordered_map<Keys, GLFWKeys>::const_iterator element = To_GLFW.find(keycode);
-		if (element == To_GLFW.end()) return(GLFWKeys::Unknown);
+		if (element == To_GLFW.end()) [[unlikely]] return(GLFWKeys::Unknown);
 		return(element->second);
 	}
 	Keys FromGLFW(GLFWKeys keycode)
 	{
 		std::unordered_map<GLFWKeys, Keys>::const_iterator element = From_GLFW.find(keycode);
-		if (element == From_GLFW.end()) return(Keys::UNKNOWN);
+		if (element == From_GLFW.end()) [[unlikely]] return(Keys::UNKNOWN);
 		return(element->second);
 	}
 }

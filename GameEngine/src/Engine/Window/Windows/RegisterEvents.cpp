@@ -49,7 +49,7 @@ namespace Engine
 					window_data.event_callback(KeyPressEvent);
 					break;
 				}
-				default: { ENGINE_ERROR("Unhandled keyboard key callback action {0}", action); }
+				[[unlikely]] default: { ENGINE_ERROR("Unhandled keyboard key callback action {0}", action); }
 			}
 		});
 		glfwSetCharCallback(window, [](GLFWwindow* l_window, unsigned int symbol)
@@ -90,7 +90,7 @@ namespace Engine
 					window_data.event_callback(MouseButtonReleaseEvent);
 					break;
 				}
-				default: { ENGINE_ERROR("Unhandled mouse key callback action {0}", action); }
+				[[unlikely]] default: { ENGINE_ERROR("Unhandled mouse key callback action {0}", action); }
 			}
 		});
 

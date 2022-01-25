@@ -8,14 +8,14 @@ namespace Engine
 	{
 		ENGINE_ERROR("GLFW Error {0}: {1}", error, description);
 	}
-	static enum class GLFW_status { ON, OFF };
+	enum class GLFW_status { ON, OFF };
 	static void switch_GLFW(GLFW_status status)
 	{
 		static bool GLFW_initialized = false;
 		if (status == GLFW_status::ON)
 		{
 			if (GLFW_initialized) return;
-			if (!glfwInit())
+			if (!glfwInit()) [[unlikely]]
 			{
 				ENGINE_CRITICAL("Failed to initialize GLFW!");
 				return;
@@ -88,18 +88,18 @@ namespace Engine
 		int state = glfwGetMouseButton(window, static_cast<int>(KeyCodes::ToGLFW(keycode)));
 		return(state == GLFW_PRESS);
 	}
-	inline std::pair<double, double> WindowsWindow::GetMousePosition()
+	inline std::pair<float, float> WindowsWindow::GetMousePosition()
 	{
 		double xpos, ypos;
 		glfwGetCursorPos(window, &xpos, &ypos);
-		return { xpos, ypos };
+		return { (float)(xpos), (float)(ypos) };
 	}
-	inline double WindowsWindow::GetMouseX()
+	inline float WindowsWindow::GetMouseX()
 	{
 		auto [x, y] = GetMousePosition();
 		return(x);
 	}
-	inline double WindowsWindow::GetMouseY()
+	inline float WindowsWindow::GetMouseY()
 	{
 		auto [x, y] = GetMousePosition();
 		return(y);

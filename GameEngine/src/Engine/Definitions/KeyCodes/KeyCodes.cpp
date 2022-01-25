@@ -48,7 +48,7 @@
 		std::string ToString(Keys keycode)
 		{
 			std::unordered_map<Keys, std::string>::const_iterator element = To_String.find(keycode);
-			if (element == To_String.end()) return("Unknown");
+			if (element == To_String.end()) [[unlikely]] return("Unknown");
 			return(element->second);
 		}
 	}

@@ -18,7 +18,7 @@ namespace Engine
 		~Engine();
 
 		inline std::unique_ptr<Window>& GetWindow() { return(window); }
-		inline std::unique_ptr<Window>& GetRenderer2D() { return(window); }
+		inline std::unique_ptr<Renderer2D>& GetRenderer2D() { return(renderer2D); }
 
 		void Run();
 

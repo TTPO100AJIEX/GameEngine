@@ -3,14 +3,24 @@
 #include "Engine.h"
 
 #include "Window/Windows/WindowsWindow.h"
+#include "Renderer/OpenGL/OpenGLRenderer2D.h"
 #include "Events/App.h"
 
 namespace Engine
 {
 	Engine::Engine()
 	{
-		window = std::make_unique<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
-		//renderer2D = std::make_unique<OpenGLRenderer2D>()
+		#ifdef PLATFORM_WINDOWS
+			window = std::make_unique<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
+		#else
+			#error "One of [PLATFORM_WINDOWS] must be defined"
+		#endif
+
+		#ifdef RENDERER_USE_OPENGL
+			renderer2D = std::make_unique<OpenGLRenderer2D>();
+		#else
+			#error "One of [RENDERER_USE_OPENGL] must be defined"
+		#endif
 	}
 	Engine::~Engine()
 	{
@@ -21,9 +31,7 @@ namespace Engine
 	{
 		ENGINE_INFO("Started!");
 
-		//m_Window = std::make_unique<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
-
-		while (Running)
+		while (Running) [[likely]]
 		{
 			AppTick AppTickEvent;
 			OnEvent_Internal(AppTickEvent);
@@ -36,21 +44,21 @@ namespace Engine
 	{
 		switch (event.GetEventType())
 		{
-			case (EventTypes::WindowOpen):
+			[[unlikely]] case (EventTypes::WindowOpen):
 			{
 				Running = true;
 				ENGINE_INFO("Window Created ({0})! Running: {1}", event.ToString(), Running);
 				break;
 			}
-			case (EventTypes::WindowClose):
+			[[unlikely]] case (EventTypes::WindowClose):
 			{
 				Running = false;
 				window.reset();
 				ENGINE_INFO("Window Destroyed ({0})! Running: {1}", event.ToString(), Running);
 				break;
 			}
-			case (EventTypes::AppTick): { window->Update(); [[fallthrough]]; }
-			default:
+			[[likely]] case (EventTypes::AppTick): { window->Update(); [[fallthrough]]; }
+			[[likely]] default:
 			{
 				OnEvent(event);
 			}

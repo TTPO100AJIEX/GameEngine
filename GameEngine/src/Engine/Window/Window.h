@@ -26,8 +26,8 @@ namespace Engine
 		
 		virtual inline bool IsKeyPressed(KeyCodes::Keys& keycode) = 0;
 		virtual inline bool IsMouseButtonPressed(KeyCodes::Keys& keycode) = 0;
-		virtual inline std::pair<double, double> GetMousePosition() = 0;
-		virtual inline double GetMouseX() = 0;
-		virtual inline double GetMouseY() = 0;
+		virtual inline std::pair<float, float> GetMousePosition() = 0;
+		virtual inline float GetMouseX() = 0;
+		virtual inline float GetMouseY() = 0;
 	};
 }
