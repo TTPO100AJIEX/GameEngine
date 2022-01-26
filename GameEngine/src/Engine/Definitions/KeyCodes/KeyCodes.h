@@ -1,7 +1,5 @@
 #pragma once
 
-#include "GLFW/GLFW.h"
-
 namespace Engine::KeyCodes
 {
 	enum class Keys
@@ -9,7 +7,6 @@ namespace Engine::KeyCodes
 		UNKNOWN,
 
 		MOUSE_BUTTON_1, MOUSE_BUTTON_2, MOUSE_BUTTON_3, MOUSE_BUTTON_4, MOUSE_BUTTON_5, MOUSE_BUTTON_6, MOUSE_BUTTON_7, MOUSE_BUTTON_8,
-		MOUSE_BUTTON_LEFT = MOUSE_BUTTON_1, MOUSE_BUTTON_RIGHT = MOUSE_BUTTON_2, MOUSE_BUTTON_MIDDLE = MOUSE_BUTTON_3,
 
 		SPACE, APOSTROPHE/*'*/, COMMA/*,*/, MINUS/*-*/, PERIOD/*.*/, SLASH/*/*/,
 
@@ -38,7 +35,4 @@ namespace Engine::KeyCodes
 	#ifdef DEBUG
 		std::string ToString(Keys keycode);
 	#endif
-
-	GLFWKeys ToGLFW(Keys keycode);
-	Keys FromGLFW(GLFWKeys keycode);
 }

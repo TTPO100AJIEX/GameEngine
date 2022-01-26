@@ -22,6 +22,15 @@
     <Filter Include="src\Engine\Definitions\KeyCodes\GLFW">
       <UniqueIdentifier>{A2BE41CE-8EA5-03C6-37F6-69E323BC7C2C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Engine\Definitions\VertexBufferLayout">
+      <UniqueIdentifier>{02ACB323-6EC6-16C5-B7E8-265923423ECC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Engine\Definitions\VertexBufferLayout\ElementType">
+      <UniqueIdentifier>{9DDA4859-09F7-3A4A-D2CE-A7B73EAAA40B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Engine\Definitions\VertexBufferLayout\ElementType\OpenGL">
+      <UniqueIdentifier>{31D14BEE-1D3C-0CFA-C657-715FB2A1CFDC}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Engine\Events">
       <UniqueIdentifier>{B624EAB0-223B-E846-6BB2-7368D707B9CE}</UniqueIdentifier>
     </Filter>
@@ -30,6 +39,9 @@
     </Filter>
     <Filter Include="src\Engine\Renderer\OpenGL">
       <UniqueIdentifier>{2C1B9528-182B-41F9-81E4-A5176D133092}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Engine\Renderer\OpenGL\VertexBufferLayout">
+      <UniqueIdentifier>{F1CD3691-5D3E-390A-265D-B392928C710B}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Engine\Window">
       <UniqueIdentifier>{B98500DA-259C-FE6F-6E13-8A91DA68CFF7}</UniqueIdentifier>
@@ -51,6 +63,12 @@
     <ClInclude Include="src\Engine\Definitions\KeyCodes\KeyCodes.h">
       <Filter>src\Engine\Definitions\KeyCodes</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Definitions\VertexBufferLayout\ElementType\ElementType.h">
+      <Filter>src\Engine\Definitions\VertexBufferLayout\ElementType</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Definitions\VertexBufferLayout\ElementType\OpenGL\OpenGL.h">
+      <Filter>src\Engine\Definitions\VertexBufferLayout\ElementType\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Engine\Engine.h">
       <Filter>src\Engine</Filter>
     </ClInclude>
@@ -69,10 +87,25 @@
     <ClInclude Include="src\Engine\Events\Window.h">
       <Filter>src\Engine\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\IndexBuffer.h">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Engine\Renderer\OpenGL\OpenGLRenderer2D.h">
       <Filter>src\Engine\Renderer\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\OpenGL\VertexBufferLayout\OpenGLLayout.h">
+      <Filter>src\Engine\Renderer\OpenGL\VertexBufferLayout</Filter>
+    </ClInclude>
     <ClInclude Include="src\Engine\Renderer\Renderer2D.h">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\VertexArray.h">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\VertexBuffer.h">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\VertexBufferLayout.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Window\Window.h">
@@ -95,11 +128,17 @@
     <ClCompile Include="src\Engine\Definitions\KeyCodes\KeyCodes.cpp">
       <Filter>src\Engine\Definitions\KeyCodes</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Definitions\VertexBufferLayout\ElementType\OpenGL\OpenGL.cpp">
+      <Filter>src\Engine\Definitions\VertexBufferLayout\ElementType\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Engine\Engine.cpp">
       <Filter>src\Engine</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\OpenGL\OpenGLRenderer2D.cpp">
       <Filter>src\Engine\Renderer\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Renderer\OpenGL\VertexBufferLayout\OpenGLLayout.cpp">
+      <Filter>src\Engine\Renderer\OpenGL\VertexBufferLayout</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Window\Windows\RegisterEvents.cpp">
       <Filter>src\Engine\Window\Windows</Filter>

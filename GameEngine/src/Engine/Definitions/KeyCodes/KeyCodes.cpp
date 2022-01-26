@@ -5,7 +5,7 @@
 #ifdef DEBUG
 	namespace Engine::KeyCodes
 	{
-		const std::unordered_map <Keys, std::string> To_String({
+		static const std::unordered_map <Keys, std::string> To_String({
 			{ Keys::MOUSE_BUTTON_1, "MOUSE_BUTTON_1" }, { Keys::MOUSE_BUTTON_2, "MOUSE_BUTTON_2" }, { Keys::MOUSE_BUTTON_3, "MOUSE_BUTTON_3" }, { Keys::MOUSE_BUTTON_4, "MOUSE_BUTTON_4" },
 				{ Keys::MOUSE_BUTTON_5, "MOUSE_BUTTON_5" }, { Keys::MOUSE_BUTTON_6, "MOUSE_BUTTON_6" }, { Keys::MOUSE_BUTTON_7, "MOUSE_BUTTON_7" }, { Keys::MOUSE_BUTTON_8, "MOUSE_BUTTON_8" },
 

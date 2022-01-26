@@ -2,6 +2,7 @@
 
 #include "WindowsWindow.h"
 
+#include "../../Definitions/KeyCodes/GLFW/GLFW.h"
 #include "../../Events/Window.h"
 #include "../../Events/Keyboard.h"
 #include "../../Events/Mouse.h"

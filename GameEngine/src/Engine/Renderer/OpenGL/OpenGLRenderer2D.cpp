@@ -5,6 +5,8 @@
 #include <GLAD/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "VertexBufferLayout/OpenGLLayout.h"
+
 namespace Engine
 {
 	void OpenGLRenderer2D::SetClearColor(const glm::vec4& Color)
@@ -43,8 +45,10 @@ namespace Engine
 
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+		Renderer::VertexBufferLayout::OpenGLLayout layout({
+			{ Renderer::VertexBufferLayout::ElementType::Float3, false }
+		});
+		layout.Use();
 
 		glGenBuffers(1, &m_IndexBuffer);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);

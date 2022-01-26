@@ -1,13 +1,16 @@
 #pragma once
 
+#include "../KeyCodes.h"
+
+#include <GLFW/glfw3.h>
+
 namespace Engine::KeyCodes
 {
 	enum class GLFWKeys
 	{
-		Unknown = -1,
+		Unknown = GLFW_KEY_UNKNOWN,
 
 		MouseButton1 = 0, MouseButton2 = 1, MouseButton3 = 2, MouseButton4 = 3, MouseButton5 = 4, MouseButton6 = 5, MouseButton7 = 6, MouseButton8 = 7,
-		MouseButtonLeft = MouseButton1, MouseButtonRight = MouseButton2, MouseButtonMiddle = MouseButton3,
 
 		Space = 32, Apostrophe = 39/*'*/, Comma = 44/*,*/, Minus = 45/*-*/, Period = 46/*.*/, Slash = 47/*/*/,
 
@@ -32,4 +35,7 @@ namespace Engine::KeyCodes
 		LeftShift = 340, LeftControl = 341, LeftAlt = 342, LeftSuper = 343, RightShift = 344, RightControl = 345, RightAlt = 346, RightSuper = 347,
 		Menu = 348
 	};
+
+	GLFWKeys ToGLFW(Keys keycode);
+	Keys FromGLFW(GLFWKeys keycode);
 }

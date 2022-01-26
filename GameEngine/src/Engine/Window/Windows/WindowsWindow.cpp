@@ -2,6 +2,8 @@
 
 #include "WindowsWindow.h"
 
+#include "../../Definitions/KeyCodes/GLFW/GLFW.h"
+
 namespace Engine
 {
 	static void GLFWErrorCallback(int error, const char* description)

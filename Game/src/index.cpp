@@ -18,6 +18,8 @@ public:
 		{
 			[[likely]] case (::Engine::EventTypes::AppTick): 
 			{
+				GetRenderer2D()->Clear();
+
 				GetRenderer2D()->BeginScene();
 
 				GetRenderer2D()->EndScene();
