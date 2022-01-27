@@ -12,5 +12,7 @@ namespace Engine::Renderer::VertexBufferLayout
 		OpenGLLayout(const std::initializer_list<Element>& Elements);
 
 		virtual void Use() override;
+
+		inline size_t GetStride();
 	};
 }
