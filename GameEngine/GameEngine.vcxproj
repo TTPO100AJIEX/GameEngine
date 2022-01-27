@@ -58,7 +58,7 @@
       <PrecompiledHeaderFile>PrecompiledHeaders.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>RENDERER_USE_OPENGL;GLFW_INCLUDE_NONE;PLATFORM_WINDOWS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Dependencies;Dependencies\PrecompiledHeaders;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Dependencies;src;src\PrecompiledHeaders;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -78,7 +78,7 @@
       <PrecompiledHeaderFile>PrecompiledHeaders.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>RENDERER_USE_OPENGL;GLFW_INCLUDE_NONE;PLATFORM_WINDOWS;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Dependencies;Dependencies\PrecompiledHeaders;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Dependencies;src;src\PrecompiledHeaders;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -97,7 +97,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Dependencies\PrecompiledHeaders\PrecompiledHeaders.h" />
     <ClInclude Include="src\Engine\Definitions\KeyCodes\GLFW\GLFW.h" />
     <ClInclude Include="src\Engine\Definitions\KeyCodes\KeyCodes.h" />
     <ClInclude Include="src\Engine\Definitions\VertexBufferLayout\ElementType\ElementType.h" />
@@ -118,11 +117,9 @@
     <ClInclude Include="src\Engine\Window\Window.h" />
     <ClInclude Include="src\Engine\Window\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Log\Log.h" />
+    <ClInclude Include="src\PrecompiledHeaders\PrecompiledHeaders.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Dependencies\PrecompiledHeaders\PrecompiledHeaders.cpp">
-      <PrecompiledHeader>Create</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="src\Engine\Definitions\KeyCodes\GLFW\GLFW.cpp" />
     <ClCompile Include="src\Engine\Definitions\KeyCodes\KeyCodes.cpp" />
     <ClCompile Include="src\Engine\Definitions\VertexBufferLayout\ElementType\OpenGL\OpenGL.cpp" />
@@ -133,6 +130,9 @@
     <ClCompile Include="src\Engine\Window\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\EntryPoint.cpp" />
     <ClCompile Include="src\Log\Log.cpp" />
+    <ClCompile Include="src\PrecompiledHeaders\PrecompiledHeaders.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Dependencies\GLFW\GLFW.vcxproj">

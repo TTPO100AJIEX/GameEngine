@@ -1,156 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Dependencies">
-      <UniqueIdentifier>{6C01343A-5864-C3DE-01EA-FB94ED2B8F61}</UniqueIdentifier>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{DBC7D3B0-C769-FE86-B024-12DB9C6585D7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Dependencies\PrecompiledHeaders">
-      <UniqueIdentifier>{6B952D0D-D778-3C4D-E07B-6A894CDE029E}</UniqueIdentifier>
+    <Filter Include="Engine\Definitions">
+      <UniqueIdentifier>{26A5F4AE-1289-B504-7BE9-AF5767EC9F86}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src">
-      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    <Filter Include="Engine\Definitions\KeyCodes">
+      <UniqueIdentifier>{EC17A742-5825-D528-E10B-D1134D18A1DF}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine">
-      <UniqueIdentifier>{12A1320E-FE58-745B-6760-4DB753370F4C}</UniqueIdentifier>
+    <Filter Include="Engine\Definitions\KeyCodes\GLFW">
+      <UniqueIdentifier>{ABA6A9D3-97F7-9415-C05B-83D7AC0B287F}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Definitions">
-      <UniqueIdentifier>{DD08CCA5-C902-F5F7-B26F-8B089E085B64}</UniqueIdentifier>
+    <Filter Include="Engine\Definitions\VertexBufferLayout">
+      <UniqueIdentifier>{AB014BE3-17C6-49D3-E02B-7A9D4CAFE508}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Definitions\KeyCodes">
-      <UniqueIdentifier>{83990BD5-EF7C-1A15-F87F-485164E2E065}</UniqueIdentifier>
+    <Filter Include="Engine\Definitions\VertexBufferLayout\ElementType">
+      <UniqueIdentifier>{C6F54427-32BC-A143-7B17-30A6E71C10A8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Definitions\KeyCodes\GLFW">
-      <UniqueIdentifier>{A2BE41CE-8EA5-03C6-37F6-69E323BC7C2C}</UniqueIdentifier>
+    <Filter Include="Engine\Definitions\VertexBufferLayout\ElementType\OpenGL">
+      <UniqueIdentifier>{3AA4C670-2679-0E24-4F28-4E203B5C1C3B}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Definitions\VertexBufferLayout">
-      <UniqueIdentifier>{02ACB323-6EC6-16C5-B7E8-265923423ECC}</UniqueIdentifier>
+    <Filter Include="Engine\Events">
+      <UniqueIdentifier>{5FAFB439-CB6F-3070-94AA-79ED002A754C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Definitions\VertexBufferLayout\ElementType">
-      <UniqueIdentifier>{9DDA4859-09F7-3A4A-D2CE-A7B73EAAA40B}</UniqueIdentifier>
+    <Filter Include="Engine\Renderer">
+      <UniqueIdentifier>{E1119970-4D9D-0635-56AE-8929C2B86235}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Definitions\VertexBufferLayout\ElementType\OpenGL">
-      <UniqueIdentifier>{31D14BEE-1D3C-0CFA-C657-715FB2A1CFDC}</UniqueIdentifier>
+    <Filter Include="Engine\Renderer\OpenGL">
+      <UniqueIdentifier>{F5B3D491-E1AD-FDE3-CA1A-94F4B6B36350}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Events">
-      <UniqueIdentifier>{B624EAB0-223B-E846-6BB2-7368D707B9CE}</UniqueIdentifier>
+    <Filter Include="Engine\Renderer\OpenGL\VertexBufferLayout">
+      <UniqueIdentifier>{1AD06252-86EA-C5F3-CF0C-D6873B66EDFA}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Renderer">
-      <UniqueIdentifier>{F838018B-649A-DE98-ED07-254B59681558}</UniqueIdentifier>
+    <Filter Include="Engine\Window">
+      <UniqueIdentifier>{6210CB62-CED0-4699-970B-9016038B8B75}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Renderer\OpenGL">
-      <UniqueIdentifier>{2C1B9528-182B-41F9-81E4-A5176D133092}</UniqueIdentifier>
+    <Filter Include="Engine\Window\Windows">
+      <UniqueIdentifier>{9CFC8BE2-0869-47DD-D15C-DF3A3D886945}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Renderer\OpenGL\VertexBufferLayout">
-      <UniqueIdentifier>{F1CD3691-5D3E-390A-265D-B392928C710B}</UniqueIdentifier>
+    <Filter Include="Log">
+      <UniqueIdentifier>{E704880B-530E-887C-DC89-9E7C4892937C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Window">
-      <UniqueIdentifier>{B98500DA-259C-FE6F-6E13-8A91DA68CFF7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Engine\Window\Windows">
-      <UniqueIdentifier>{F3D8B034-5F9B-E4BE-A84B-734B144DBD9C}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Log">
-      <UniqueIdentifier>{7E912FA9-EA70-AE44-F388-391B5FE714A6}</UniqueIdentifier>
+    <Filter Include="PrecompiledHeaders">
+      <UniqueIdentifier>{D5315246-C115-139C-2A76-0DEF1679FD1D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Dependencies\PrecompiledHeaders\PrecompiledHeaders.h">
-      <Filter>Dependencies\PrecompiledHeaders</Filter>
-    </ClInclude>
     <ClInclude Include="src\Engine\Definitions\KeyCodes\GLFW\GLFW.h">
-      <Filter>src\Engine\Definitions\KeyCodes\GLFW</Filter>
+      <Filter>Engine\Definitions\KeyCodes\GLFW</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Definitions\KeyCodes\KeyCodes.h">
-      <Filter>src\Engine\Definitions\KeyCodes</Filter>
+      <Filter>Engine\Definitions\KeyCodes</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Definitions\VertexBufferLayout\ElementType\ElementType.h">
-      <Filter>src\Engine\Definitions\VertexBufferLayout\ElementType</Filter>
+      <Filter>Engine\Definitions\VertexBufferLayout\ElementType</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Definitions\VertexBufferLayout\ElementType\OpenGL\OpenGL.h">
-      <Filter>src\Engine\Definitions\VertexBufferLayout\ElementType\OpenGL</Filter>
+      <Filter>Engine\Definitions\VertexBufferLayout\ElementType\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Engine.h">
-      <Filter>src\Engine</Filter>
+      <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Events\App.h">
-      <Filter>src\Engine\Events</Filter>
+      <Filter>Engine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Events\Events.h">
-      <Filter>src\Engine\Events</Filter>
+      <Filter>Engine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Events\Keyboard.h">
-      <Filter>src\Engine\Events</Filter>
+      <Filter>Engine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Events\Mouse.h">
-      <Filter>src\Engine\Events</Filter>
+      <Filter>Engine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Events\Window.h">
-      <Filter>src\Engine\Events</Filter>
+      <Filter>Engine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\IndexBuffer.h">
-      <Filter>src\Engine\Renderer</Filter>
+      <Filter>Engine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\OpenGL\OpenGLRenderer2D.h">
-      <Filter>src\Engine\Renderer\OpenGL</Filter>
+      <Filter>Engine\Renderer\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\OpenGL\VertexBufferLayout\OpenGLLayout.h">
-      <Filter>src\Engine\Renderer\OpenGL\VertexBufferLayout</Filter>
+      <Filter>Engine\Renderer\OpenGL\VertexBufferLayout</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\Renderer2D.h">
-      <Filter>src\Engine\Renderer</Filter>
+      <Filter>Engine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\VertexArray.h">
-      <Filter>src\Engine\Renderer</Filter>
+      <Filter>Engine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\VertexBuffer.h">
-      <Filter>src\Engine\Renderer</Filter>
+      <Filter>Engine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\VertexBufferLayout.h">
-      <Filter>src\Engine\Renderer</Filter>
+      <Filter>Engine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Window\Window.h">
-      <Filter>src\Engine\Window</Filter>
+      <Filter>Engine\Window</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Window\Windows\WindowsWindow.h">
-      <Filter>src\Engine\Window\Windows</Filter>
+      <Filter>Engine\Window\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Log\Log.h">
-      <Filter>src\Log</Filter>
+      <Filter>Log</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PrecompiledHeaders\PrecompiledHeaders.h">
+      <Filter>PrecompiledHeaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Dependencies\PrecompiledHeaders\PrecompiledHeaders.cpp">
-      <Filter>Dependencies\PrecompiledHeaders</Filter>
-    </ClCompile>
     <ClCompile Include="src\Engine\Definitions\KeyCodes\GLFW\GLFW.cpp">
-      <Filter>src\Engine\Definitions\KeyCodes\GLFW</Filter>
+      <Filter>Engine\Definitions\KeyCodes\GLFW</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Definitions\KeyCodes\KeyCodes.cpp">
-      <Filter>src\Engine\Definitions\KeyCodes</Filter>
+      <Filter>Engine\Definitions\KeyCodes</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Definitions\VertexBufferLayout\ElementType\OpenGL\OpenGL.cpp">
-      <Filter>src\Engine\Definitions\VertexBufferLayout\ElementType\OpenGL</Filter>
+      <Filter>Engine\Definitions\VertexBufferLayout\ElementType\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Engine.cpp">
-      <Filter>src\Engine</Filter>
+      <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\OpenGL\OpenGLRenderer2D.cpp">
-      <Filter>src\Engine\Renderer\OpenGL</Filter>
+      <Filter>Engine\Renderer\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\OpenGL\VertexBufferLayout\OpenGLLayout.cpp">
-      <Filter>src\Engine\Renderer\OpenGL\VertexBufferLayout</Filter>
+      <Filter>Engine\Renderer\OpenGL\VertexBufferLayout</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Window\Windows\RegisterEvents.cpp">
-      <Filter>src\Engine\Window\Windows</Filter>
+      <Filter>Engine\Window\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Window\Windows\WindowsWindow.cpp">
-      <Filter>src\Engine\Window\Windows</Filter>
+      <Filter>Engine\Window\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\EntryPoint.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
+    <ClCompile Include="src\EntryPoint.cpp" />
     <ClCompile Include="src\Log\Log.cpp">
-      <Filter>src\Log</Filter>
+      <Filter>Log</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PrecompiledHeaders\PrecompiledHeaders.cpp">
+      <Filter>PrecompiledHeaders</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

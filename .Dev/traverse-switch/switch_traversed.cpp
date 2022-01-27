@@ -133,7 +133,7 @@ case(GLFWKeys::LeftShift): { return(Keys::LETSHIFT); break; }
 case(GLFWKeys::LeftControl): { return(Keys::LEFTCONTROL); break; }
 case(GLFWKeys::LeftAlt): { return(Keys::LEFTALT); break; }
 case(GLFWKeys::LeftSuper): { return(Keys::LEFTSUPER); break; }
-case(GLFWKeys::RightShift): { return(Keys::RIGHTSHFIT); break; }
+case(GLFWKeys::RightShift): { return(Keys::RIGHTSHIFT); break; }
 case(GLFWKeys::RightControl): { return(Keys::RIGHTCONTROL); break; }
 case(GLFWKeys::RightAlt): { return(Keys::RIGHTALT); break; }
 case(GLFWKeys::RightSuper): { return(Keys::RIGHTSUPER); break; }

@@ -14,7 +14,7 @@ function traverse_case(s)
 }
 
 
-var switch_body = fs.readFileSync("switch_to_traverse.cpp", "utf-8");
+var switch_body = fs.readFileSync(`${__dirname}/switch_to_traverse.cpp`, "utf-8");
 
 var cases = switch_body.split('\r\n');
 var result = "";
@@ -27,4 +27,4 @@ for (let i = 0; i < cases.length; i++)
 	result += "\n";
 }
 
-fs.writeFileSync("switch_traversed.cpp", result, "utf-8");
+fs.writeFileSync(`${__dirname}/switch_traversed.cpp`, result, "utf-8");

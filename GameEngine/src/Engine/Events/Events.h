@@ -2,7 +2,7 @@
 
 namespace Engine
 {
-	enum class EventTypes
+	enum class EventTypes : uint8_t
 	{
 		None = 0,
 		WindowOpen, WindowResize, WindowClose,

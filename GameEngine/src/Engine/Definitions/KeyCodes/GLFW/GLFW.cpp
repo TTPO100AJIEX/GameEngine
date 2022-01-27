@@ -143,7 +143,7 @@ namespace Engine::KeyCodes
 			case(Keys::LEFTCONTROL): { return(GLFWKeys::LeftControl); break; }
 			case(Keys::LEFTALT): { return(GLFWKeys::LeftAlt); break; }
 			case(Keys::LEFTSUPER): { return(GLFWKeys::LeftSuper); break; }
-			case(Keys::RIGHTSHFIT): { return(GLFWKeys::RightShift); break; }
+			case(Keys::RIGHTSHIFT): { return(GLFWKeys::RightShift); break; }
 			case(Keys::RIGHTCONTROL): { return(GLFWKeys::RightControl); break; }
 			case(Keys::RIGHTALT): { return(GLFWKeys::RightAlt); break; }
 			case(Keys::RIGHTSUPER): { return(GLFWKeys::RightSuper); break; }
@@ -294,7 +294,7 @@ namespace Engine::KeyCodes
 			case(GLFWKeys::LeftControl): { return(Keys::LEFTCONTROL); break; }
 			case(GLFWKeys::LeftAlt): { return(Keys::LEFTALT); break; }
 			case(GLFWKeys::LeftSuper): { return(Keys::LEFTSUPER); break; }
-			case(GLFWKeys::RightShift): { return(Keys::RIGHTSHFIT); break; }
+			case(GLFWKeys::RightShift): { return(Keys::RIGHTSHIFT); break; }
 			case(GLFWKeys::RightControl): { return(Keys::RIGHTCONTROL); break; }
 			case(GLFWKeys::RightAlt): { return(Keys::RIGHTALT); break; }
 			case(GLFWKeys::RightSuper): { return(Keys::RIGHTSUPER); break; }

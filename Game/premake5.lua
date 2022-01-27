@@ -16,8 +16,8 @@ project "Game"
 	includedirs
 	{
 		"%{wks.location}/GameEngine/Dependencies",
-		"%{wks.location}/GameEngine/Dependencies/PrecompiledHeaders",
-		"%{wks.location}/GameEngine/src"
+		"%{wks.location}/GameEngine/src",
+		"%{wks.location}/GameEngine/src/PrecompiledHeaders"
 	}
 
 	links

@@ -10,7 +10,7 @@ namespace Engine
 	{
 		ENGINE_ERROR("GLFW Error {0}: {1}", error, description);
 	}
-	enum class GLFW_status { ON, OFF };
+	enum class GLFW_status : uint8_t { ON, OFF };
 	static void switch_GLFW(GLFW_status status)
 	{
 		static bool GLFW_initialized = false;
