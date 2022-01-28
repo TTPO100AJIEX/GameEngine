@@ -6,11 +6,10 @@
 
 namespace Engine::Renderer
 {
-	OpenGLVertexBuffer::OpenGLVertexBuffer(const void* Data, size_t Amount, VertexBufferLayout::OpenGLLayout Layout)
+	OpenGLVertexBuffer::OpenGLVertexBuffer(void* Data, size_t Amount, VertexBufferLayout::OpenGLLayout Layout)
 	{
-		glGenBuffers(1, &id);
+		glCreateBuffers(1, &id);
 		Bind();
-
 		glBufferData(GL_ARRAY_BUFFER, Layout.GetStride() * Amount, Data, GL_STATIC_DRAW);
 		Layout.Use();
 	}

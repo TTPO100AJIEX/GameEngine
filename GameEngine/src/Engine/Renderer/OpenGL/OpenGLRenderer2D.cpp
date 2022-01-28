@@ -5,8 +5,8 @@
 #include <GLAD/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "VertexBufferLayout/OpenGLLayout.h"
 #include "VertexBuffer/OpenGLVertexBuffer.h"
+#include "IndexBuffer/OpenGLIndexBuffer.h"
 
 namespace Engine
 {
@@ -41,14 +41,9 @@ namespace Engine
 			 0.5f, -0.5f, 0.0f,
 			 0.0f,  0.5f, 0.0f
 		};
-		Renderer::OpenGLVertexBuffer* vb = new Renderer::OpenGLVertexBuffer(&vertices, 3, { {Renderer::VertexBufferLayout::ElementType::Float3, false} }); //MEMORY_LEAK: fix with VAO
-		
-		glGenBuffers(1, &m_IndexBuffer);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-
-		unsigned int indices[3] = { 0, 1, 2 };
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
+		uint32_t indices[3] = { 0, 1, 2 };
+		Renderer::OpenGLVertexBuffer* vb = new Renderer::OpenGLVertexBuffer(vertices, 3, { {Renderer::VertexBufferLayout::ElementType::Float3, false} }); //MEMORY_LEAK: fix with VAO
+		Renderer::OpenGLIndexBuffer* ib = new Renderer::OpenGLIndexBuffer(indices, 3); //MEMORY_LEAK: fix with VAO
 	}
 
 	void OpenGLRenderer2D::BeginScene()

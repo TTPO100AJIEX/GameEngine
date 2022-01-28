@@ -18,8 +18,8 @@ namespace Engine::Renderer::VertexBufferLayout
 		std::vector<Element> elements;
 
 	public:
-		virtual ~Layout() = default;
 		Layout(const std::initializer_list<Element>& Elements) : elements(Elements) {};
+		virtual ~Layout() = default;
 
 		virtual void Use() = 0;
 

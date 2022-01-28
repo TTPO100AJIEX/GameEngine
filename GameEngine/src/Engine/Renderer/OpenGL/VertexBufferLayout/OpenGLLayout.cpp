@@ -15,7 +15,14 @@ namespace Engine::Renderer::VertexBufferLayout
 		{
 			auto [amount, type, size] = ToOpenGL(elements[i].type);
 			glEnableVertexAttribArray(i);
-			glVertexAttribPointer(i, amount, type, elements[i].normalized ? GL_TRUE : GL_FALSE, (int)(stride), (const void*)(offset));
+			if (type == GL_BYTE || type == GL_UNSIGNED_BYTE || type == GL_SHORT || type == GL_UNSIGNED_SHORT || type == GL_INT || type == GL_UNSIGNED_INT)
+			{
+				glVertexAttribIPointer(i, amount, type, (int)(stride), (const void*)(offset));
+			}
+			else
+			{
+				glVertexAttribPointer(i, amount, type, elements[i].normalized ? GL_TRUE : GL_FALSE, (int)(stride), (const void*)(offset));
+			}
 			offset += amount * size;
 		}
 	}

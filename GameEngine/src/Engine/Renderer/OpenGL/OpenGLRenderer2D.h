@@ -8,7 +8,6 @@ namespace Engine
 	{
 	private:
 		unsigned int m_VertexArray;
-		unsigned int m_IndexBuffer;
 
 	public:
 		OpenGLRenderer2D();
