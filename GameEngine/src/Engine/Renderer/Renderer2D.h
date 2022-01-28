@@ -15,7 +15,7 @@ namespace Engine
 
 		virtual void BeginScene() = 0;
 
-		//virtual void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray) = 0;
+		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray> vertexArray) = 0;
 
 		virtual void EndScene() = 0;
 	};

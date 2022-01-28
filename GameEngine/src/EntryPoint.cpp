@@ -1,6 +1,7 @@
 #include <PrecompiledHeaders.h>
 
 #include "Engine/Engine.h"
+#include "Engine/Renderer/RendererAPI.h"
 
 #ifdef PLATFORM_WINDOWS
 

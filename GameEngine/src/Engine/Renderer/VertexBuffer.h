@@ -12,6 +12,8 @@ namespace Engine::Renderer
 	public:
 		virtual ~VertexBuffer() = default;
 
+		inline unsigned int GetID() { return(id); }
+
 		virtual void Bind() = 0;
 		virtual void UnBind() = 0;
 

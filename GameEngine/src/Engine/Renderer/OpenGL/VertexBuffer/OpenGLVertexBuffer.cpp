@@ -6,7 +6,7 @@
 
 namespace Engine::Renderer
 {
-	OpenGLVertexBuffer::OpenGLVertexBuffer(void* Data, size_t Amount, VertexBufferLayout::OpenGLLayout Layout)
+	OpenGLVertexBuffer::OpenGLVertexBuffer(void* Data, size_t Amount, VertexBufferLayout::OpenGLLayout& Layout)
 	{
 		glCreateBuffers(1, &id);
 		Bind();

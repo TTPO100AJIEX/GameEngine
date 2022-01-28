@@ -8,7 +8,7 @@ namespace Engine::Renderer
 	class OpenGLVertexBuffer : public VertexBuffer
 	{
 	public:
-		OpenGLVertexBuffer(void* Data, size_t Amount, VertexBufferLayout::OpenGLLayout Layout);
+		OpenGLVertexBuffer(void* Data, size_t Amount, VertexBufferLayout::OpenGLLayout& Layout);
 		virtual ~OpenGLVertexBuffer();
 
 		virtual void Bind() override;

@@ -1,14 +1,12 @@
 #pragma once
 
+#include "VertexArray/OpenGLVertexArray.h"
 #include "../Renderer2D.h"
 
 namespace Engine
 {
 	class OpenGLRenderer2D : public Renderer2D
 	{
-	private:
-		unsigned int m_VertexArray;
-
 	public:
 		OpenGLRenderer2D();
 
@@ -18,7 +16,8 @@ namespace Engine
 
 		virtual void BeginScene() override;
 
-		//virtual void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray) = 0;
+		void DrawIndexed(const std::shared_ptr<Renderer::OpenGLVertexArray> vertexArray);
+		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray> vertexArray) override;
 
 		virtual void EndScene() override;
 	};

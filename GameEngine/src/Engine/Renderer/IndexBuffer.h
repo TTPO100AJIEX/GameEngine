@@ -10,6 +10,8 @@ namespace Engine::Renderer
 	public:
 		virtual ~IndexBuffer() = default;
 
+		inline unsigned int GetID() { return(id); }
+
 		virtual void Bind() = 0;
 		virtual void UnBind() = 0;
 
