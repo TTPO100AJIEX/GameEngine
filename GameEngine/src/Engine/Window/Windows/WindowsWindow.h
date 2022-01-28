@@ -11,11 +11,11 @@ namespace Engine
 	private:
 		GLFWwindow* window;
 
+		virtual void RegisterEvents() override;
+
 	public:
 		WindowsWindow(unsigned int Width, unsigned int Height, std::string Title, std::function<void(Event&)> Event_Callback);
 		virtual ~WindowsWindow();
-
-		virtual void RegisterEvents() override;
 
 		virtual void SetSize(unsigned int Width, unsigned int Height) override;
 

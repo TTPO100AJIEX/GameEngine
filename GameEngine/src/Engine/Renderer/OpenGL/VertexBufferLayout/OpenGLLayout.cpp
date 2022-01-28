@@ -10,10 +10,10 @@ namespace Engine::Renderer::VertexBufferLayout
 
 	void OpenGLLayout::Use()
 	{
-		size_t stride = GetStride(), offset = 0;
-		for (int i = 0; i < elements.size(); i++)
+		size_t stride = this->GetStride(), offset = 0;
+		for (int i = 0; i < this->elements.size(); i++)
 		{
-			auto [amount, type, size] = ToOpenGL(elements[i].type);
+			auto [amount, type, size] = VertexBufferLayoutElement::ToOpenGL(elements[i].type);
 			glEnableVertexAttribArray(i);
 			if (type == GL_BYTE || type == GL_UNSIGNED_BYTE || type == GL_SHORT || type == GL_UNSIGNED_SHORT || type == GL_INT || type == GL_UNSIGNED_INT)
 			{
@@ -30,9 +30,9 @@ namespace Engine::Renderer::VertexBufferLayout
 	inline size_t OpenGLLayout::GetStride()
 	{
 		size_t stride = 0;
-		for (int i = 0; i < elements.size(); i++)
+		for (int i = 0; i < this->elements.size(); i++)
 		{
-			auto [amount, type, size] = ToOpenGL(elements[i].type);
+			auto [amount, type, size] = VertexBufferLayoutElement::ToOpenGL(elements[i].type);
 			stride += amount * size;
 		}
 		return(stride);

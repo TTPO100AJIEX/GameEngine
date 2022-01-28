@@ -7,7 +7,7 @@ namespace Engine::Renderer::VertexBufferLayout
 	struct Element
 	{
 	public:
-		ElementType type;
+		VertexBufferLayoutElement::ElementType type;
 		bool normalized;
 	};
 

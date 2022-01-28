@@ -13,10 +13,12 @@ namespace Engine
 		unsigned int height;
 		std::function<void(Event&)> event_callback;
 
-	public:
-		virtual ~Window() = default;
-
 		virtual void RegisterEvents() = 0;
+
+	public:
+		Window(unsigned int Width, unsigned int Height, std::string Title, std::function<void(Event&)> Event_Callback) : 
+			width(Width), height(Height), title(Title), event_callback(Event_Callback) {};
+		virtual ~Window() = default;
 
 		virtual void SetSize(unsigned int Width, unsigned int Height) = 0;
 

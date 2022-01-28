@@ -39,7 +39,7 @@ namespace Engine
 	}
 	void OpenGLRenderer2D::DrawIndexed(const std::shared_ptr<Renderer::VertexArray> vertexArray)
 	{
-		DrawIndexed(std::dynamic_pointer_cast<Renderer::OpenGLVertexArray>(vertexArray));
+		this->DrawIndexed(std::dynamic_pointer_cast<Renderer::OpenGLVertexArray>(vertexArray));
 	}
 
 	void OpenGLRenderer2D::EndScene()

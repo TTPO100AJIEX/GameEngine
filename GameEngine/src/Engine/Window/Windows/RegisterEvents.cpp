@@ -11,7 +11,7 @@ namespace Engine
 {
 	void WindowsWindow::RegisterEvents()
 	{
-		glfwSetWindowSizeCallback(window, [](GLFWwindow* l_window, int Width, int Height)
+		glfwSetWindowSizeCallback(this->window, [](GLFWwindow* l_window, int Width, int Height)
 		{
 			WindowsWindow& window_data = *(WindowsWindow*)(glfwGetWindowUserPointer(l_window));
 			window_data.width = Width;
@@ -19,7 +19,7 @@ namespace Engine
 			WindowResize WindowResizeEvent(window_data.width, window_data.height);
 			window_data.event_callback(WindowResizeEvent);
 		});
-		glfwSetWindowCloseCallback(window, [](GLFWwindow* l_window)
+		glfwSetWindowCloseCallback(this->window, [](GLFWwindow* l_window)
 		{
 			WindowsWindow& window_data = *(WindowsWindow*)(glfwGetWindowUserPointer(l_window));
 			WindowClose WindowCloseEvent;
@@ -27,7 +27,7 @@ namespace Engine
 		});
 
 
-		glfwSetKeyCallback(window, [](GLFWwindow* l_window, int key, int scancode, int action, int mods)
+		glfwSetKeyCallback(this->window, [](GLFWwindow* l_window, int key, int scancode, int action, int mods)
 		{
 			WindowsWindow& window_data = *(WindowsWindow*)(glfwGetWindowUserPointer(l_window));
 			switch (action)
@@ -53,7 +53,7 @@ namespace Engine
 				[[unlikely]] default: { ENGINE_ERROR("Unhandled keyboard key callback action {0}", action); }
 			}
 		});
-		glfwSetCharCallback(window, [](GLFWwindow* l_window, unsigned int symbol)
+		glfwSetCharCallback(this->window, [](GLFWwindow* l_window, unsigned int symbol)
 		{
 			WindowsWindow& window_data = *(WindowsWindow*)(glfwGetWindowUserPointer(l_window));
 			KeyType KeyTypeEvent((char)(symbol));
@@ -62,19 +62,19 @@ namespace Engine
 
 
 
-		glfwSetCursorPosCallback(window, [](GLFWwindow* l_window, double xPos, double yPos)
+		glfwSetCursorPosCallback(this->window, [](GLFWwindow* l_window, double xPos, double yPos)
 		{
 			WindowsWindow& window_data = *(WindowsWindow*)(glfwGetWindowUserPointer(l_window));
 			MouseMove MouseMoveEvent(xPos, yPos);
 			window_data.event_callback(MouseMoveEvent);
 		});
-		glfwSetScrollCallback(window, [](GLFWwindow* l_window, double xOffset, double yOffset)
+		glfwSetScrollCallback(this->window, [](GLFWwindow* l_window, double xOffset, double yOffset)
 		{
 			WindowsWindow& window_data = *(WindowsWindow*)(glfwGetWindowUserPointer(l_window));
 			MouseScroll MouseScrollEvent(xOffset, yOffset);
 			window_data.event_callback(MouseScrollEvent);
 		});
-		glfwSetMouseButtonCallback(window, [](GLFWwindow* l_window, int button, int action, int mods)
+		glfwSetMouseButtonCallback(this->window, [](GLFWwindow* l_window, int button, int action, int mods)
 		{
 			WindowsWindow& window_data = *(WindowsWindow*)(glfwGetWindowUserPointer(l_window));
 			switch (action)
@@ -96,7 +96,7 @@ namespace Engine
 		});
 
 
-		WindowOpen WindowOpenEvent(width, height);
-		event_callback(WindowOpenEvent);
+		WindowOpen WindowOpenEvent(this->width, this->height);
+		this->event_callback(WindowOpenEvent);
 	}
 }

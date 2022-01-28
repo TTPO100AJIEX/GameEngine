@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Engine::Renderer::VertexBufferLayout
+namespace Engine::Renderer::VertexBufferLayout::VertexBufferLayoutElement
 {
 	enum class ElementType : uint8_t
 	{

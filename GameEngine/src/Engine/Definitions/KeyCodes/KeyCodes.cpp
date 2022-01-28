@@ -2,9 +2,9 @@
 
 #include "KeyCodes.h"
 
-#ifdef DEBUG
-	namespace Engine::KeyCodes
-	{
+namespace Engine::KeyCodes
+{
+	#ifdef DEBUG
 		std::string ToString(Keys keycode)
 		{
 			switch (keycode)
@@ -154,5 +154,5 @@
 				default: { return("UNKNOWN"); }
 			}
 		}
-	}
-#endif
+	#endif
+}

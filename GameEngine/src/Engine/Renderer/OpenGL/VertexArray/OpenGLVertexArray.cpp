@@ -8,17 +8,17 @@ namespace Engine::Renderer
 {
 	OpenGLVertexArray::OpenGLVertexArray()
 	{
-		glGenVertexArrays(1, &id);
-		Bind();
+		glGenVertexArrays(1, &(this->id));
+		this->Bind();
 	}
 	OpenGLVertexArray::~OpenGLVertexArray()
 	{
-		glDeleteVertexArrays(1, &id);
+		glDeleteVertexArrays(1, &(this->id));
 	}
 
 	void OpenGLVertexArray::Bind()
 	{
-		glBindVertexArray(id);
+		glBindVertexArray(this->id);
 	}
 	void OpenGLVertexArray::UnBind()
 	{
@@ -27,20 +27,20 @@ namespace Engine::Renderer
 
 	void OpenGLVertexArray::SetVertexBuffer(std::shared_ptr<Renderer::OpenGLVertexBuffer> vertexBuffer)
 	{
-		Bind();
+		this->Bind();
 		vertexBuffer->Bind();
 	}
 	void OpenGLVertexArray::SetIndexBuffer(std::shared_ptr<Renderer::OpenGLIndexBuffer> indexBuffer)
 	{
-		Bind();
+		this->Bind();
 		indexBuffer->Bind();
 	}
 	void OpenGLVertexArray::SetVertexBuffer(std::shared_ptr<Renderer::VertexBuffer> vertexBuffer)
 	{
-		SetVertexBuffer(std::dynamic_pointer_cast<Renderer::OpenGLVertexBuffer>(vertexBuffer));
+		this->SetVertexBuffer(std::dynamic_pointer_cast<Renderer::OpenGLVertexBuffer>(vertexBuffer));
 	}
 	void OpenGLVertexArray::SetIndexBuffer(std::shared_ptr<Renderer::IndexBuffer> indexBuffer)
 	{
-		SetIndexBuffer(std::dynamic_pointer_cast<Renderer::OpenGLIndexBuffer>(indexBuffer));
+		this->SetIndexBuffer(std::dynamic_pointer_cast<Renderer::OpenGLIndexBuffer>(indexBuffer));
 	}
 }

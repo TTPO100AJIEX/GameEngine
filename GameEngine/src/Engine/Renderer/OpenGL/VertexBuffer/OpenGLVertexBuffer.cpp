@@ -8,19 +8,19 @@ namespace Engine::Renderer
 {
 	OpenGLVertexBuffer::OpenGLVertexBuffer(void* Data, size_t Amount, VertexBufferLayout::OpenGLLayout& Layout)
 	{
-		glCreateBuffers(1, &id);
-		Bind();
+		glCreateBuffers(1, &(this->id));
+		this->Bind();
 		glBufferData(GL_ARRAY_BUFFER, Layout.GetStride() * Amount, Data, GL_STATIC_DRAW);
 		Layout.Use();
 	}
 	OpenGLVertexBuffer::~OpenGLVertexBuffer()
 	{
-		glDeleteBuffers(1, &id);
+		glDeleteBuffers(1, &(this->id));
 	}
 
 	void OpenGLVertexBuffer::Bind()
 	{
-		glBindBuffer(GL_ARRAY_BUFFER, id);
+		glBindBuffer(GL_ARRAY_BUFFER, this->id);
 	}
 	void OpenGLVertexBuffer::UnBind()
 	{

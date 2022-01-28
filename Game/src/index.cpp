@@ -12,7 +12,7 @@ public:
 	{
 		GetRenderer2D()->SetClearColor({ 0.0f, 1.0f, 0.0f, 1.0f });
 
-		vao = std::make_shared<::Engine::Renderer::OpenGLVertexArray>();
+		this->vao = std::make_shared<::Engine::Renderer::OpenGLVertexArray>();
 
 		float vertices[4 * 3] = {
 			-0.5f, -0.5f, 1.0f,
@@ -21,12 +21,12 @@ public:
 			-0.5f, 0.5f, 1.0f
 		};
 		uint32_t indices[6] = { 2, 3, 0, 0, 1, 2 };
-		::Engine::Renderer::VertexBufferLayout::OpenGLLayout vbl({ { ::Engine::Renderer::VertexBufferLayout::ElementType::Float3, false } });
-		vb = std::make_shared<::Engine::Renderer::OpenGLVertexBuffer>(vertices, 4, vbl);
-		ib = std::make_shared<::Engine::Renderer::OpenGLIndexBuffer>(indices, 6);
+		::Engine::Renderer::VertexBufferLayout::OpenGLLayout vbl({ { ::Engine::Renderer::VertexBufferLayout::VertexBufferLayoutElement::ElementType::Float3, false } });
+		this->vb = std::make_shared<::Engine::Renderer::OpenGLVertexBuffer>(vertices, 4, vbl);
+		this->ib = std::make_shared<::Engine::Renderer::OpenGLIndexBuffer>(indices, 6);
 
-		vao->SetVertexBuffer(vb);
-		vao->SetIndexBuffer(ib);
+		this->vao->SetVertexBuffer(this->vb);
+		this->vao->SetIndexBuffer(this->ib);
 	}
 	~Game()
 	{
@@ -39,13 +39,13 @@ public:
 		{
 			[[likely]] case (::Engine::EventTypes::AppTick): 
 			{
-				GetRenderer2D()->Clear();
+				this->GetRenderer2D()->Clear();
 
-				GetRenderer2D()->BeginScene();
+				this->GetRenderer2D()->BeginScene();
 
-				GetRenderer2D()->DrawIndexed(vao);
+				this->GetRenderer2D()->DrawIndexed(this->vao);
 
-				GetRenderer2D()->EndScene();
+				this->GetRenderer2D()->EndScene();
 				break;
 			}
 			[[unlikely]] default:
