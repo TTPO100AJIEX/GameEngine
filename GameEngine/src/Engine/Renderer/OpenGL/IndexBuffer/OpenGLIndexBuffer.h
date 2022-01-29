@@ -2,7 +2,7 @@
 
 #include "../../IndexBuffer.h"
 
-namespace Engine::Renderer
+namespace GameEngine::Renderer
 {
 	class OpenGLIndexBuffer : public IndexBuffer
 	{

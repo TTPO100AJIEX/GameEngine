@@ -2,11 +2,12 @@
 
 #include "Engine.h"
 
+#include "Renderer/RendererAPI.h"
+
 #include "Window/Windows/WindowsWindow.h"
-#include "Renderer/OpenGL/OpenGLRenderer2D.h"
 #include "Events/App.h"
 
-namespace Engine
+namespace GameEngine
 {
 	Engine::Engine()
 	{
@@ -16,11 +17,7 @@ namespace Engine
 			#error "One of [PLATFORM_WINDOWS] must be defined"
 		#endif
 
-		#ifdef RENDERER_USE_OPENGL
-			this->renderer2D = std::make_unique<OpenGLRenderer2D>();
-		#else
-			#error "One of [RENDERER_USE_OPENGL] must be defined"
-		#endif
+		this->renderer2D = RendererAPI::CreateRenderer();
 	}
 	Engine::~Engine()
 	{

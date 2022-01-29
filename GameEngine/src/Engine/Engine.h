@@ -4,13 +4,13 @@
 #include "Renderer/Renderer2D.h"
 #include "Events/Events.h"
 
-namespace Engine
+namespace GameEngine
 {
 	class Engine
 	{
 	private:
 		std::unique_ptr<Window> window;
-		std::unique_ptr<Renderer2D> renderer2D;
+		std::shared_ptr<Renderer2D> renderer2D;
 		bool Running = false;
 
 	public:
@@ -18,7 +18,7 @@ namespace Engine
 		~Engine();
 
 		inline std::unique_ptr<Window>& GetWindow() { return(window); }
-		inline std::unique_ptr<Renderer2D>& GetRenderer2D() { return(renderer2D); }
+		inline std::shared_ptr<Renderer2D>& GetRenderer2D() { return(renderer2D); }
 
 		void Run();
 

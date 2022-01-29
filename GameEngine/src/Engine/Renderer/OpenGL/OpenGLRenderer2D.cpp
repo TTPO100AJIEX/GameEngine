@@ -5,7 +5,7 @@
 #include <GLAD/glad.h>
 #include <GLFW/glfw3.h>
 
-namespace Engine
+namespace GameEngine
 {
 	void OpenGLRenderer2D::SetClearColor(const glm::vec4& Color)
 	{

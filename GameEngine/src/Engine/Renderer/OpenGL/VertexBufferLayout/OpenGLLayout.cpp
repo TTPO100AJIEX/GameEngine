@@ -4,11 +4,11 @@
 
 #include <GLAD/glad.h>
 
-namespace Engine::Renderer::VertexBufferLayout
+namespace GameEngine::Renderer::VertexBufferLayout
 {
 	OpenGLLayout::OpenGLLayout(const std::initializer_list<Element>& Elements) : Layout(Elements) {};
 
-	void OpenGLLayout::Use()
+	void OpenGLLayout::Use() const
 	{
 		size_t stride = this->GetStride(), offset = 0;
 		for (int i = 0; i < this->elements.size(); i++)
@@ -27,7 +27,7 @@ namespace Engine::Renderer::VertexBufferLayout
 		}
 	}
 
-	inline size_t OpenGLLayout::GetStride()
+	inline size_t OpenGLLayout::GetStride() const
 	{
 		size_t stride = 0;
 		for (int i = 0; i < this->elements.size(); i++)

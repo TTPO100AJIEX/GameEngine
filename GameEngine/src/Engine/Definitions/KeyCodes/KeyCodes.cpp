@@ -2,7 +2,7 @@
 
 #include "KeyCodes.h"
 
-namespace Engine::KeyCodes
+namespace GameEngine::KeyCodes
 {
 	#ifdef DEBUG
 		std::string ToString(Keys keycode)

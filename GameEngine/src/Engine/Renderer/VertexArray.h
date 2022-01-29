@@ -3,7 +3,7 @@
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 
-namespace Engine::Renderer
+namespace GameEngine::Renderer
 {
 	class VertexArray
 	{

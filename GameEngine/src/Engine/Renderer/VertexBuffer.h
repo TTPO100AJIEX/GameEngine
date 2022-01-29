@@ -2,7 +2,7 @@
 
 #include "VertexBufferLayout.h"
 
-namespace Engine::Renderer
+namespace GameEngine::Renderer
 {
 	class VertexBuffer
 	{

@@ -7,7 +7,7 @@
 #include "../../Events/Keyboard.h"
 #include "../../Events/Mouse.h"
 
-namespace Engine
+namespace GameEngine
 {
 	void WindowsWindow::RegisterEvents()
 	{

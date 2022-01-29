@@ -2,7 +2,7 @@
 
 #include "../Definitions/VertexBufferLayout/ElementType/ElementType.h"
 
-namespace Engine::Renderer::VertexBufferLayout
+namespace GameEngine::Renderer::VertexBufferLayout
 {
 	struct Element
 	{
@@ -21,7 +21,7 @@ namespace Engine::Renderer::VertexBufferLayout
 		Layout(const std::initializer_list<Element>& Elements) : elements(Elements) {};
 		virtual ~Layout() = default;
 
-		virtual void Use() = 0;
+		virtual void Use() const = 0;
 
 	};
 }

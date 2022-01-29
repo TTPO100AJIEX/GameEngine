@@ -3,16 +3,17 @@
 #include "Engine/Engine.h"
 #include "Engine/Renderer/RendererAPI.h"
 
+
 #ifdef PLATFORM_WINDOWS
 
 	int main(int argc, char** argv)
 	{
 		#ifdef DEBUG
-			Engine::Log::set_pattern("[%d-%m-%Y %T.%e] [%n]-[%L:%l] %^%v%$");
+			GameEngine::Log::set_pattern("[%d-%m-%Y %T.%e] [%n]-[%L:%l] %^%v%$");
 			ENGINE_WARN("Initialized log!");
 		#endif
 
-		Engine::Engine* game = Engine::CreateGame();
+		GameEngine::Engine* game = GameEngine::CreateGame();
 		game->Run();
 		delete game;
 

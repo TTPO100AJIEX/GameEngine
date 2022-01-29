@@ -4,7 +4,7 @@
 #include "../VertexBuffer/OpenGLVertexBuffer.h"
 #include "../IndexBuffer/OpenGLIndexBuffer.h"
 
-namespace Engine::Renderer
+namespace GameEngine::Renderer
 {
 	class OpenGLVertexArray : public VertexArray
 	{

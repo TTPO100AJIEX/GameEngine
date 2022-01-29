@@ -4,7 +4,7 @@
 
 #include <GLAD/glad.h>
 
-namespace Engine::Renderer
+namespace GameEngine::Renderer
 {
 	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* Data, size_t Amount)
 	{

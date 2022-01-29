@@ -4,7 +4,7 @@
 
 #include "VertexArray.h"
 
-namespace Engine
+namespace GameEngine
 {
 	class Renderer2D
 	{

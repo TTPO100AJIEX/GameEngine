@@ -3,7 +3,7 @@
 #include "Events.h"
 #include "../Definitions/KeyCodes/KeyCodes.h"
 
-namespace Engine
+namespace GameEngine
 {
 	class MouseMove : public Event
 	{

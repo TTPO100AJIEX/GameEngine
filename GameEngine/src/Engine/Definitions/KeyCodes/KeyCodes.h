@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Engine::KeyCodes
+namespace GameEngine::KeyCodes
 {
 	enum class Keys : unsigned int
 	{

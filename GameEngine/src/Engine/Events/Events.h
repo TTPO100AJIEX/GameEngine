@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Engine
+namespace GameEngine
 {
 	enum class EventTypes : uint8_t
 	{

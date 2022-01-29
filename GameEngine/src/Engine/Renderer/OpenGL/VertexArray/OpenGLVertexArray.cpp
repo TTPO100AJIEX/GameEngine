@@ -4,7 +4,7 @@
 
 #include <GLAD/glad.h>
 
-namespace Engine::Renderer
+namespace GameEngine::Renderer
 {
 	OpenGLVertexArray::OpenGLVertexArray()
 	{

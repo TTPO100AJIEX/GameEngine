@@ -3,7 +3,7 @@
 #ifdef DEBUG
 	#include <spdlog/sinks/stdout_color_sinks.h>
 
-	namespace Engine::Log
+	namespace GameEngine::Log
 	{
 		std::shared_ptr<spdlog::logger> EngineLogger = spdlog::stdout_color_mt("Engine");
 		std::shared_ptr<spdlog::logger> GameLogger = spdlog::stdout_color_mt("Game");

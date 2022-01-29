@@ -4,15 +4,15 @@
 
 #include "../../../Definitions/VertexBufferLayout/ElementType/OpenGL/OpenGL.h"
 
-namespace Engine::Renderer::VertexBufferLayout
+namespace GameEngine::Renderer::VertexBufferLayout
 {
 	class OpenGLLayout : public Layout
 	{
 	public:
 		OpenGLLayout(const std::initializer_list<Element>& Elements);
 
-		virtual void Use() override;
+		virtual void Use() const override;
 
-		inline size_t GetStride();
+		inline size_t GetStride() const;
 	};
 }

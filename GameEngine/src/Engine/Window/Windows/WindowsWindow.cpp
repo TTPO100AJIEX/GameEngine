@@ -4,7 +4,7 @@
 
 #include "../../Definitions/KeyCodes/GLFW/GLFW.h"
 
-namespace Engine
+namespace GameEngine
 {
 	static void GLFWErrorCallback(int error, const char* description)
 	{

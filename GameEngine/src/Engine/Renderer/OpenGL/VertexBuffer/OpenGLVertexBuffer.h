@@ -3,12 +3,12 @@
 #include "../VertexBufferLayout/OpenGLLayout.h"
 #include "../../VertexBuffer.h"
 
-namespace Engine::Renderer
+namespace GameEngine::Renderer
 {
 	class OpenGLVertexBuffer : public VertexBuffer
 	{
 	public:
-		OpenGLVertexBuffer(void* Data, size_t Amount, VertexBufferLayout::OpenGLLayout& Layout);
+		OpenGLVertexBuffer(void* Data, size_t Amount, std::shared_ptr<VertexBufferLayout::OpenGLLayout> Layout);
 		virtual ~OpenGLVertexBuffer();
 
 		virtual void Bind() override;

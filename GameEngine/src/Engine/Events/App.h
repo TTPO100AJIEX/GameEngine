@@ -2,7 +2,7 @@
 
 #include "Events.h"
 
-namespace Engine
+namespace GameEngine
 {
 	class AppTick : public Event
 	{

@@ -2,7 +2,7 @@
 
 #include "GLFW.h"
 
-namespace Engine::KeyCodes
+namespace GameEngine::KeyCodes
 {
 	GLFWKeys ToGLFW(Keys keycode)
 	{

@@ -4,7 +4,7 @@
 
 #include <GLFW/glfw3.h>
 
-namespace Engine::KeyCodes
+namespace GameEngine::KeyCodes
 {
 	enum class GLFWKeys
 	{

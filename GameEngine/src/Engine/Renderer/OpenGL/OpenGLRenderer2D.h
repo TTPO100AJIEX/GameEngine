@@ -3,7 +3,7 @@
 #include "VertexArray/OpenGLVertexArray.h"
 #include "../Renderer2D.h"
 
-namespace Engine
+namespace GameEngine
 {
 	class OpenGLRenderer2D : public Renderer2D
 	{

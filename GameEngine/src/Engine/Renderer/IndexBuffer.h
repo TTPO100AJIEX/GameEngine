@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Engine::Renderer
+namespace GameEngine::Renderer
 {
 	class IndexBuffer
 	{
