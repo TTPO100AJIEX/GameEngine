@@ -28,7 +28,7 @@ namespace GameEngine
 	{
 		ENGINE_INFO("Started!");
 
-		while (Running) [[likely]]
+		while (this->Running) [[likely]]
 		{
 			AppTick AppTickEvent;
 			this->OnEvent_Internal(AppTickEvent);
