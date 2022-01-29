@@ -4,7 +4,7 @@
 
 namespace GameEngine::KeyCodes
 {
-	GLFWKeys ToGLFW(Keys keycode)
+	GLFWKeys ToGLFW(const Keys& keycode)
 	{
 		switch(keycode)
 		{
@@ -155,7 +155,7 @@ namespace GameEngine::KeyCodes
 	}
 
 
-	Keys FromGLFW(GLFWKeys keycode)
+	Keys FromGLFW(const GLFWKeys& keycode)
 	{
 		switch(keycode)
 		{

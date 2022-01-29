@@ -9,23 +9,23 @@ namespace GameEngine
 	class WindowsWindow : public Window
 	{
 	private:
-		GLFWwindow* window;
+		GLFWwindow* l_Window;
 
-		virtual void RegisterEvents() override;
+		virtual void RegisterEvents() const override;
 
 	public:
-		WindowsWindow(unsigned int Width, unsigned int Height, std::string Title, std::function<void(Event&)> Event_Callback);
+		WindowsWindow(unsigned int width, unsigned int height, const std::string& title, std::function<void(Event&)> event_callback);
 		virtual ~WindowsWindow();
 
-		virtual void SetSize(unsigned int Width, unsigned int Height) override;
+		virtual void SetSize(unsigned int width, unsigned int height) override;
 
-		virtual void Use(bool vSync) override;
+		virtual void Use(bool vSync) const override;
 		virtual void Update() override;
 
-		virtual inline bool IsKeyPressed(KeyCodes::Keys& keycode) override;
-		virtual inline bool IsMouseButtonPressed(KeyCodes::Keys& keycode) override;
-		virtual inline std::pair<float, float> GetMousePosition() override;
-		virtual inline float GetMouseX() override;
-		virtual inline float GetMouseY() override;
+		virtual inline bool IsKeyPressed(const KeyCodes::Keys& keycode) const override;
+		virtual inline bool IsMouseButtonPressed(const KeyCodes::Keys& keycode) const override;
+		virtual inline std::pair<float, float> GetMousePosition() const override;
+		virtual inline float GetMouseX() const override;
+		virtual inline float GetMouseY() const override;
 	};
 }

@@ -9,6 +9,7 @@ namespace GameEngine
 	{
 	public:
 		OpenGLRenderer2D();
+		virtual ~OpenGLRenderer2D();
 
 		virtual void SetClearColor(const glm::vec4& Color) override;
 		virtual void Clear() override;
@@ -16,8 +17,8 @@ namespace GameEngine
 
 		virtual void BeginScene() override;
 
-		void DrawIndexed(const std::shared_ptr<Renderer::OpenGLVertexArray> vertexArray);
-		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray> vertexArray) override;
+		void DrawIndexed(const std::shared_ptr<Renderer::OpenGLVertexArray>& vertexArray);
+		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& vertexArray) override;
 
 		virtual void EndScene() override;
 	};

@@ -36,67 +36,67 @@ namespace GameEngine
 	}
 
 
-	WindowsWindow::WindowsWindow(unsigned int Width, unsigned int Height, std::string Title, std::function<void(Event&)> Event_Callback) : Window(Width, Height, Title, Event_Callback)
+	WindowsWindow::WindowsWindow(unsigned int width, unsigned int height, const std::string& title, std::function<void(Event&)> event_callback) : Window(width, height, title, event_callback)
 	{
 		switch_GLFW(GLFW_status::ON);
 
-		this->window = glfwCreateWindow(this->width, this->height, this->title.c_str(), NULL, NULL);
+		this->l_Window = glfwCreateWindow(this->Width, this->Height, this->Title.c_str(), NULL, NULL);
 		this->Use(true);
 
-		glfwSetWindowUserPointer(this->window, this);
+		glfwSetWindowUserPointer(this->l_Window, this);
 
 		this->RegisterEvents();
 	}
 	WindowsWindow::~WindowsWindow()
 	{
-		glfwDestroyWindow(this->window);
+		glfwDestroyWindow(this->l_Window);
 		switch_GLFW(GLFW_status::OFF);
 	}
 
 
 	void WindowsWindow::SetSize(unsigned int Width, unsigned int Height)
 	{
-		this->width = Width;
-		this->height = Height;
-		glfwSetWindowSize(this->window, this->width, this->height);
+		this->Width = Width;
+		this->Height = Height;
+		glfwSetWindowSize(this->l_Window, this->Width, this->Height);
 	}
 
 
-	void WindowsWindow::Use(bool vSync)
+	void WindowsWindow::Use(bool vSync) const
 	{
-		glfwMakeContextCurrent(this->window);
+		glfwMakeContextCurrent(this->l_Window);
 		glfwSwapInterval((vSync) ? 1 : 0);
 	}
 	void WindowsWindow::Update()
 	{
-		glfwSwapBuffers(this->window);
+		glfwSwapBuffers(this->l_Window);
 		glfwPollEvents();
 	}
 
 
 
-	inline bool WindowsWindow::IsKeyPressed(KeyCodes::Keys& keycode)
+	inline bool WindowsWindow::IsKeyPressed(const KeyCodes::Keys& keycode) const
 	{
-		int state = glfwGetKey(this->window, static_cast<int>(KeyCodes::ToGLFW(keycode)));
+		int state = glfwGetKey(this->l_Window, static_cast<int>(KeyCodes::ToGLFW(keycode)));
 		return(state == GLFW_PRESS || state == GLFW_REPEAT);
 	}
-	inline bool WindowsWindow::IsMouseButtonPressed(KeyCodes::Keys& keycode)
+	inline bool WindowsWindow::IsMouseButtonPressed(const KeyCodes::Keys& keycode) const
 	{
-		int state = glfwGetMouseButton(this->window, static_cast<int>(KeyCodes::ToGLFW(keycode)));
+		int state = glfwGetMouseButton(this->l_Window, static_cast<int>(KeyCodes::ToGLFW(keycode)));
 		return(state == GLFW_PRESS);
 	}
-	inline std::pair<float, float> WindowsWindow::GetMousePosition()
+	inline std::pair<float, float> WindowsWindow::GetMousePosition() const
 	{
 		double xpos, ypos;
-		glfwGetCursorPos(this->window, &xpos, &ypos);
+		glfwGetCursorPos(this->l_Window, &xpos, &ypos);
 		return { (float)(xpos), (float)(ypos) };
 	}
-	inline float WindowsWindow::GetMouseX()
+	inline float WindowsWindow::GetMouseX() const
 	{
 		auto [x, y] = this->GetMousePosition();
 		return(x);
 	}
-	inline float WindowsWindow::GetMouseY()
+	inline float WindowsWindow::GetMouseY() const
 	{
 		auto [x, y] = this->GetMousePosition();
 		return(y);

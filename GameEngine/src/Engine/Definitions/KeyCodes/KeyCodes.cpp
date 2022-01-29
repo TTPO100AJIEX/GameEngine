@@ -5,7 +5,7 @@
 namespace GameEngine::KeyCodes
 {
 	#ifdef DEBUG
-		std::string ToString(Keys keycode)
+		std::string ToString(const Keys& keycode)
 		{
 			switch (keycode)
 			{

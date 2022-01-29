@@ -15,15 +15,18 @@ namespace GameEngine
 	{
 	protected:
 		bool handled = false;
-		EventTypes EventType;
+		const EventTypes EventType;
 
 	public:
-		inline EventTypes GetEventType() { return(EventType); }
+		Event(EventTypes eventType) : EventType(eventType) {};
+		virtual ~Event() = default;
+
+		inline EventTypes GetEventType() const { return(EventType); }
 
 		#ifdef DEBUG
 			virtual std::string ToString() const = 0;
 		#endif
 
-		inline bool IsHandled() { return(handled); }
+		inline bool IsHandled() const { return(handled); }
 	};
 }

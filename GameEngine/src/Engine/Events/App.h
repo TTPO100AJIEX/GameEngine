@@ -8,7 +8,8 @@ namespace GameEngine
 	{
 	private:
 	public:
-		AppTick() { EventType = EventTypes::AppTick; }
+		AppTick() : Event(EventTypes::AppTick) {};
+		virtual ~AppTick() = default;
 
 		#ifdef DEBUG
 			virtual std::string ToString() const override

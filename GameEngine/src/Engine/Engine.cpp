@@ -2,8 +2,6 @@
 
 #include "Engine.h"
 
-#include "Renderer/RendererAPI.h"
-
 #include "Window/Windows/WindowsWindow.h"
 #include "Events/App.h"
 
@@ -11,17 +9,19 @@ namespace GameEngine
 {
 	Engine::Engine()
 	{
+		ENGINE_WARN("Engine created!");
+
 		#ifdef PLATFORM_WINDOWS
-			this->window = std::make_unique<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
+			this->l_Window = std::make_unique<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
 		#else
 			#error "One of [PLATFORM_WINDOWS] must be defined"
 		#endif
 
-		this->renderer2D = RendererAPI::CreateRenderer();
+		this->l_Renderer2D = RendererAPI::CreateRenderer();
 	}
 	Engine::~Engine()
 	{
-
+		ENGINE_WARN("Engine destroyed!");
 	}
 
 	void Engine::Run()
@@ -50,11 +50,11 @@ namespace GameEngine
 			[[unlikely]] case (EventTypes::WindowClose):
 			{
 				this->Running = false;
-				this->window.reset();
+				this->l_Window.reset();
 				ENGINE_INFO("Window Destroyed ({0})! Running: {1}", event.ToString(), this->Running);
 				break;
 			}
-			[[likely]] case (EventTypes::AppTick): { this->window->Update(); [[fallthrough]]; }
+			[[likely]] case (EventTypes::AppTick): { this->l_Window->Update(); [[fallthrough]]; }
 			[[likely]] default:
 			{
 				this->OnEvent(event);

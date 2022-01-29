@@ -28,16 +28,20 @@ namespace GameEngine
 		ENGINE_INFO("OpenGL hardware: {0}", glGetString(GL_RENDERER));
 		ENGINE_INFO("OpenGL version: {0}", glGetString(GL_VERSION));
 	}
+	OpenGLRenderer2D::~OpenGLRenderer2D()
+	{
+
+	}
 
 	void OpenGLRenderer2D::BeginScene()
 	{
 	}
 
-	void OpenGLRenderer2D::DrawIndexed(const std::shared_ptr<Renderer::OpenGLVertexArray> vertexArray)
+	void OpenGLRenderer2D::DrawIndexed(const std::shared_ptr<Renderer::OpenGLVertexArray>& vertexArray)
 	{
 		glBindVertexArray(vertexArray->GetID());
 	}
-	void OpenGLRenderer2D::DrawIndexed(const std::shared_ptr<Renderer::VertexArray> vertexArray)
+	void OpenGLRenderer2D::DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& vertexArray)
 	{
 		this->DrawIndexed(std::dynamic_pointer_cast<Renderer::OpenGLVertexArray>(vertexArray));
 	}

@@ -7,11 +7,12 @@ namespace GameEngine
 	class WindowOpen : public Event
 	{
 	private:
-		int Width;
-		int Height;
+		const int Width;
+		const int Height;
 
 	public:
-		WindowOpen(int width, int height) : Width(width), Height(height) { EventType = EventTypes::WindowOpen; }
+		WindowOpen(int width, int height) : Event(EventTypes::WindowOpen), Width(width), Height(height) {};
+		virtual ~WindowOpen() = default;
 
 		#ifdef DEBUG
 			virtual std::string ToString() const override
@@ -26,11 +27,12 @@ namespace GameEngine
 	class WindowResize : public Event
 	{
 	private:
-		int Width;
-		int Height;
+		const int Width;
+		const int Height;
 
 	public:
-		WindowResize(int width, int height) : Width(width), Height(height) { EventType = EventTypes::WindowResize; }
+		WindowResize(int width, int height) : Event(EventTypes::WindowResize), Width(width), Height(height) {};
+		virtual ~WindowResize() = default;
 
 		#ifdef DEBUG
 			virtual std::string ToString() const override
@@ -45,7 +47,8 @@ namespace GameEngine
 	class WindowClose : public Event
 	{
 	public:
-		WindowClose() { EventType = EventTypes::WindowClose; }
+		WindowClose() : Event(EventTypes::WindowClose) {};
+		virtual ~WindowClose() = default;
 
 		#ifdef DEBUG
 			virtual std::string ToString() const override

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Renderer/RendererAPI.h"
+
 #include "Window/Window.h"
 #include "Renderer/Renderer2D.h"
 #include "Events/Events.h"
@@ -9,16 +11,16 @@ namespace GameEngine
 	class Engine
 	{
 	private:
-		std::unique_ptr<Window> window;
-		std::shared_ptr<Renderer2D> renderer2D;
+		std::unique_ptr<Window> l_Window;
+		std::shared_ptr<Renderer2D> l_Renderer2D;
 		bool Running = false;
 
 	public:
 		Engine();
-		~Engine();
+		virtual ~Engine();
 
-		inline std::unique_ptr<Window>& GetWindow() { return(window); }
-		inline std::shared_ptr<Renderer2D>& GetRenderer2D() { return(renderer2D); }
+		inline const std::unique_ptr<Window>& GetWindow() const { return(l_Window); }
+		inline const std::shared_ptr<Renderer2D>& GetRenderer2D() const { return(l_Renderer2D); }
 
 		void Run();
 

@@ -10,6 +10,7 @@ namespace GameEngine::Renderer::VertexBufferLayout
 	{
 	public:
 		OpenGLLayout(const std::initializer_list<Element>& Elements);
+		virtual ~OpenGLLayout() = default;
 
 		virtual void Use() const override;
 

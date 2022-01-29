@@ -15,7 +15,8 @@ public:
 
 		this->vao = GameEngine::RendererAPI::CreateVertexArray();
 
-		float vertices[4 * 3] = {
+		float vertices[4 * 3] = 
+		{
 			-0.5f, -0.5f, 1.0f,
 			0.5f, -0.5f, 1.0f,
 			0.5f, 0.5f, 1.0f,

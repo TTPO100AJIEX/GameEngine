@@ -11,8 +11,8 @@ namespace GameEngine::Renderer
 		OpenGLVertexBuffer(void* Data, size_t Amount, std::shared_ptr<VertexBufferLayout::OpenGLLayout> Layout);
 		virtual ~OpenGLVertexBuffer();
 
-		virtual void Bind() override;
-		virtual void UnBind() override;
+		virtual void Bind() const override;
+		virtual void UnBind() const override;
 
 	};
 }

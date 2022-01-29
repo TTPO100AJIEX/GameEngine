@@ -6,7 +6,7 @@
 
 namespace GameEngine::Renderer::VertexBufferLayout::VertexBufferLayoutElement
 {
-	std::tuple<int, int, size_t> ToOpenGL(ElementType type)
+	std::tuple<int, int, size_t> ToOpenGL(const ElementType& type)
 	{
 		switch (type)
 		{

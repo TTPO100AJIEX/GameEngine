@@ -8,28 +8,28 @@ namespace GameEngine
 	class Window
 	{
 	protected:
-		std::string title;
-		unsigned int width;
-		unsigned int height;
-		std::function<void(Event&)> event_callback;
+		std::string Title;
+		unsigned int Width;
+		unsigned int Height;
+		std::function<void(Event&)> Event_Callback;
 
-		virtual void RegisterEvents() = 0;
+		virtual void RegisterEvents() const = 0;
 
 	public:
-		Window(unsigned int Width, unsigned int Height, std::string Title, std::function<void(Event&)> Event_Callback) : 
-			width(Width), height(Height), title(Title), event_callback(Event_Callback) {};
+		Window(unsigned int width, unsigned int height, const std::string& title, std::function<void(Event&)> event_callback) : 
+			Width(width), Height(height), Title(title), Event_Callback(event_callback) {};
 		virtual ~Window() = default;
 
-		virtual void SetSize(unsigned int Width, unsigned int Height) = 0;
+		virtual void SetSize(unsigned int width, unsigned int height) = 0;
 
-		virtual void Use(bool vSync) = 0;
+		virtual void Use(bool vSync) const = 0;
 		virtual void Update() = 0;
 
 		
-		virtual inline bool IsKeyPressed(KeyCodes::Keys& keycode) = 0;
-		virtual inline bool IsMouseButtonPressed(KeyCodes::Keys& keycode) = 0;
-		virtual inline std::pair<float, float> GetMousePosition() = 0;
-		virtual inline float GetMouseX() = 0;
-		virtual inline float GetMouseY() = 0;
+		virtual inline bool IsKeyPressed(const KeyCodes::Keys& keycode) const = 0;
+		virtual inline bool IsMouseButtonPressed(const KeyCodes::Keys& keycode) const = 0;
+		virtual inline std::pair<float, float> GetMousePosition() const = 0;
+		virtual inline float GetMouseX() const = 0;
+		virtual inline float GetMouseY() const = 0;
 	};
 }

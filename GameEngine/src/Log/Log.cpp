@@ -8,7 +8,7 @@
 		std::shared_ptr<spdlog::logger> EngineLogger = spdlog::stdout_color_mt("Engine");
 		std::shared_ptr<spdlog::logger> GameLogger = spdlog::stdout_color_mt("Game");
 
-		void set_pattern(std::string pattern)
+		void set_pattern(const std::string& pattern)
 		{
 			spdlog::set_pattern(pattern);
 			EngineLogger->set_level(spdlog::level::trace);

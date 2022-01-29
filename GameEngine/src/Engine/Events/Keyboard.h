@@ -8,11 +8,12 @@ namespace GameEngine
 	class KeyPress : public Event
 	{
 	private:
-		KeyCodes::Keys KeyCode;
-		unsigned int RepeatCount;
+		const KeyCodes::Keys KeyCode;
+		const unsigned int RepeatCount;
 
 	public:
-		KeyPress(KeyCodes::Keys keyCode, unsigned int repeatCount) : KeyCode(keyCode), RepeatCount(repeatCount) { EventType = EventTypes::KeyPress; }
+		KeyPress(KeyCodes::Keys keyCode, unsigned int repeatCount) : Event(EventTypes::KeyPress), KeyCode(keyCode), RepeatCount(repeatCount) {};
+		virtual ~KeyPress() = default;
 
 		#ifdef DEBUG
 			virtual std::string ToString() const override
@@ -27,10 +28,11 @@ namespace GameEngine
 	class KeyRelease : public Event
 	{
 	private:
-		KeyCodes::Keys KeyCode;
+		const KeyCodes::Keys KeyCode;
 
 	public:
-		KeyRelease(KeyCodes::Keys keyCode) : KeyCode(keyCode) { EventType = EventTypes::KeyRelease; }
+		KeyRelease(KeyCodes::Keys keyCode) : Event(EventTypes::KeyRelease), KeyCode(keyCode) {};
+		virtual ~KeyRelease() = default;
 
 		#ifdef DEBUG
 			virtual std::string ToString() const override
@@ -45,10 +47,11 @@ namespace GameEngine
 	class KeyType : public Event
 	{
 	private:
-		char Symbol;
+		const char Symbol;
 
 	public:
-		KeyType(char symbol) : Symbol(symbol) { EventType = EventTypes::KeyType; }
+		KeyType(char symbol) : Event(EventTypes::KeyType), Symbol(symbol) {};
+		virtual ~KeyType() = default;
 
 		#ifdef DEBUG
 			virtual std::string ToString() const override

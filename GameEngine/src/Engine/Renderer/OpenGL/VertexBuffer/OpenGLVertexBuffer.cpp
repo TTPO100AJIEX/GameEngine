@@ -18,11 +18,11 @@ namespace GameEngine::Renderer
 		glDeleteBuffers(1, &(this->id));
 	}
 
-	void OpenGLVertexBuffer::Bind()
+	void OpenGLVertexBuffer::Bind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, this->id);
 	}
-	void OpenGLVertexBuffer::UnBind()
+	void OpenGLVertexBuffer::UnBind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}

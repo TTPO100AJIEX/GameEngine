@@ -8,11 +8,12 @@ namespace GameEngine
 	class MouseMove : public Event
 	{
 	private:
-		double X;
-		double Y;
+		const double X;
+		const double Y;
 
 	public:
-		MouseMove(double x, double y) : X(x), Y(y) { EventType = EventTypes::MouseMove; }
+		MouseMove(double x, double y) : Event(EventTypes::MouseMove), X(x), Y(y) {};
+		virtual ~MouseMove() = default;
 
 		#ifdef DEBUG
 			virtual std::string ToString() const override
@@ -27,11 +28,12 @@ namespace GameEngine
 	class MouseScroll : public Event
 	{
 	private:
-		double X;
-		double Y;
+		const double X;
+		const double Y;
 
 	public:
-		MouseScroll(double x, double y) : X(x), Y(y) { EventType = EventTypes::MouseScroll; }
+		MouseScroll(double x, double y) : Event(EventTypes::MouseScroll), X(x), Y(y) {};
+		virtual ~MouseScroll() = default;
 
 		#ifdef DEBUG
 			virtual std::string ToString() const override
@@ -46,10 +48,11 @@ namespace GameEngine
 	class MouseButtonPress : public Event
 	{
 	private:
-		KeyCodes::Keys Key;
+		const KeyCodes::Keys Key;
 
 	public:
-		MouseButtonPress(KeyCodes::Keys key) : Key(key) { EventType = EventTypes::MouseButtonPress; }
+		MouseButtonPress(KeyCodes::Keys key) : Event(EventTypes::MouseButtonPress), Key(key) {};
+		virtual ~MouseButtonPress() = default;
 
 		#ifdef DEBUG
 			virtual std::string ToString() const override
@@ -64,10 +67,11 @@ namespace GameEngine
 	class MouseButtonRelease : public Event
 	{
 	private:
-		KeyCodes::Keys Key;
+		const KeyCodes::Keys Key;
 
 	public:
-		MouseButtonRelease(KeyCodes::Keys key) : Key(key) { EventType = EventTypes::MouseButtonRelease; }
+		MouseButtonRelease(KeyCodes::Keys key) : Event(EventTypes::MouseButtonRelease), Key(key) {};
+		virtual ~MouseButtonRelease() = default;
 
 		#ifdef DEBUG
 			virtual std::string ToString() const override

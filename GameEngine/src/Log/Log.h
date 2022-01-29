@@ -8,7 +8,7 @@
 		extern std::shared_ptr<spdlog::logger> EngineLogger;
 		extern std::shared_ptr<spdlog::logger> GameLogger;
 
-		extern void set_pattern(std::string pattern);
+		void set_pattern(const std::string& pattern);
 	}
 
 	#define ENGINE_CRITICAL(...) ::GameEngine::Log::EngineLogger->critical(__VA_ARGS__)

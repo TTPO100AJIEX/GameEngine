@@ -13,13 +13,13 @@ namespace GameEngine::Renderer
 	public:
 		virtual ~VertexArray() = default;
 
-		inline unsigned int GetID() { return(id); }
+		inline unsigned int GetID() const { return(id); }
 
-		virtual void Bind() = 0;
-		virtual void UnBind() = 0;
+		virtual void Bind() const = 0;
+		virtual void UnBind() const = 0;
 
-		virtual void SetVertexBuffer(std::shared_ptr<Renderer::VertexBuffer> vertexBuffer) = 0;
-		virtual void SetIndexBuffer(std::shared_ptr<Renderer::IndexBuffer> indexBuffer) = 0;
+		virtual void SetVertexBuffer(const std::shared_ptr<Renderer::VertexBuffer>& vertexBuffer) = 0;
+		virtual void SetIndexBuffer(const std::shared_ptr<Renderer::IndexBuffer>& indexBuffer) = 0;
 
 	};
 }

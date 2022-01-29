@@ -23,11 +23,11 @@ namespace GameEngine::RendererAPI
 			return(std::make_shared<Renderer::VertexBufferLayout::OpenGLLayout>(Elements));
 		}
 
-		inline std::shared_ptr<Renderer::VertexBuffer> CreateVertexBuffer(void* Data, size_t Amount, std::shared_ptr<Renderer::VertexBufferLayout::OpenGLLayout> Layout)
+		inline std::shared_ptr<Renderer::VertexBuffer> CreateVertexBuffer(void* Data, size_t Amount, const std::shared_ptr<Renderer::VertexBufferLayout::OpenGLLayout>& Layout)
 		{
 			return(std::make_shared<Renderer::OpenGLVertexBuffer>(Data, Amount, Layout));
 		}
-		inline std::shared_ptr<Renderer::VertexBuffer> CreateVertexBuffer(void* Data, size_t Amount, std::shared_ptr<Renderer::VertexBufferLayout::Layout> Layout)
+		inline std::shared_ptr<Renderer::VertexBuffer> CreateVertexBuffer(void* Data, size_t Amount, const std::shared_ptr<Renderer::VertexBufferLayout::Layout>& Layout)
 		{
 			return(CreateVertexBuffer(Data, Amount, std::dynamic_pointer_cast<Renderer::VertexBufferLayout::OpenGLLayout>(Layout)));
 		}
@@ -36,6 +36,7 @@ namespace GameEngine::RendererAPI
 		{
 			return(std::make_shared<Renderer::OpenGLIndexBuffer>(Data, Amount));
 		}
+
 	#else
 		#error "One of [RENDERER_USE_OPENGL] must be defined"
 	#endif
