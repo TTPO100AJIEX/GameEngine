@@ -14,6 +14,7 @@
 #include <algorithm>
 
 #include <string>
+#include <array>
 #include <vector>
 #include <initializer_list>
 #include <unordered_map>

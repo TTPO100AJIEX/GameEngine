@@ -3,6 +3,7 @@
 #include <GLM/glm.hpp>
 
 #include "VertexArray.h"
+#include "Shader.h"
 
 namespace GameEngine
 {
@@ -17,7 +18,7 @@ namespace GameEngine
 
 		virtual void BeginScene() = 0;
 
-		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& vertexArray) = 0;
+		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& vertexArray, const std::shared_ptr<Renderer::Shader>& shader) = 0;
 
 		virtual void EndScene() = 0;
 	};

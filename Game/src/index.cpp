@@ -7,6 +7,7 @@ private:
 	std::shared_ptr<GameEngine::Renderer::VertexBufferLayout> vbl;
 	std::shared_ptr<GameEngine::Renderer::VertexBuffer> vb;
 	std::shared_ptr<GameEngine::Renderer::IndexBuffer> ib;
+	std::shared_ptr<GameEngine::Renderer::Shader> shader;
 
 public:
 	Game()
@@ -29,6 +30,31 @@ public:
 
 		this->vao->SetVertexBuffer(this->vb);
 		this->vao->SetIndexBuffer(this->ib);
+
+		this->shader = GameEngine::RendererAPI::CreateShader(R"(
+			#version 460 core
+			
+			layout(location = 0) in vec3 a_Position;
+
+			out vec3 v_Position;
+
+			void main()
+			{
+				v_Position = a_Position;
+				gl_Position = vec4(a_Position, 1.0);
+			}
+		)", R"(
+			#version 460 core
+			
+			layout(location = 0) out vec4 Color;
+
+			in vec3 v_Position;
+
+			void main()
+			{
+				Color = vec4(v_Position * 0.5 + 0.5, 1.0);
+			}
+		)");
 	}
 	~Game()
 	{
@@ -45,7 +71,7 @@ public:
 
 				this->GetRenderer2D()->BeginScene();
 
-				this->GetRenderer2D()->DrawIndexed(this->vao);
+				this->GetRenderer2D()->DrawIndexed(this->vao, this->shader);
 
 				this->GetRenderer2D()->EndScene();
 				break;

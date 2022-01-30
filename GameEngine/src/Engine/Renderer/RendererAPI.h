@@ -4,6 +4,7 @@
 #include "OpenGL/VertexArray/OpenGLVertexArray.h"
 #include "OpenGL/VertexBuffer/OpenGLVertexBuffer.h"
 #include "OpenGL/IndexBuffer/OpenGLIndexBuffer.h"
+#include "OpenGL/Shader/OpenGLShader.h"
 
 namespace GameEngine::RendererAPI
 {
@@ -35,6 +36,11 @@ namespace GameEngine::RendererAPI
 		inline std::shared_ptr<Renderer::IndexBuffer> CreateIndexBuffer(uint32_t* Data, size_t Amount)
 		{
 			return(std::make_shared<Renderer::OpenGLIndexBuffer>(Data, Amount));
+		}
+
+		inline std::shared_ptr<Renderer::Shader> CreateShader(const std::string& vertexSource, const std::string& fragmentSrc)
+		{
+			return(std::make_shared<Renderer::OpenGLShader>(vertexSource, fragmentSrc));
 		}
 
 	#else

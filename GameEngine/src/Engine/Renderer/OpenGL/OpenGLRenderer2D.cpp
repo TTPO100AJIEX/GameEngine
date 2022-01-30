@@ -37,13 +37,14 @@ namespace GameEngine
 	{
 	}
 
-	void OpenGLRenderer2D::DrawIndexed(const std::shared_ptr<Renderer::OpenGLVertexArray>& vertexArray)
+	void OpenGLRenderer2D::DrawIndexed(const std::shared_ptr<Renderer::OpenGLVertexArray>& vertexArray, const std::shared_ptr<Renderer::OpenGLShader>& shader)
 	{
+		shader->Bind();
 		glBindVertexArray(vertexArray->GetID());
 	}
-	void OpenGLRenderer2D::DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& vertexArray)
+	void OpenGLRenderer2D::DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& vertexArray, const std::shared_ptr<Renderer::Shader>& shader)
 	{
-		this->DrawIndexed(std::dynamic_pointer_cast<Renderer::OpenGLVertexArray>(vertexArray));
+		this->DrawIndexed(std::dynamic_pointer_cast<Renderer::OpenGLVertexArray>(vertexArray), std::dynamic_pointer_cast<Renderer::OpenGLShader>(shader));
 	}
 
 	void OpenGLRenderer2D::EndScene()
