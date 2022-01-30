@@ -1,8 +1,8 @@
 #pragma once
 
-namespace GameEngine::Renderer::VertexBufferLayout::VertexBufferLayoutElement
+namespace GameEngine::Renderer
 {
-	enum class ElementType : uint8_t
+	enum class ShaderDataType : uint8_t
 	{
 		None,
 		Bool,

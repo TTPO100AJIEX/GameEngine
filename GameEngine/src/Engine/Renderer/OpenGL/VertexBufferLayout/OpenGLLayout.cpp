@@ -4,16 +4,16 @@
 
 #include <GLAD/glad.h>
 
-namespace GameEngine::Renderer::VertexBufferLayout
+namespace GameEngine::Renderer
 {
-	OpenGLLayout::OpenGLLayout(const std::initializer_list<Element>& Elements) : Layout(Elements) {};
+	OpenGLLayout::OpenGLLayout(const std::initializer_list<VertexBufferLayoutElement>& Elements) : VertexBufferLayout(Elements) {};
 
 	void OpenGLLayout::Use() const
 	{
 		size_t stride = this->GetStride(), offset = 0;
 		for (int i = 0; i < this->elements.size(); i++)
 		{
-			auto [amount, type, size] = VertexBufferLayoutElement::ToOpenGL(elements[i].type);
+			auto [amount, type, size] = ShaderDataTypeToOpenGL(elements[i].type);
 			glEnableVertexAttribArray(i);
 			if (type == GL_BYTE || type == GL_UNSIGNED_BYTE || type == GL_SHORT || type == GL_UNSIGNED_SHORT || type == GL_INT || type == GL_UNSIGNED_INT)
 			{
@@ -32,7 +32,7 @@ namespace GameEngine::Renderer::VertexBufferLayout
 		size_t stride = 0;
 		for (int i = 0; i < this->elements.size(); i++)
 		{
-			auto [amount, type, size] = VertexBufferLayoutElement::ToOpenGL(elements[i].type);
+			auto [amount, type, size] = ShaderDataTypeToOpenGL(elements[i].type);
 			stride += amount * size;
 		}
 		return(stride);

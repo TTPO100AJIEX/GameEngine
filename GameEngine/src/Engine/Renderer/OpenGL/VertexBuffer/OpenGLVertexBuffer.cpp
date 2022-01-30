@@ -6,7 +6,7 @@
 
 namespace GameEngine::Renderer
 {
-	OpenGLVertexBuffer::OpenGLVertexBuffer(void* Data, size_t Amount, std::shared_ptr<VertexBufferLayout::OpenGLLayout> Layout)
+	OpenGLVertexBuffer::OpenGLVertexBuffer(void* Data, size_t Amount, std::shared_ptr<OpenGLLayout> Layout)
 	{
 		glCreateBuffers(1, &(this->id));
 		this->Bind();

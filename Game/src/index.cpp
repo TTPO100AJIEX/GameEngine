@@ -4,7 +4,7 @@ class Game : public GameEngine::Engine
 {
 private:
 	std::shared_ptr<GameEngine::Renderer::VertexArray> vao;
-	std::shared_ptr<GameEngine::Renderer::VertexBufferLayout::Layout> vbl;
+	std::shared_ptr<GameEngine::Renderer::VertexBufferLayout> vbl;
 	std::shared_ptr<GameEngine::Renderer::VertexBuffer> vb;
 	std::shared_ptr<GameEngine::Renderer::IndexBuffer> ib;
 
@@ -23,7 +23,7 @@ public:
 			-0.5f, 0.5f, 1.0f
 		};
 		uint32_t indices[6] = { 2, 3, 0, 0, 1, 2 };
-		this->vbl = GameEngine::RendererAPI::CreateVertexBufferLayout({ { GameEngine::Renderer::VertexBufferLayout::VertexBufferLayoutElement::ElementType::Float3, false } });
+		this->vbl = GameEngine::RendererAPI::CreateVertexBufferLayout({ { GameEngine::Renderer::ShaderDataType::Float3, false } });
 		this->vb = GameEngine::RendererAPI::CreateVertexBuffer(vertices, 4, this->vbl);
 		this->ib = GameEngine::RendererAPI::CreateIndexBuffer(indices, 6);
 

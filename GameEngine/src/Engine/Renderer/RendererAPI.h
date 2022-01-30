@@ -18,18 +18,18 @@ namespace GameEngine::RendererAPI
 			return(std::make_shared<Renderer::OpenGLVertexArray>());
 		}
 
-		inline std::shared_ptr<Renderer::VertexBufferLayout::Layout> CreateVertexBufferLayout(const std::initializer_list<Renderer::VertexBufferLayout::Element>& Elements)
+		inline std::shared_ptr<Renderer::VertexBufferLayout> CreateVertexBufferLayout(const std::initializer_list<Renderer::VertexBufferLayoutElement>& Elements)
 		{
-			return(std::make_shared<Renderer::VertexBufferLayout::OpenGLLayout>(Elements));
+			return(std::make_shared<Renderer::OpenGLLayout>(Elements));
 		}
 
-		inline std::shared_ptr<Renderer::VertexBuffer> CreateVertexBuffer(void* Data, size_t Amount, const std::shared_ptr<Renderer::VertexBufferLayout::OpenGLLayout>& Layout)
+		inline std::shared_ptr<Renderer::VertexBuffer> CreateVertexBuffer(void* Data, size_t Amount, const std::shared_ptr<Renderer::OpenGLLayout>& Layout)
 		{
 			return(std::make_shared<Renderer::OpenGLVertexBuffer>(Data, Amount, Layout));
 		}
-		inline std::shared_ptr<Renderer::VertexBuffer> CreateVertexBuffer(void* Data, size_t Amount, const std::shared_ptr<Renderer::VertexBufferLayout::Layout>& Layout)
+		inline std::shared_ptr<Renderer::VertexBuffer> CreateVertexBuffer(void* Data, size_t Amount, const std::shared_ptr<Renderer::VertexBufferLayout>& Layout)
 		{
-			return(CreateVertexBuffer(Data, Amount, std::dynamic_pointer_cast<Renderer::VertexBufferLayout::OpenGLLayout>(Layout)));
+			return(CreateVertexBuffer(Data, Amount, std::dynamic_pointer_cast<Renderer::OpenGLLayout>(Layout)));
 		}
 
 		inline std::shared_ptr<Renderer::IndexBuffer> CreateIndexBuffer(uint32_t* Data, size_t Amount)

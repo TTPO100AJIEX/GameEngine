@@ -1,25 +1,25 @@
 #pragma once
 
-#include "../Definitions/VertexBufferLayout/ElementType/ElementType.h"
+#include "../Definitions/ShaderDataType/ShaderDataType.h"
 
-namespace GameEngine::Renderer::VertexBufferLayout
+namespace GameEngine::Renderer
 {
-	struct Element
+	struct VertexBufferLayoutElement
 	{
 	public:
-		VertexBufferLayoutElement::ElementType type;
+		ShaderDataType type;
 		bool normalized;
 	};
 
 
-	class Layout
+	class VertexBufferLayout
 	{
 	protected:
-		std::vector<Element> elements;
+		std::vector<VertexBufferLayoutElement> elements;
 
 	public:
-		Layout(const std::initializer_list<Element>& Elements) : elements(Elements) {};
-		virtual ~Layout() = default;
+		VertexBufferLayout(const std::initializer_list<VertexBufferLayoutElement>& Elements) : elements(Elements) {};
+		virtual ~VertexBufferLayout() = default;
 
 		virtual void Use() const = 0;
 
