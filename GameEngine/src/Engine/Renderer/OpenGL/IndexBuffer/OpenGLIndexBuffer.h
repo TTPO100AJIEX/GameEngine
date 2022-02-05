@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../IndexBuffer.h"
+#include "../../General/IndexBuffer.h"
 
 namespace GameEngine::Renderer
 {

@@ -33,13 +33,15 @@ namespace GameEngine
 
 	}
 
-	void OpenGLRenderer2D::BeginScene()
+	void OpenGLRenderer2D::BeginScene(const std::shared_ptr<Renderer::Camera>& camera)
 	{
+		SceneData.ViewProjectionMatrix = camera->GetViewProjectionMatrix();
 	}
 
 	void OpenGLRenderer2D::DrawIndexed(const std::shared_ptr<Renderer::OpenGLVertexArray>& vertexArray, const std::shared_ptr<Renderer::OpenGLShader>& shader)
 	{
 		shader->Bind();
+		shader->UploadUniformMat4("u_ViewProjection", SceneData.ViewProjectionMatrix);
 		glBindVertexArray(vertexArray->GetID());
 	}
 	void OpenGLRenderer2D::DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& vertexArray, const std::shared_ptr<Renderer::Shader>& shader)

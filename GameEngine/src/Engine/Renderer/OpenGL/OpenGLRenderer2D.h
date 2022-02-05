@@ -2,7 +2,7 @@
 
 #include "VertexArray/OpenGLVertexArray.h"
 #include "Shader/OpenGLShader.h"
-#include "../Renderer2D.h"
+#include "../General/Renderer2D.h"
 
 namespace GameEngine
 {
@@ -16,11 +16,12 @@ namespace GameEngine
 		virtual void Clear() override;
 
 
-		virtual void BeginScene() override;
+		virtual void BeginScene(const std::shared_ptr<Renderer::Camera>& camera) override;
 
 		void DrawIndexed(const std::shared_ptr<Renderer::OpenGLVertexArray>& vertexArray, const std::shared_ptr<Renderer::OpenGLShader>& shader);
 		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& vertexArray, const std::shared_ptr<Renderer::Shader>& shader) override;
 
 		virtual void EndScene() override;
+
 	};
 }

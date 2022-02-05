@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Definitions/ShaderDataType/ShaderDataType.h"
+#include "../../Definitions/ShaderDataType/ShaderDataType.h"
 
 namespace GameEngine::Renderer
 {

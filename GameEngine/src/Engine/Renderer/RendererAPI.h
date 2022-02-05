@@ -1,5 +1,7 @@
 #pragma once
 
+#include "General/Camera/Camera.h"
+
 #include "OpenGL/OpenGLRenderer2D.h"
 #include "OpenGL/VertexArray/OpenGLVertexArray.h"
 #include "OpenGL/VertexBuffer/OpenGLVertexBuffer.h"
@@ -8,6 +10,12 @@
 
 namespace GameEngine::RendererAPI
 {
+	inline std::shared_ptr<Renderer::Camera> CreateCamera(float left, float right, float bottom, float top)
+	{
+		return(std::make_shared<Renderer::Camera>(left, right, bottom, top));
+	}
+
+
 	#ifdef RENDERER_USE_OPENGL
 		inline std::shared_ptr<Renderer2D> CreateRenderer() 
 		{

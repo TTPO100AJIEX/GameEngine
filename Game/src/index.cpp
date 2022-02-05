@@ -8,11 +8,14 @@ private:
 	std::shared_ptr<GameEngine::Renderer::VertexBuffer> vb;
 	std::shared_ptr<GameEngine::Renderer::IndexBuffer> ib;
 	std::shared_ptr<GameEngine::Renderer::Shader> shader;
+	std::shared_ptr<GameEngine::Renderer::Camera> camera;
 
 public:
 	Game()
 	{
 		GetRenderer2D()->SetClearColor({ 0.0f, 1.0f, 0.0f, 1.0f });
+
+		this->camera = GameEngine::RendererAPI::CreateCamera(-1.6f, 1.6f, -0.9f, 0.9f);
 
 		this->vao = GameEngine::RendererAPI::CreateVertexArray();
 
@@ -36,12 +39,14 @@ public:
 			
 			layout(location = 0) in vec3 a_Position;
 
+			uniform mat4 u_ViewProjection;
+
 			out vec3 v_Position;
 
 			void main()
 			{
 				v_Position = a_Position;
-				gl_Position = vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
 			}
 		)", R"(
 			#version 460 core
@@ -69,7 +74,9 @@ public:
 			{
 				this->GetRenderer2D()->Clear();
 
-				this->GetRenderer2D()->BeginScene();
+				this->camera->SetPosition({ 0.5f, 0.5f, 0.0f });
+				this->camera->SetRotation(45.0f);
+				this->GetRenderer2D()->BeginScene(this->camera);
 
 				this->GetRenderer2D()->DrawIndexed(this->vao, this->shader);
 

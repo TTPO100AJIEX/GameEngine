@@ -9,3 +9,5 @@ To run on platforms other than windows, look into premake5.lua files and define 
 To learn:
 1) C++20 modules
 2) copy elision
+3) Merkle tree
+4) Inline

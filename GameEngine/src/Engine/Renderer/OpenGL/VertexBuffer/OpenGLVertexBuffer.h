@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../VertexBufferLayout/OpenGLLayout.h"
-#include "../../VertexBuffer.h"
+#include "../../General/VertexBuffer.h"
 
 namespace GameEngine::Renderer
 {

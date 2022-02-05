@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Shader.h"
+#include "../../General//Shader.h"
 
 namespace GameEngine::Renderer
 {
@@ -12,5 +12,7 @@ namespace GameEngine::Renderer
 
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
+
+		virtual void UploadUniformMat4(const std::string& name, const glm::mat4& matrix) const override;
 	};
 }

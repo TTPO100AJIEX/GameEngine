@@ -1,5 +1,7 @@
 #pragma once
 
+#include <GLM/glm.hpp>
+
 namespace GameEngine::Renderer
 {
 	class Shader
@@ -14,5 +16,7 @@ namespace GameEngine::Renderer
 
 		virtual void Bind() const = 0;
 		virtual void UnBind() const = 0;
+
+		virtual void UploadUniformMat4(const std::string& name, const glm::mat4& matrix) const = 0;
 	};
 }

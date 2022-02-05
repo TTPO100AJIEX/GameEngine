@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../VertexArray.h"
+#include "../../General/VertexArray.h"
 #include "../VertexBuffer/OpenGLVertexBuffer.h"
 #include "../IndexBuffer/OpenGLIndexBuffer.h"
 

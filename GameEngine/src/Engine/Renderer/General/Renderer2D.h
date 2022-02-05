@@ -2,6 +2,7 @@
 
 #include <GLM/glm.hpp>
 
+#include "Camera/Camera.h"
 #include "VertexArray.h"
 #include "Shader.h"
 
@@ -9,6 +10,13 @@ namespace GameEngine
 {
 	class Renderer2D
 	{
+	protected:
+		struct Scene_Data
+		{
+			glm::mat4 ViewProjectionMatrix;
+		};
+		Scene_Data SceneData;
+
 	public:
 		virtual ~Renderer2D() = default;
 
@@ -16,7 +24,7 @@ namespace GameEngine
 		virtual void Clear() = 0;
 
 
-		virtual void BeginScene() = 0;
+		virtual void BeginScene(const std::shared_ptr<Renderer::Camera>& camera) = 0;
 
 		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& vertexArray, const std::shared_ptr<Renderer::Shader>& shader) = 0;
 

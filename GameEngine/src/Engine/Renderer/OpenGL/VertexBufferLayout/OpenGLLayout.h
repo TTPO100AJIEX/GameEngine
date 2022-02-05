@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../VertexBufferLayout.h"
+#include "../../General/VertexBufferLayout.h"
 
 #include "../../../Definitions/ShaderDataType/OpenGL/OpenGL.h"
 
