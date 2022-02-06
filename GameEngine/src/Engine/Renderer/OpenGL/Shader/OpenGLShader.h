@@ -6,6 +6,13 @@ namespace GameEngine::Renderer
 {
 	class OpenGLShader : public Shader
 	{
+	private:
+		#ifdef DEBUG
+			static unsigned int BoundShaderId;
+		#endif
+
+		virtual int GetUniformLocation(const std::string& name) const override;
+
 	public:
 		OpenGLShader(const std::string& vertexSource, const std::string& fragmentSrc);
 		virtual ~OpenGLShader();

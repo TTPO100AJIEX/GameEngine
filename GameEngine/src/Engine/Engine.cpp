@@ -3,7 +3,6 @@
 #include "Engine.h"
 
 #include "Window/Windows/WindowsWindow.h"
-#include "Events/App.h"
 
 namespace GameEngine
 {

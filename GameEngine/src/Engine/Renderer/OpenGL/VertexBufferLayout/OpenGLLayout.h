@@ -14,6 +14,6 @@ namespace GameEngine::Renderer
 
 		virtual void Use() const override;
 
-		inline size_t GetStride() const;
+		size_t GetStride() const;
 	};
 }

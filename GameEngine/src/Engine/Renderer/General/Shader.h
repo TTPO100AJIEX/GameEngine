@@ -9,6 +9,8 @@ namespace GameEngine::Renderer
 	protected:
 		unsigned int id;
 
+		virtual int GetUniformLocation(const std::string& name) const = 0;
+
 	public:
 		virtual ~Shader() = default;
 

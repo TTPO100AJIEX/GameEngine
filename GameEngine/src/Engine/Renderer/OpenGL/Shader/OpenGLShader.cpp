@@ -3,11 +3,14 @@
 #include "OpenGLShader.h"
 
 #include <GLAD/glad.h>
-
 #include <GLM/gtc/type_ptr.hpp>
 
 namespace GameEngine::Renderer
 {
+	#ifdef DEBUG
+		unsigned int OpenGLShader::BoundShaderId = 0;
+	#endif
+
 	OpenGLShader::OpenGLShader(const std::string& vertexSource, const std::string& fragmentSrc)
 	{
 		unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -73,16 +76,33 @@ namespace GameEngine::Renderer
 
 	void OpenGLShader::Bind() const
 	{
+		#ifdef DEBUG
+			this->BoundShaderId = id;
+		#endif
 		glUseProgram(id);
 	}
 	void OpenGLShader::UnBind() const
 	{
+		#ifdef DEBUG
+			this->BoundShaderId = 0;
+		#endif
 		glUseProgram(0);
 	}
 
+	int OpenGLShader::GetUniformLocation(const std::string& name) const
+	{
+		#ifdef DEBUG
+			if (this->BoundShaderId != id) ENGINE_WARN("Attempt to set uniform {0} for an unbound shader {1}", name, id);
+		#endif
+		int location = glGetUniformLocation(id, name.c_str());
+		#ifdef DEBUG
+			if (location == -1) ENGINE_WARN("Uniform {0} does not exist for shader {1}", name, id);
+		#endif
+		return(location);
+	}
 	void OpenGLShader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix) const
 	{
-		int location = glGetUniformLocation(id, name.c_str());
+		int location = GetUniformLocation(name);
 		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 }

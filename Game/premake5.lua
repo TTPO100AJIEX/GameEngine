@@ -2,7 +2,9 @@ project "Game"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++20"
-	staticruntime "on"
+    flags { "MultiProcessorCompile", "OmitDefaultLibrary", "ShadowedVariables" }
+	staticruntime "On"
+	optimize "Full"
 
 	targetdir ("%{wks.location}/bin/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}/%{prj.name}")
 	objdir ("%{wks.location}/bin/intermediates/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}/%{prj.name}")
@@ -41,9 +43,9 @@ project "Game"
 	filter "configurations:Debug"
 		defines "DEBUG"
 		runtime "Debug"
-		symbols "on"
+        symbols "Full"
 
 	filter "configurations:Release"
 		defines "RELEASE"
 		runtime "Release"
-		optimize "on"
+        flags { "LinkTimeOptimization" }

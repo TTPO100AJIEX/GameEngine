@@ -27,7 +27,7 @@ namespace GameEngine::Renderer
 		}
 	}
 
-	inline size_t OpenGLLayout::GetStride() const
+	size_t OpenGLLayout::GetStride() const
 	{
 		size_t stride = 0;
 		for (int i = 0; i < this->elements.size(); i++)

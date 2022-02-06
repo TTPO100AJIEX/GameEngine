@@ -10,6 +10,8 @@ private:
 	std::shared_ptr<GameEngine::Renderer::Shader> shader;
 	std::shared_ptr<GameEngine::Renderer::Camera> camera;
 
+	float cmx, cmy, cmz;
+
 public:
 	Game()
 	{
@@ -60,6 +62,9 @@ public:
 				Color = vec4(v_Position * 0.5 + 0.5, 1.0);
 			}
 		)");
+		this->cmx = 0.0f;
+		this->cmy = 0.0f;
+		this->cmz = 0.0f;
 	}
 	~Game()
 	{
@@ -74,13 +79,45 @@ public:
 			{
 				this->GetRenderer2D()->Clear();
 
-				this->camera->SetPosition({ 0.5f, 0.5f, 0.0f });
-				this->camera->SetRotation(45.0f);
+				this->camera->SetPosition({ this->cmx, this->cmy, this->cmz });
+				//this->camera->SetRotation(45.0f);
 				this->GetRenderer2D()->BeginScene(this->camera);
 
 				this->GetRenderer2D()->DrawIndexed(this->vao, this->shader);
 
 				this->GetRenderer2D()->EndScene();
+				break;
+			}
+			case (GameEngine::EventTypes::KeyPress):
+			{
+				GameEngine::KeyPress& ev = static_cast<GameEngine::KeyPress&>(event);
+				switch (ev.GetKey())
+				{
+					case (GameEngine::KeyCodes::Keys::RIGHT): case (GameEngine::KeyCodes::Keys::D):
+					{
+						this->cmx -= 0.05f;
+						break;
+					}
+					case (GameEngine::KeyCodes::Keys::LEFT): case (GameEngine::KeyCodes::Keys::A):
+					{
+						this->cmx += 0.05f;
+						break;
+					}
+					case (GameEngine::KeyCodes::Keys::UP): case (GameEngine::KeyCodes::Keys::W):
+					{
+						this->cmy -= 0.05f;
+						break;
+					}
+					case (GameEngine::KeyCodes::Keys::DOWN): case (GameEngine::KeyCodes::Keys::S):
+					{
+						this->cmy += 0.05f;
+						break;
+					}
+					default:
+					{
+						GAME_TRACE(event.ToString());
+					}
+				}
 				break;
 			}
 			[[unlikely]] default:
