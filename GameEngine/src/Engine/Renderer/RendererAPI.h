@@ -32,11 +32,11 @@ namespace GameEngine::RendererAPI
 			return(std::make_shared<Renderer::OpenGLLayout>(Elements));
 		}
 
-		inline std::shared_ptr<Renderer::VertexBuffer> CreateVertexBuffer(void* Data, size_t Amount, const std::shared_ptr<Renderer::OpenGLLayout>& Layout)
+		inline std::shared_ptr<Renderer::VertexBuffer> CreateVertexBuffer(void *Data, size_t Amount, const std::shared_ptr<Renderer::OpenGLLayout>& Layout)
 		{
 			return(std::make_shared<Renderer::OpenGLVertexBuffer>(Data, Amount, Layout));
 		}
-		inline std::shared_ptr<Renderer::VertexBuffer> CreateVertexBuffer(void* Data, size_t Amount, const std::shared_ptr<Renderer::VertexBufferLayout>& Layout)
+		inline std::shared_ptr<Renderer::VertexBuffer> CreateVertexBuffer(void *Data, size_t Amount, const std::shared_ptr<Renderer::VertexBufferLayout>& Layout)
 		{
 			return(CreateVertexBuffer(Data, Amount, std::dynamic_pointer_cast<Renderer::OpenGLLayout>(Layout)));
 		}

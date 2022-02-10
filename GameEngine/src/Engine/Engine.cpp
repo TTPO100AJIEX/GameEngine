@@ -53,7 +53,12 @@ namespace GameEngine
 				ENGINE_INFO("Window Destroyed ({0})! Running: {1}", event.ToString(), this->Running);
 				break;
 			}
-			[[likely]] case (EventTypes::AppTick): { this->l_Window->Update(); [[fallthrough]]; }
+			[[likely]] case (EventTypes::AppTick): 
+			{
+				this->l_Window->Update();
+				if (!this->Running) [[unlikely]] { return; }
+				[[fallthrough]];
+			}
 			[[likely]] default:
 			{
 				this->OnEvent(event);

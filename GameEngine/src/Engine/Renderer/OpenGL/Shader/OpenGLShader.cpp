@@ -14,7 +14,7 @@ namespace GameEngine::Renderer
 	OpenGLShader::OpenGLShader(const std::string& vertexSource, const std::string& fragmentSrc)
 	{
 		unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-		const char* vertexSourceC = vertexSource.c_str();
+		const char *vertexSourceC = vertexSource.c_str();
 		glShaderSource(vertexShader, 1, &vertexSourceC, 0);
 		glCompileShader(vertexShader);
 		int isCompiled = 0;
@@ -31,7 +31,7 @@ namespace GameEngine::Renderer
 		}
 
 		unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-		const char* fragmentSrcC = fragmentSrc.c_str();
+		const char *fragmentSrcC = fragmentSrc.c_str();
 		glShaderSource(fragmentShader, 1, &fragmentSrcC, 0);
 		glCompileShader(fragmentShader);
 		glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &isCompiled);
@@ -39,7 +39,7 @@ namespace GameEngine::Renderer
 		{
 			int maxLength = 0;
 			glGetShaderiv(fragmentShader, GL_INFO_LOG_LENGTH, &maxLength);
-			char* infoLog = (char*)(alloca(maxLength * sizeof(char)));
+			char *infoLog = (char*)(alloca(maxLength * sizeof(char)));
 			glGetShaderInfoLog(fragmentShader, maxLength, &maxLength, infoLog);
 			ENGINE_ERROR("{0}", infoLog);
 			glDeleteShader(vertexShader);
@@ -57,7 +57,7 @@ namespace GameEngine::Renderer
 		{
 			int maxLength = 0;
 			glGetProgramiv(id, GL_INFO_LOG_LENGTH, &maxLength);
-			char* infoLog = (char*)(alloca(maxLength * sizeof(char)));
+			char *infoLog = (char*)(alloca(maxLength * sizeof(char)));
 			glGetProgramInfoLog(id, maxLength, &maxLength, infoLog);
 			ENGINE_ERROR("{0}", infoLog);
 			glDeleteProgram(id);

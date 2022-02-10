@@ -10,7 +10,7 @@ private:
 	std::shared_ptr<GameEngine::Renderer::Shader> shader;
 	std::shared_ptr<GameEngine::Renderer::Camera> camera;
 
-	float cmx, cmy, cmz;
+	float cmx, cmy, cmz, cma;
 
 public:
 	Game()
@@ -65,6 +65,7 @@ public:
 		this->cmx = 0.0f;
 		this->cmy = 0.0f;
 		this->cmz = 0.0f;
+		this->cma = 0.0f;
 	}
 	~Game()
 	{
@@ -79,45 +80,25 @@ public:
 			{
 				this->GetRenderer2D()->Clear();
 
+
+				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::Q)) this->cma += 0.1f;
+				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::E)) this->cma -= 0.1f;
+
+				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::RIGHT) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::D)) this->cmx -= 0.01f;
+				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::LEFT) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::A)) this->cmx += 0.01f;
+
+				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::UP) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::W)) this->cmy -= 0.01f;
+				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::DOWN) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::S)) this->cmy += 0.01f;
+				
+
 				this->camera->SetPosition({ this->cmx, this->cmy, this->cmz });
-				//this->camera->SetRotation(45.0f);
+				this->camera->SetRotation(this->cma);
+
 				this->GetRenderer2D()->BeginScene(this->camera);
 
 				this->GetRenderer2D()->DrawIndexed(this->vao, this->shader);
 
 				this->GetRenderer2D()->EndScene();
-				break;
-			}
-			case (GameEngine::EventTypes::KeyPress):
-			{
-				GameEngine::KeyPress& ev = static_cast<GameEngine::KeyPress&>(event);
-				switch (ev.GetKey())
-				{
-					case (GameEngine::KeyCodes::Keys::RIGHT): case (GameEngine::KeyCodes::Keys::D):
-					{
-						this->cmx -= 0.05f;
-						break;
-					}
-					case (GameEngine::KeyCodes::Keys::LEFT): case (GameEngine::KeyCodes::Keys::A):
-					{
-						this->cmx += 0.05f;
-						break;
-					}
-					case (GameEngine::KeyCodes::Keys::UP): case (GameEngine::KeyCodes::Keys::W):
-					{
-						this->cmy -= 0.05f;
-						break;
-					}
-					case (GameEngine::KeyCodes::Keys::DOWN): case (GameEngine::KeyCodes::Keys::S):
-					{
-						this->cmy += 0.05f;
-						break;
-					}
-					default:
-					{
-						GAME_TRACE(event.ToString());
-					}
-				}
 				break;
 			}
 			[[unlikely]] default:
