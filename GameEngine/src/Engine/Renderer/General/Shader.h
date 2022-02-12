@@ -1,7 +1,5 @@
 #pragma once
 
-#include <GLM/glm.hpp>
-
 namespace GameEngine::Renderer
 {
 	class Shader

@@ -2,9 +2,6 @@
 
 #include "OpenGLShader.h"
 
-#include <GLAD/glad.h>
-#include <GLM/gtc/type_ptr.hpp>
-
 namespace GameEngine::Renderer
 {
 	#ifdef DEBUG

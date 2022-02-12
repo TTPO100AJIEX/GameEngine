@@ -2,8 +2,6 @@
 
 #include "OpenGLIndexBuffer.h"
 
-#include <GLAD/glad.h>
-
 namespace GameEngine::Renderer
 {
 	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* Data, size_t Amount)

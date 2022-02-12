@@ -1,7 +1,5 @@
 #pragma once
 
-#include "../../Definitions/ShaderDataType/ShaderDataType.h"
-
 namespace GameEngine::Renderer
 {
 	struct VertexBufferLayoutElement

@@ -2,8 +2,6 @@
 
 #include "../../General/VertexBufferLayout.h"
 
-#include "../../../Definitions/ShaderDataType/OpenGL/OpenGL.h"
-
 namespace GameEngine::Renderer
 {
 	class OpenGLLayout : public VertexBufferLayout

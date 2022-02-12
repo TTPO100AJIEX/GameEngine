@@ -1,7 +1,5 @@
 #pragma once
 
-#include <GLM/glm.hpp>
-
 #include "Camera/Camera.h"
 #include "VertexArray.h"
 #include "Shader.h"

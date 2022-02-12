@@ -1,7 +1,5 @@
 #include <PrecompiledHeaders.h>
 
-#include <GLM/gtc/matrix_transform.hpp>
-
 #include "Camera.h"
 
 namespace GameEngine::Renderer

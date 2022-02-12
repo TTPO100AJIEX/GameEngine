@@ -1,9 +1,5 @@
 #pragma once
 
-#include "../KeyCodes.h"
-
-#include <GLFW/glfw3.h>
-
 namespace GameEngine::KeyCodes
 {
 	enum class GLFWKeys

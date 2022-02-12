@@ -2,8 +2,6 @@
 
 #include "OpenGLVertexArray.h"
 
-#include <GLAD/glad.h>
-
 namespace GameEngine::Renderer
 {
 	OpenGLVertexArray::OpenGLVertexArray()

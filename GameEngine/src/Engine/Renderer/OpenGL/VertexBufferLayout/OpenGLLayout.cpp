@@ -2,8 +2,6 @@
 
 #include "OpenGLLayout.h"
 
-#include <GLAD/glad.h>
-
 namespace GameEngine::Renderer
 {
 	OpenGLLayout::OpenGLLayout(const std::initializer_list<VertexBufferLayoutElement>& Elements) : VertexBufferLayout(Elements) {};

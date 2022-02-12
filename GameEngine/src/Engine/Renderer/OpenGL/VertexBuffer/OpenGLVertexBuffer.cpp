@@ -2,8 +2,6 @@
 
 #include "OpenGLVertexBuffer.h"
 
-#include <GLAD/glad.h>
-
 namespace GameEngine::Renderer
 {
 	OpenGLVertexBuffer::OpenGLVertexBuffer(void *Data, size_t Amount, std::shared_ptr<OpenGLLayout> Layout)
