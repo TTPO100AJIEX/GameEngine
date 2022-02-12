@@ -7,9 +7,9 @@ namespace GameEngine
 	class AppTick : public Event
 	{
 	private:
-		unsigned long long int FrameTime;
+		long long int FrameTime;
 	public:
-		AppTick(unsigned long long int frameTime) : Event(EventTypes::AppTick), FrameTime(frameTime) {};
+		AppTick(long long int frameTime) : Event(EventTypes::AppTick), FrameTime(frameTime) {};
 		virtual ~AppTick() = default;
 
 		#ifdef DEBUG
@@ -20,5 +20,7 @@ namespace GameEngine
 				return(ss.str());
 			}
 		#endif
+
+		inline long long int GetFrameTime() { return(FrameTime); }
 	};
 }

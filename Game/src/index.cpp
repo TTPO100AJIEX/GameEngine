@@ -80,15 +80,17 @@ public:
 			{
 				this->GetRenderer2D()->Clear();
 
+				GameEngine::AppTick& ev = static_cast<GameEngine::AppTick&>(event);
+				float multiplier = ev.GetFrameTime() / (1000.0f * 1000.0f * 1000.0f);
 
-				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::Q)) this->cma += 0.1f;
-				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::E)) this->cma -= 0.1f;
+				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::Q)) this->cma += 0.5f * multiplier;
+				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::E)) this->cma -= 0.5f * multiplier;
 
-				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::RIGHT) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::D)) this->cmx -= 0.01f;
-				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::LEFT) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::A)) this->cmx += 0.01f;
+				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::RIGHT) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::D)) this->cmx -= 0.25f * multiplier;
+				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::LEFT) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::A)) this->cmx += 0.25f * multiplier;
 
-				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::UP) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::W)) this->cmy -= 0.01f;
-				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::DOWN) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::S)) this->cmy += 0.01f;
+				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::UP) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::W)) this->cmy -= 0.25f * multiplier;
+				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::DOWN) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::S)) this->cmy += 0.25f * multiplier;
 				
 
 				this->camera->SetPosition({ this->cmx, this->cmy, this->cmz });

@@ -12,7 +12,7 @@ namespace GameEngine
 
 		#ifdef PLATFORM_WINDOWS
 			this->l_Window = std::make_unique<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
-			this->l_Window->Use(true);
+			this->l_Window->Use(false);
 		#else
 			#error "One of [PLATFORM_WINDOWS] must be defined"
 		#endif
@@ -40,7 +40,7 @@ namespace GameEngine
 			std::chrono::steady_clock::time_point NowTimestamp = std::chrono::clock::now();
 
 			#ifdef DEBUG
-				if (std::chrono::duration_cast<std::chrono::seconds>(NowTimestamp - LastFPSOutputTimestamp).count() == 1)
+				if (std::chrono::duration_cast<std::chrono::seconds>(NowTimestamp - LastFPSOutputTimestamp).count() >= 1)
 				{
 					ENGINE_TRACE("FPS: {0}", fps);
 					fps = 0;
