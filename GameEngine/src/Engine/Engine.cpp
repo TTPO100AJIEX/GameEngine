@@ -12,7 +12,7 @@ namespace GameEngine
 
 		#ifdef PLATFORM_WINDOWS
 			this->l_Window = std::make_unique<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
-			this->l_Window->Use(false);
+			this->l_Window->Use(true);
 		#else
 			#error "One of [PLATFORM_WINDOWS] must be defined"
 		#endif
@@ -28,28 +28,29 @@ namespace GameEngine
 	{
 		ENGINE_INFO("Started!");
 
-		std::chrono::steady_clock::time_point PrevTimestamp = std::chrono::clock::now();
+		std::chrono::clock::time_point PrevTimestamp = std::chrono::clock::now();
 
 		#ifdef DEBUG
-			std::chrono::steady_clock::time_point LastFPSOutputTimestamp = std::chrono::clock::now();
+			std::chrono::clock::time_point LastFPSOutputTimestamp = std::chrono::clock::now();
 			int fps = 0;
 		#endif
 
 		while (this->Running) [[likely]]
 		{
-			std::chrono::steady_clock::time_point NowTimestamp = std::chrono::clock::now();
+			std::chrono::clock::time_point NowTimestamp = std::chrono::clock::now();
 
 			#ifdef DEBUG
+				fps++;
 				if (std::chrono::duration_cast<std::chrono::seconds>(NowTimestamp - LastFPSOutputTimestamp).count() >= 1)
 				{
 					ENGINE_TRACE("FPS: {0}", fps);
 					fps = 0;
 					LastFPSOutputTimestamp = std::chrono::clock::now();
 				}
-				fps++;
 			#endif
-
-			AppTick AppTickEvent(std::chrono::duration_cast<std::chrono::nanoseconds>(NowTimestamp - PrevTimestamp).count());
+			
+			std::chrono::duration<double, std::nano> tmp = NowTimestamp - PrevTimestamp;
+			AppTick AppTickEvent(tmp);
 			this->OnEvent_Internal(AppTickEvent);
 
 			PrevTimestamp = NowTimestamp;

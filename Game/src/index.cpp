@@ -81,7 +81,7 @@ public:
 				this->GetRenderer2D()->Clear();
 
 				GameEngine::AppTick& ev = static_cast<GameEngine::AppTick&>(event);
-				float multiplier = ev.GetFrameTime() / (1000.0f * 1000.0f * 1000.0f);
+				float multiplier = ev.GetFrameTime().GetSeconds();
 
 				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::Q)) this->cma += 0.5f * multiplier;
 				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::E)) this->cma -= 0.5f * multiplier;
