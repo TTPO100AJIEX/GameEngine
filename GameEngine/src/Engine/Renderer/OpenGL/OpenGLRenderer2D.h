@@ -18,8 +18,8 @@ namespace GameEngine
 
 		virtual void BeginScene(const std::shared_ptr<Renderer::Camera>& camera) override;
 
-		void DrawIndexed(const std::shared_ptr<Renderer::OpenGLVertexArray>& vertexArray, const std::shared_ptr<Renderer::OpenGLShader>& shader);
-		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& vertexArray, const std::shared_ptr<Renderer::Shader>& shader) override;
+		void DrawIndexed(const std::shared_ptr<Renderer::OpenGLVertexArray>& vertexArray, const std::shared_ptr<Renderer::OpenGLShader>& shader, const glm::mat4& transform = glm::mat4(1.0f));
+		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& vertexArray, const std::shared_ptr<Renderer::Shader>& shader, const glm::mat4& transform = glm::mat4(1.0f)) override;
 
 		virtual void EndScene() override;
 

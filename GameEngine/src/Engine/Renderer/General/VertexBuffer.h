@@ -7,7 +7,7 @@ namespace GameEngine::Renderer
 	class VertexBuffer
 	{
 	protected:
-		unsigned int id;
+		unsigned int id = 0;
 
 	public:
 		virtual ~VertexBuffer() = default;

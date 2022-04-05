@@ -8,7 +8,7 @@ namespace GameEngine::Renderer
 	class VertexArray
 	{
 	protected:
-		unsigned int id;
+		unsigned int id = 0;
 		std::shared_ptr<Renderer::VertexBuffer> vertexBuffer;
 		std::shared_ptr<Renderer::IndexBuffer> indexBuffer;
 
@@ -23,5 +23,7 @@ namespace GameEngine::Renderer
 		virtual void SetVertexBuffer(const std::shared_ptr<Renderer::VertexBuffer>& l_vertexBuffer) = 0;
 		virtual void SetIndexBuffer(const std::shared_ptr<Renderer::IndexBuffer>& l_indexBuffer) = 0;
 
+		const std::shared_ptr<Renderer::VertexBuffer>& GetVertexBuffer() const { return(this->vertexBuffer); }
+		const std::shared_ptr<Renderer::IndexBuffer>& GetIndexBuffer() const { return(this->indexBuffer); }
 	};
 }

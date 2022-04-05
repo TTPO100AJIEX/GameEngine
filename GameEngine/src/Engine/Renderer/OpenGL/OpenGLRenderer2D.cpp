@@ -34,22 +34,23 @@ namespace GameEngine
 
 	void OpenGLRenderer2D::BeginScene(const std::shared_ptr<Renderer::Camera>& camera)
 	{
-		SceneData.ViewProjectionMatrix = camera->GetViewProjectionMatrix();
+		this->SceneData.ViewProjectionMatrix = camera->GetViewProjectionMatrix();
 	}
 
-	void OpenGLRenderer2D::DrawIndexed(const std::shared_ptr<Renderer::OpenGLVertexArray>& vertexArray, const std::shared_ptr<Renderer::OpenGLShader>& shader)
+	void OpenGLRenderer2D::DrawIndexed(const std::shared_ptr<Renderer::OpenGLVertexArray>& vertexArray, const std::shared_ptr<Renderer::OpenGLShader>& shader, const glm::mat4& transform)
 	{
 		shader->Bind();
-		shader->UploadUniformMat4("u_ViewProjection", SceneData.ViewProjectionMatrix);
-		glBindVertexArray(vertexArray->GetID());
+		shader->UploadUniformMat4("u_ViewProjection", this->SceneData.ViewProjectionMatrix);
+		shader->UploadUniformMat4("u_Transform", transform);
+		vertexArray->Bind();
+		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetAmount(), GL_UNSIGNED_INT, nullptr);
 	}
-	void OpenGLRenderer2D::DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& vertexArray, const std::shared_ptr<Renderer::Shader>& shader)
+	void OpenGLRenderer2D::DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& vertexArray, const std::shared_ptr<Renderer::Shader>& shader, const glm::mat4& transform)
 	{
-		this->DrawIndexed(std::dynamic_pointer_cast<Renderer::OpenGLVertexArray>(vertexArray), std::dynamic_pointer_cast<Renderer::OpenGLShader>(shader));
+		this->DrawIndexed(std::dynamic_pointer_cast<Renderer::OpenGLVertexArray>(vertexArray), std::dynamic_pointer_cast<Renderer::OpenGLShader>(shader), transform);
 	}
 
 	void OpenGLRenderer2D::EndScene()
 	{
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 	}
 }

@@ -4,7 +4,7 @@
 
 namespace GameEngine::Renderer
 {
-	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* Data, size_t Amount)
+	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* Data, size_t Amount) : IndexBuffer(Amount)
 	{
 		glCreateBuffers(1, &(this->id));
 		this->Bind();
