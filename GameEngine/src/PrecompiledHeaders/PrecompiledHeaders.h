@@ -8,6 +8,7 @@
 #include <memory>
 #include <functional>
 #include <utility>
+#include <new>
 #include <algorithm>
 
 #include <tuple>

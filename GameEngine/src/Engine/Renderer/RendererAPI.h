@@ -10,11 +10,13 @@
 
 namespace GameEngine::RendererAPI
 {
-	inline std::shared_ptr<Renderer::Camera> CreateCamera(float left, float right, float bottom, float top)
+	namespace Camera
 	{
-		return(std::make_shared<Renderer::Camera>(left, right, bottom, top));
+		inline std::shared_ptr<Renderer::Camera> Create(float left, float right, float bottom, float top)
+		{
+			return(std::make_shared<Renderer::Camera>(left, right, bottom, top));
+		}
 	}
-
 
 	#ifdef RENDERER_USE_OPENGL
 		inline std::shared_ptr<Renderer2D> CreateRenderer() 

@@ -3,24 +3,21 @@
 class Game : public GameEngine::Engine
 {
 private:
-	std::shared_ptr<GameEngine::Renderer::VertexArray> vao;
-	std::shared_ptr<GameEngine::Renderer::VertexBufferLayout> vbl;
-	std::shared_ptr<GameEngine::Renderer::VertexBuffer> vb;
-	std::shared_ptr<GameEngine::Renderer::IndexBuffer> ib;
-	std::shared_ptr<GameEngine::Renderer::Shader> shader;
 	std::shared_ptr<GameEngine::Renderer::Camera> camera;
+	glm::vec3 cameraPosition;
+	float cameraRotation;
 
-	float cmx, cmy, cmz, cma;
+	std::shared_ptr<GameEngine::Renderer::VertexArray> vao;
+	std::shared_ptr<GameEngine::Renderer::Shader> shader;
 
 public:
-	Game()
+	Game() : cameraPosition(0.0f), cameraRotation(0.0f)
 	{
 		GetRenderer2D()->SetClearColor({ 0.0f, 1.0f, 0.0f, 1.0f });
 
-		this->camera = GameEngine::RendererAPI::CreateCamera(-1.6f, 1.6f, -0.9f, 0.9f);
+		this->camera = GameEngine::RendererAPI::Camera::Create(-1.6f, 1.6f, -0.9f, 0.9f);
 
 		this->vao = GameEngine::RendererAPI::CreateVertexArray();
-
 		float vertices[4 * 3] = 
 		{
 			-0.5f, -0.5f, 1.0f,
@@ -29,12 +26,9 @@ public:
 			-0.5f, 0.5f, 1.0f
 		};
 		uint32_t indices[6] = { 2, 3, 0, 0, 1, 2 };
-		this->vbl = GameEngine::RendererAPI::CreateVertexBufferLayout({ { GameEngine::Renderer::ShaderDataType::Float3, false } });
-		this->vb = GameEngine::RendererAPI::CreateVertexBuffer(vertices, 4, this->vbl);
-		this->ib = GameEngine::RendererAPI::CreateIndexBuffer(indices, 6);
+		this->vao->SetVertexBuffer(GameEngine::RendererAPI::CreateVertexBuffer(vertices, 4, GameEngine::RendererAPI::CreateVertexBufferLayout({ { GameEngine::Renderer::ShaderDataType::Float3, false } })));
+		this->vao->SetIndexBuffer(GameEngine::RendererAPI::CreateIndexBuffer(indices, 6));
 
-		this->vao->SetVertexBuffer(this->vb);
-		this->vao->SetIndexBuffer(this->ib);
 
 		this->shader = GameEngine::RendererAPI::CreateShader(R"(
 			#version 460 core
@@ -62,10 +56,6 @@ public:
 				Color = vec4(v_Position * 0.5 + 0.5, 1.0);
 			}
 		)");
-		this->cmx = 0.0f;
-		this->cmy = 0.0f;
-		this->cmz = 0.0f;
-		this->cma = 0.0f;
 	}
 	~Game()
 	{
@@ -83,18 +73,18 @@ public:
 				GameEngine::AppTick& ev = static_cast<GameEngine::AppTick&>(event);
 				float multiplier = ev.GetFrameTime().GetSeconds();
 
-				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::Q)) this->cma += 0.5f * multiplier;
-				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::E)) this->cma -= 0.5f * multiplier;
+				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::Q)) this->cameraRotation += 0.5f * multiplier;
+				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::E)) this->cameraRotation -= 0.5f * multiplier;
 
-				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::RIGHT) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::D)) this->cmx -= 0.25f * multiplier;
-				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::LEFT) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::A)) this->cmx += 0.25f * multiplier;
+				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::RIGHT) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::D)) this->cameraPosition.x -= 0.25f * multiplier;
+				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::LEFT) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::A)) this->cameraPosition.x += 0.25f * multiplier;
 
-				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::UP) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::W)) this->cmy -= 0.25f * multiplier;
-				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::DOWN) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::S)) this->cmy += 0.25f * multiplier;
+				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::UP) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::W)) this->cameraPosition.y -= 0.25f * multiplier;
+				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::DOWN) || this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::S)) this->cameraPosition.y += 0.25f * multiplier;
 				
 
-				this->camera->SetPosition({ this->cmx, this->cmy, this->cmz });
-				this->camera->SetRotation(this->cma);
+				this->camera->SetPosition(this->cameraPosition);
+				this->camera->SetRotation(this->cameraRotation);
 
 				this->GetRenderer2D()->BeginScene(this->camera);
 
