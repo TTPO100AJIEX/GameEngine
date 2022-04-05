@@ -17,7 +17,7 @@ public:
 
 		this->camera = GameEngine::RendererAPI::Camera::Create(-1.6f, 1.6f, -0.9f, 0.9f);
 
-		this->vao = GameEngine::RendererAPI::CreateVertexArray();
+		this->vao = GameEngine::RendererAPI::VertexArray::Create();
 		float vertices[4 * 3] = 
 		{
 			-0.5f, -0.5f, 1.0f,
@@ -26,11 +26,11 @@ public:
 			-0.5f, 0.5f, 1.0f
 		};
 		uint32_t indices[6] = { 2, 3, 0, 0, 1, 2 };
-		this->vao->SetVertexBuffer(GameEngine::RendererAPI::CreateVertexBuffer(vertices, 4, GameEngine::RendererAPI::CreateVertexBufferLayout({ { GameEngine::Renderer::ShaderDataType::Float3, false } })));
-		this->vao->SetIndexBuffer(GameEngine::RendererAPI::CreateIndexBuffer(indices, 6));
+		this->vao->SetVertexBuffer(GameEngine::RendererAPI::VertexBuffer::Create(vertices, 4, GameEngine::RendererAPI::VertexBuffer::Layout::Create({ { GameEngine::Renderer::ShaderDataType::Float3, false } })));
+		this->vao->SetIndexBuffer(GameEngine::RendererAPI::IndexBuffer::Create(indices, 6));
 
 
-		this->shader = GameEngine::RendererAPI::CreateShader(R"(
+		this->shader = GameEngine::RendererAPI::Shader::Create(R"(
 			#version 460 core
 			
 			layout(location = 0) in vec3 a_Position;
