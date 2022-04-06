@@ -1,13 +1,11 @@
 #pragma once
 
-namespace GameEngine::Renderer
+namespace GameEngine::Render
 {
 	class Camera
 	{
 	private:
-		glm::mat4 ProjectionMatrix;
-		glm::mat4 ViewMatrix;
-		glm::mat4 ViewProjectionMatrix;
+		glm::mat4 ProjectionMatrix, ViewMatrix, ViewProjectionMatrix;
 		glm::vec3 Position = { 0.0f, 0.0f, 0.0f };
 		float Rotation = 0.0f;
 

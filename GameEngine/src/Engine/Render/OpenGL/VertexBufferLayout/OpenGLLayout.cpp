@@ -2,7 +2,7 @@
 
 #include "OpenGLLayout.h"
 
-namespace GameEngine::Renderer
+namespace GameEngine::Render
 {
 	OpenGLLayout::OpenGLLayout(const std::initializer_list<VertexBufferLayoutElement>& Elements) : VertexBufferLayout(Elements) {};
 

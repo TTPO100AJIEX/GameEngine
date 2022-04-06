@@ -17,7 +17,7 @@ namespace GameEngine
 			#error "One of [PLATFORM_WINDOWS] must be defined"
 		#endif
 
-		this->l_Renderer2D = RendererAPI::Create();
+		this->l_Renderer = RenderAPI::Create();
 	}
 	Engine::~Engine()
 	{

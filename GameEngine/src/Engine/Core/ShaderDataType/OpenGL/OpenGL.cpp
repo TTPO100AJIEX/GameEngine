@@ -1,6 +1,6 @@
 #include <PrecompiledHeaders.h>
 
-namespace GameEngine::Renderer
+namespace GameEngine::Render
 {
 	std::tuple<int, int, size_t> ShaderDataTypeToOpenGL(const ShaderDataType& type)
 	{

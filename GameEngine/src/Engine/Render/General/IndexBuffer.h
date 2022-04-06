@@ -1,6 +1,6 @@
 #pragma once
 
-namespace GameEngine::Renderer
+namespace GameEngine::Render
 {
 	class IndexBuffer
 	{
@@ -12,11 +12,11 @@ namespace GameEngine::Renderer
 		IndexBuffer(size_t Amount) : amount(Amount) {}
 		virtual ~IndexBuffer() = default;
 
-		inline unsigned int GetID() const { return(id); }
+		inline unsigned int GetID() const { return(this->id); }
+		inline const size_t& GetAmount() const { return(this->amount); }
 
 		virtual void Bind() const = 0;
 		virtual void UnBind() const = 0;
 
-		const size_t& GetAmount() const { return(amount); }
 	};
 }

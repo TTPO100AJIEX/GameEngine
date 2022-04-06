@@ -1,6 +1,6 @@
 #pragma once
 
-namespace GameEngine::Renderer
+namespace GameEngine::Render
 {
 	class Shader
 	{
@@ -12,7 +12,7 @@ namespace GameEngine::Renderer
 	public:
 		virtual ~Shader() = default;
 
-		inline unsigned int GetID() const { return(id); }
+		inline unsigned int GetID() const { return(this->id); }
 
 		virtual void Bind() const = 0;
 		virtual void UnBind() const = 0;

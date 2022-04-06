@@ -2,7 +2,7 @@
 
 #include "OpenGLShader.h"
 
-namespace GameEngine::Renderer
+namespace GameEngine::Render
 {
 	#ifdef DEBUG
 		unsigned int OpenGLShader::BoundShaderId = 0;
@@ -44,37 +44,37 @@ namespace GameEngine::Renderer
 			return;
 		}
 
-		id = glCreateProgram();
-		glAttachShader(id, vertexShader);
-		glAttachShader(id, fragmentShader);
-		glLinkProgram(id);
+		this->id = glCreateProgram();
+		glAttachShader(this->id, vertexShader);
+		glAttachShader(this->id, fragmentShader);
+		glLinkProgram(this->id);
 		int isLinked = 0;
-		glGetProgramiv(id, GL_LINK_STATUS, &isLinked);
+		glGetProgramiv(this->id, GL_LINK_STATUS, &isLinked);
 		if (isLinked == GL_FALSE)
 		{
 			int maxLength = 0;
-			glGetProgramiv(id, GL_INFO_LOG_LENGTH, &maxLength);
+			glGetProgramiv(this->id, GL_INFO_LOG_LENGTH, &maxLength);
 			char *infoLog = (char*)(alloca(maxLength * sizeof(char)));
-			glGetProgramInfoLog(id, maxLength, &maxLength, infoLog);
+			glGetProgramInfoLog(this->id, maxLength, &maxLength, infoLog);
 			ENGINE_ERROR("{0}", infoLog);
-			glDeleteProgram(id);
+			glDeleteProgram(this->id);
 			glDeleteShader(vertexShader);
 			glDeleteShader(fragmentShader);
 			return;
 		}
 
-		glDetachShader(id, vertexShader);
-		glDetachShader(id, fragmentShader);
+		glDetachShader(this->id, vertexShader);
+		glDetachShader(this->id, fragmentShader);
 	}
 	OpenGLShader::~OpenGLShader()
 	{
-		glDeleteProgram(id);
+		glDeleteProgram(this->id);
 	}
 
 	void OpenGLShader::Bind() const
 	{
 		#ifdef DEBUG
-			this->BoundShaderId = id;
+			this->BoundShaderId = this->id;
 		#endif
 		glUseProgram(id);
 	}
@@ -89,11 +89,11 @@ namespace GameEngine::Renderer
 	int OpenGLShader::GetUniformLocation(const std::string& name) const
 	{
 		#ifdef DEBUG
-			if (this->BoundShaderId != id) ENGINE_WARN("Attempt to set uniform {0} for an unbound shader {1}", name, id);
+			if (this->BoundShaderId != this->id) ENGINE_WARN("Attempt to set uniform {0} for an unbound shader {1}", name, this->id);
 		#endif
-		int location = glGetUniformLocation(id, name.c_str());
+		int location = glGetUniformLocation(this->id, name.c_str());
 		#ifdef DEBUG
-			if (location == -1) ENGINE_WARN("Uniform {0} does not exist for shader {1}", name, id);
+			if (location == -1) ENGINE_WARN("Uniform {0} does not exist for shader {1}", name, this->id);
 		#endif
 		return(location);
 	}

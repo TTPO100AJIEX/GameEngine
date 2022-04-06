@@ -2,7 +2,7 @@
 
 #include "../../General/VertexBufferLayout.h"
 
-namespace GameEngine::Renderer
+namespace GameEngine::Render
 {
 	class OpenGLLayout : public VertexBufferLayout
 	{

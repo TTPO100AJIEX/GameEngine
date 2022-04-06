@@ -2,7 +2,7 @@
 
 #include "../../General//Shader.h"
 
-namespace GameEngine::Renderer
+namespace GameEngine::Render
 {
 	class OpenGLShader : public Shader
 	{

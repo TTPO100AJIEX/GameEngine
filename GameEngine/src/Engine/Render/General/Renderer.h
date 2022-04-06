@@ -6,7 +6,7 @@
 
 namespace GameEngine
 {
-	class Renderer2D
+	class Renderer
 	{
 	protected:
 		struct Scene_Data
@@ -16,15 +16,15 @@ namespace GameEngine
 		Scene_Data SceneData;
 
 	public:
-		virtual ~Renderer2D() = default;
+		virtual ~Renderer() = default;
 
 		virtual void SetClearColor(const glm::vec4& Color) = 0;
 		virtual void Clear() = 0;
 
 
-		virtual void BeginScene(const std::shared_ptr<Renderer::Camera>& camera) = 0;
+		virtual void BeginScene(const std::shared_ptr<Render::Camera>& camera) = 0;
 
-		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& vertexArray, const std::shared_ptr<Renderer::Shader>& shader, const glm::mat4& transform = glm::mat4(1.0f)) = 0;
+		virtual void DrawIndexed(const std::shared_ptr<Render::VertexArray>& vertexArray, const std::shared_ptr<Render::Shader>& shader, const glm::mat4& transform = glm::mat4(1.0f)) = 0;
 
 		virtual void EndScene() = 0;
 	};

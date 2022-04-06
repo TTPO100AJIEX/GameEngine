@@ -2,7 +2,7 @@
 
 #include "OpenGLIndexBuffer.h"
 
-namespace GameEngine::Renderer
+namespace GameEngine::Render
 {
 	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* Data, size_t Amount) : IndexBuffer(Amount)
 	{
