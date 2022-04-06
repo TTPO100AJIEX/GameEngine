@@ -93,10 +93,15 @@ namespace GameEngine::Render
 		#ifdef DEBUG
 			if (this->BoundShaderId != this->id) ENGINE_WARN("Attempt to set uniform {0} for an unbound shader {1}", name, this->id);
 		#endif
+
+		if (this->UniformLocationCache.contains(name))
+			return(this->UniformLocationCache[name]);
+
 		int location = glGetUniformLocation(this->id, name.c_str());
 		#ifdef DEBUG
 			if (location == -1) ENGINE_WARN("Uniform {0} does not exist for shader {1}", name, this->id);
 		#endif
+		this->UniformLocationCache[name] = location;
 		return(location);
 	}
 

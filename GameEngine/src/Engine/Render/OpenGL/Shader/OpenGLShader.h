@@ -10,7 +10,8 @@ namespace GameEngine::Render
 		#ifdef DEBUG
 			static unsigned int BoundShaderId;
 		#endif
-
+		
+		mutable std::unordered_map<std::string, int> UniformLocationCache;
 		int GetUniformLocation(const std::string& name) const;
 
 	public:
