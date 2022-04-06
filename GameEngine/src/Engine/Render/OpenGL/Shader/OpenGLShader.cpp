@@ -71,6 +71,7 @@ namespace GameEngine::Render
 		glDeleteProgram(this->id);
 	}
 
+
 	void OpenGLShader::Bind() const
 	{
 		#ifdef DEBUG
@@ -86,6 +87,7 @@ namespace GameEngine::Render
 		glUseProgram(0);
 	}
 
+
 	int OpenGLShader::GetUniformLocation(const std::string& name) const
 	{
 		#ifdef DEBUG
@@ -97,9 +99,42 @@ namespace GameEngine::Render
 		#endif
 		return(location);
 	}
-	void OpenGLShader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix) const
+
+	void OpenGLShader::UploadUniformInt(const std::string& name, int value) const
 	{
-		int location = GetUniformLocation(name);
-		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
+		int location = this->GetUniformLocation(name);
+		glUniform1i(location, value);
+	}
+	
+	void OpenGLShader::UploadUniformFloat(const std::string& name, float value) const
+	{
+		int location = this->GetUniformLocation(name);
+		glUniform1f(location, value);
+	}
+	void OpenGLShader::UploadUniformFloat2(const std::string& name, glm::vec2& value) const
+	{
+		int location = this->GetUniformLocation(name);
+		glUniform2f(location, value.x, value.y);
+	}
+	void OpenGLShader::UploadUniformFloat3(const std::string& name, glm::vec3& value) const
+	{
+		int location = this->GetUniformLocation(name);
+		glUniform3f(location, value.x, value.y, value.z);
+	}
+	void OpenGLShader::UploadUniformFloat4(const std::string& name, glm::vec4& value) const
+	{
+		int location = this->GetUniformLocation(name);
+		glUniform4f(location, value.x, value.y, value.z, value.w);
+	}
+
+	void OpenGLShader::UploadUniformMat3(const std::string& name, const glm::mat3& value) const
+	{
+		int location = this->GetUniformLocation(name);
+		glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(value));
+	}
+	void OpenGLShader::UploadUniformMat4(const std::string& name, const glm::mat4& value) const
+	{
+		int location = this->GetUniformLocation(name);
+		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(value));
 	}
 }

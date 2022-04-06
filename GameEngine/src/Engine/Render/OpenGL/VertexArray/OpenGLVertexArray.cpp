@@ -32,7 +32,7 @@ namespace GameEngine::Render
 	}
 	void OpenGLVertexArray::SetVertexBuffer(const std::shared_ptr<Render::VertexBuffer>& l_vertexBuffer)
 	{
-		this->SetVertexBuffer(std::dynamic_pointer_cast<Render::OpenGLVertexBuffer>(l_vertexBuffer));
+		this->SetVertexBuffer(std::static_pointer_cast<Render::OpenGLVertexBuffer>(l_vertexBuffer));
 	}
 
 	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<Render::OpenGLIndexBuffer>& l_indexBuffer)
@@ -43,6 +43,6 @@ namespace GameEngine::Render
 	}
 	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<Render::IndexBuffer>& l_indexBuffer)
 	{
-		this->SetIndexBuffer(std::dynamic_pointer_cast<Render::OpenGLIndexBuffer>(l_indexBuffer));
+		this->SetIndexBuffer(std::static_pointer_cast<Render::OpenGLIndexBuffer>(l_indexBuffer));
 	}
 }

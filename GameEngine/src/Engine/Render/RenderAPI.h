@@ -49,7 +49,7 @@ namespace GameEngine::RenderAPI
 			}
 			inline std::shared_ptr<Render::VertexBuffer> Create(void* Data, size_t Amount, const std::shared_ptr<Render::VertexBufferLayout>& Layout)
 			{
-				return(Create(Data, Amount, std::dynamic_pointer_cast<Render::OpenGLLayout>(Layout)));
+				return(Create(Data, Amount, std::static_pointer_cast<Render::OpenGLLayout>(Layout)));
 			}
 		}
 

@@ -45,7 +45,7 @@ namespace GameEngine
 	}
 	void OpenGLRenderer::DrawIndexed(const std::shared_ptr<Render::VertexArray>& vertexArray, const std::shared_ptr<Render::Shader>& shader, const glm::mat4& transform)
 	{
-		this->DrawIndexed(std::dynamic_pointer_cast<Render::OpenGLVertexArray>(vertexArray), std::dynamic_pointer_cast<Render::OpenGLShader>(shader), transform);
+		this->DrawIndexed(std::static_pointer_cast<Render::OpenGLVertexArray>(vertexArray), std::static_pointer_cast<Render::OpenGLShader>(shader), transform);
 	}
 
 	void OpenGLRenderer::EndScene()

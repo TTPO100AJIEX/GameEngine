@@ -7,8 +7,6 @@ namespace GameEngine::Render
 	protected:
 		unsigned int id;
 
-		virtual int GetUniformLocation(const std::string& name) const = 0;
-
 	public:
 		virtual ~Shader() = default;
 
@@ -16,7 +14,5 @@ namespace GameEngine::Render
 
 		virtual void Bind() const = 0;
 		virtual void UnBind() const = 0;
-
-		virtual void UploadUniformMat4(const std::string& name, const glm::mat4& matrix) const = 0;
 	};
 }
