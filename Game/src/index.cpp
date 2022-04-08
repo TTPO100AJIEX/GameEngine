@@ -14,7 +14,8 @@ private:
 	float rotation2 = 0.0f;
 	float scale2 = 1.0f;
 
-	std::shared_ptr<GameEngine::Render::Texture2D> texture;
+	std::shared_ptr<GameEngine::Render::Texture2D> texture1;
+	std::shared_ptr<GameEngine::Render::Texture2D> texture2;
 
 public:
 	Game()
@@ -116,7 +117,8 @@ public:
 			}
 		)");
 
-		this->texture = GameEngine::RenderAPI::Texture::Create2D("assets/textures/avatar.png");
+		this->texture1 = GameEngine::RenderAPI::Texture::Create2D("assets/textures/avatar.png");
+		this->texture2 = GameEngine::RenderAPI::Texture::Create2D("assets/textures/avatar_template.png");
 	}
 	~Game()
 	{
@@ -176,7 +178,13 @@ public:
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), this->position2);
 				transform *= glm::rotate(glm::mat4(1.0f), this->rotation2, glm::vec3(0, 0, 1));
 				transform *= glm::scale(glm::mat4(1.0f), glm::vec3(scale2));
-				this->texture->Bind(1);
+
+				this->texture1->Bind(1);
+				this->shader2->Bind();
+				this->shader2->UploadUniformInt("u_Texture", 1);
+				this->GetRenderer()->DrawIndexed(this->vao2, this->shader2, transform);
+
+				this->texture2->Bind(1);
 				this->shader2->Bind();
 				this->shader2->UploadUniformInt("u_Texture", 1);
 				this->GetRenderer()->DrawIndexed(this->vao2, this->shader2, transform);

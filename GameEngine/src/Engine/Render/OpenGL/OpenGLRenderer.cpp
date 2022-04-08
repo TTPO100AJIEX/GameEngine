@@ -24,6 +24,9 @@ namespace GameEngine
 		ENGINE_INFO("OpenGL vendor: {0}", glGetString(GL_VENDOR));
 		ENGINE_INFO("OpenGL hardware: {0}", glGetString(GL_RENDERER));
 		ENGINE_INFO("OpenGL version: {0}", glGetString(GL_VERSION));
+
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 	OpenGLRenderer::~OpenGLRenderer()
 	{

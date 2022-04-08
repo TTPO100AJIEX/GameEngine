@@ -2,7 +2,7 @@
 
 #include "General/Camera/Camera.h"
 
-#ifdef RENDERER_USE_OPENGL
+#ifdef RENDER_USE_OPENGL
 	#include "OpenGL/OpenGLRenderer.h"
 	#include "OpenGL/VertexArray/OpenGLVertexArray.h"
 	#include "OpenGL/VertexBuffer/OpenGLVertexBuffer.h"
@@ -21,7 +21,7 @@ namespace GameEngine::RenderAPI
 		}
 	}
 
-	#ifdef RENDERER_USE_OPENGL
+	#ifdef RENDER_USE_OPENGL
 		inline std::shared_ptr<Renderer> Create()
 		{
 			return(std::make_shared<OpenGLRenderer>());
@@ -79,6 +79,6 @@ namespace GameEngine::RenderAPI
 		}
 
 	#else
-		#error "One of [RENDERER_USE_OPENGL] must be defined"
+		#error "One of [RENDER_USE_OPENGL] must be defined"
 	#endif
 }

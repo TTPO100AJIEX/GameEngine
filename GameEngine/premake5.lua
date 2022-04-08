@@ -35,7 +35,7 @@ project "GameEngine"
 
 	defines
 	{
-        "RENDERER_USE_OPENGL",
+        "RENDER_USE_OPENGL",
 		"GLFW_INCLUDE_NONE",
 		"STB_IMAGE_IMPLEMENTATION"
 	}

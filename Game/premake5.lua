@@ -29,7 +29,7 @@ project "Game"
 
 	defines
 	{
-        "RENDERER_USE_OPENGL"
+        "RENDER_USE_OPENGL"
 	}
 	
 	filter "system:windows"
