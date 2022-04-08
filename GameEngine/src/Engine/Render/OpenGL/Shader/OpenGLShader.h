@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../General//Shader.h"
+#include "../../General/Shader.h"
 
 namespace GameEngine::Render
 {
@@ -22,14 +22,14 @@ namespace GameEngine::Render
 		virtual void UnBind() const override;
 
 
-		void UploadUniformInt(const std::string& name, int value) const;
+		virtual void UploadUniformInt(const std::string& name, int value) const override;
 
-		void UploadUniformFloat(const std::string& name, float value) const;
-		void UploadUniformFloat2(const std::string& name, glm::vec2& value) const;
-		void UploadUniformFloat3(const std::string& name, glm::vec3& value) const;
-		void UploadUniformFloat4(const std::string& name, glm::vec4& value) const;
+		virtual void UploadUniformFloat(const std::string& name, float value) const override;
+		virtual void UploadUniformFloat2(const std::string& name, glm::vec2& value) const override;
+		virtual void UploadUniformFloat3(const std::string& name, glm::vec3& value) const override;
+		virtual void UploadUniformFloat4(const std::string& name, glm::vec4& value) const override;
 
-		void UploadUniformMat3(const std::string& name, const glm::mat3& value) const;
-		void UploadUniformMat4(const std::string& name, const glm::mat4& value) const;
+		virtual void UploadUniformMat3(const std::string& name, const glm::mat3& value) const override;
+		virtual void UploadUniformMat4(const std::string& name, const glm::mat4& value) const override;
 	};
 }

@@ -8,6 +8,7 @@
 	#include "OpenGL/VertexBuffer/OpenGLVertexBuffer.h"
 	#include "OpenGL/IndexBuffer/OpenGLIndexBuffer.h"
 	#include "OpenGL/Shader/OpenGLShader.h"
+	#include "OpenGL/Texture/Texture2D/OpenGLTexture2D.h"
 #endif
 
 namespace GameEngine::RenderAPI
@@ -66,6 +67,14 @@ namespace GameEngine::RenderAPI
 			inline std::shared_ptr<Render::Shader> Create(const std::string& vertexSource, const std::string& fragmentSrc)
 			{
 				return(std::make_shared<Render::OpenGLShader>(vertexSource, fragmentSrc));
+			}
+		}
+
+		namespace Texture
+		{
+			inline std::shared_ptr<Render::Texture2D> Create2D(const std::string& path)
+			{
+				return(std::make_shared<Render::OpenGLTexture2D>(path));
 			}
 		}
 

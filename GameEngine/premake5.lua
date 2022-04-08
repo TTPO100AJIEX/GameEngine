@@ -36,7 +36,8 @@ project "GameEngine"
 	defines
 	{
         "RENDERER_USE_OPENGL",
-		"GLFW_INCLUDE_NONE"
+		"GLFW_INCLUDE_NONE",
+		"STB_IMAGE_IMPLEMENTATION"
 	}
 
     filter "system:windows"

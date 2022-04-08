@@ -14,6 +14,8 @@ private:
 	float rotation2 = 0.0f;
 	float scale2 = 1.0f;
 
+	std::shared_ptr<GameEngine::Render::Texture2D> texture;
+
 public:
 	Game()
 	{
@@ -30,7 +32,11 @@ public:
 			-0.5f, 0.5f, 1.0f
 		};
 		uint32_t indices1[6] = { 2, 3, 0, 0, 1, 2 };
-		this->vao1->SetVertexBuffer(GameEngine::RenderAPI::VertexBuffer::Create(vertices1, 4, GameEngine::RenderAPI::VertexBuffer::Layout::Create({ { GameEngine::Render::ShaderDataType::Float3, false } })));
+		this->vao1->SetVertexBuffer(GameEngine::RenderAPI::VertexBuffer::Create(vertices1, 4, 
+			GameEngine::RenderAPI::VertexBuffer::Layout::Create({ 
+				{ GameEngine::Render::ShaderDataType::Float3, false } 
+			})
+		));
 		this->vao1->SetIndexBuffer(GameEngine::RenderAPI::IndexBuffer::Create(indices1, 6));
 
 		this->shader1 = GameEngine::RenderAPI::Shader::Create(R"(
@@ -63,29 +69,36 @@ public:
 
 
 		this->vao2 = GameEngine::RenderAPI::VertexArray::Create();
-		float vertices2[4 * 3] =
+		float vertices2[4 * 5] =
 		{
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.0f,  0.5f, 0.0f
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
-		uint32_t indices2[6] = { 0, 1, 2 };
-		this->vao2->SetVertexBuffer(GameEngine::RenderAPI::VertexBuffer::Create(vertices2, 4, GameEngine::RenderAPI::VertexBuffer::Layout::Create({ { GameEngine::Render::ShaderDataType::Float3, false } })));
+		uint32_t indices2[6] = { 2, 3, 0, 0, 1, 2 };
+		this->vao2->SetVertexBuffer(GameEngine::RenderAPI::VertexBuffer::Create(vertices2, 4,
+			GameEngine::RenderAPI::VertexBuffer::Layout::Create({
+				{ GameEngine::Render::ShaderDataType::Float3, false },
+				{ GameEngine::Render::ShaderDataType::Float2, false }
+			})
+		)); 
 		this->vao2->SetIndexBuffer(GameEngine::RenderAPI::IndexBuffer::Create(indices2, 6));
 
 		this->shader2 = GameEngine::RenderAPI::Shader::Create(R"(
 			#version 460 core
 			
 			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
 
 			uniform mat4 u_ViewProjection;
 			uniform mat4 u_Transform;
 
-			out vec3 v_Position;
+			out vec2 v_TexCoord;
 
 			void main()
 			{
-				v_Position = a_Position;
+				v_TexCoord = a_TexCoord;
 				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 		)", R"(
@@ -93,13 +106,17 @@ public:
 			
 			layout(location = 0) out vec4 Color;
 
-			in vec3 v_Position;
+			in vec2 v_TexCoord;
+
+			uniform sampler2D u_Texture;
 
 			void main()
 			{
-				Color = vec4(0.2, 0.3, 0.8, 1.0);
+				Color = texture(u_Texture, v_TexCoord);
 			}
 		)");
+
+		this->texture = GameEngine::RenderAPI::Texture::Create2D("assets/textures/avatar.png");
 	}
 	~Game()
 	{
@@ -145,6 +162,7 @@ public:
 
 				this->GetRenderer()->BeginScene(this->camera);
 
+
 				for (int x = 0; x < 10; x++)
 				{
 					for (int y = 0; y < 10; y++)
@@ -154,10 +172,15 @@ public:
 						this->GetRenderer()->DrawIndexed(this->vao1, this->shader1, transform);
 					}
 				}
+
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), this->position2);
 				transform *= glm::rotate(glm::mat4(1.0f), this->rotation2, glm::vec3(0, 0, 1));
 				transform *= glm::scale(glm::mat4(1.0f), glm::vec3(scale2));
+				this->texture->Bind(1);
+				this->shader2->Bind();
+				this->shader2->UploadUniformInt("u_Texture", 1);
 				this->GetRenderer()->DrawIndexed(this->vao2, this->shader2, transform);
+
 
 				this->GetRenderer()->EndScene();
 				break;
