@@ -1,5 +1,6 @@
 #pragma once
 
+#include <fstream>
 #include <sstream>
 
 #include <cstdint>
@@ -33,4 +34,6 @@
 #include <Engine/Core/KeyCodes/GLFW/GLFW.h>
 #include <Engine/Core/ShaderDataType/ShaderDataType.h>
 #include <Engine/Core/ShaderDataType/OpenGL/OpenGL.h>
+#include <Engine/Core/ShaderType/ShaderType.h>
+#include <Engine/Core/ShaderType/OpenGL/OpenGL.h>
 #include <Engine/Core/Time/Time.h>

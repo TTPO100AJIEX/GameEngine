@@ -64,9 +64,13 @@ namespace GameEngine::RenderAPI
 
 		namespace Shader
 		{
-			inline std::shared_ptr<Render::Shader> Create(const std::string& vertexSource, const std::string& fragmentSrc)
+			inline std::shared_ptr<Render::Shader> CreateFromStrings(const std::unordered_map<GameEngine::Render::ShaderType, const std::string>& data)
 			{
-				return(std::make_shared<Render::OpenGLShader>(vertexSource, fragmentSrc));
+				return(std::make_shared<Render::OpenGLShader>(data, false));
+			}
+			inline std::shared_ptr<Render::Shader> CreateFromFiles(const std::unordered_map<GameEngine::Render::ShaderType, const std::string>& data)
+			{
+				return(std::make_shared<Render::OpenGLShader>(data, true));
 			}
 		}
 

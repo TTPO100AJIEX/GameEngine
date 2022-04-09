@@ -19,10 +19,10 @@ To learn:
 I have two projects (Game and GameEngine) in a solution. I have links { "GameEngine" } in the Game project (I am using premake5 to generate the projects but I guess it is not a big issue). The only thing I use in Game from GameEngine is #include <EntryPoint.cpp> which is set up to include everything the GameEngine implements. Now I have to actually copy all includedirs from GameEngine to Game like "%{wks.location}/GameEngine/src",. But is it really necessary?
 As I am thinking of how it should be: the GameEngine is compiled as StaticLib so it should contain everything it needs. The Game just links that .lib file, and does not have all GameEngine's includedirs copied.
 8) https://www.floofyhosting.com/billing/index.php?rp=/store/kvm-vps
-9) https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
-   https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
-10) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get
-11) https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html
-12) cef
-13) glm
-14) https://en.cppreference.com/w/cpp/language/value_category
+9) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get
+10) https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html
+11) cef
+12) glm
+13) https://en.cppreference.com/w/cpp/language/value_category
+14) https://docs.gl/sl4/all
+15) c++ filesystem, fstream

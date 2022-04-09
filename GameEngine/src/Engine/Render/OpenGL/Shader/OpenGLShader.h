@@ -15,7 +15,7 @@ namespace GameEngine::Render
 		int GetUniformLocation(const std::string& name) const;
 
 	public:
-		OpenGLShader(const std::string& vertexSource, const std::string& fragmentSrc);
+		OpenGLShader(const std::unordered_map<GameEngine::Render::ShaderType, const std::string>& data, bool fromFiles = false);
 		virtual ~OpenGLShader();
 
 		virtual void Bind() const override;

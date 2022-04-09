@@ -6,6 +6,7 @@ namespace GameEngine::Render
 	{
 	protected:
 		unsigned int id;
+		std::unordered_map <ShaderType, unsigned int> ShaderIds;
 
 	public:
 		virtual ~Shader() = default;

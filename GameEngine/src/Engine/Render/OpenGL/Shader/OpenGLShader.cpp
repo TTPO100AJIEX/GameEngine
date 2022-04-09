@@ -8,67 +8,88 @@ namespace GameEngine::Render
 		unsigned int OpenGLShader::BoundShaderId = 0;
 	#endif
 
-	OpenGLShader::OpenGLShader(const std::string& vertexSource, const std::string& fragmentSrc)
+	OpenGLShader::OpenGLShader(const std::unordered_map<GameEngine::Render::ShaderType, const std::string>& data, bool fromFiles)
 	{
-		unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-		const char *vertexSourceC = vertexSource.c_str();
-		glShaderSource(vertexShader, 1, &vertexSourceC, 0);
-		glCompileShader(vertexShader);
-		int isCompiled = 0;
-		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &isCompiled);
-		if (isCompiled == GL_FALSE)
+		bool errored = false;
+		for (auto& [type, source] : data)
 		{
-			int maxLength = 0;
-			glGetShaderiv(vertexShader, GL_INFO_LOG_LENGTH, &maxLength);
-			char *infoLog = (char*)(alloca(maxLength * sizeof(char)));
-			glGetShaderInfoLog(vertexShader, maxLength, &maxLength, infoLog);
-			ENGINE_ERROR("{0}", infoLog);
-			glDeleteShader(vertexShader);
-			return;
-		}
+			unsigned int l_type = ShaderTypeToOpenGL(type);
+			if (!l_type) [[unlikely]] { continue; }
+			if (this->ShaderIds.contains(type)) [[unlikely]]
+			{
+				ENGINE_WARN("OpenGLShader: attempt to bind two shaders of same type {0} to the same program", type);
+				errored = true;
+				break;
+			}
+			unsigned int id = glCreateShader(l_type);
+			this->ShaderIds[type] = id;
+			if (fromFiles)
+			{
+				std::ifstream filein(source);
+				if (!filein)
+				{
+					errored = true;
+					ENGINE_ERROR("OpenGLShader: failed to open file {0} for shader {1}!", source, type);
+					break;
+				}
+				std::stringstream source_buffer;
+				std::string shader_source;
+				source_buffer << filein.rdbuf();
+				shader_source = source_buffer.str();
+				const char* src = shader_source.c_str();
+				glShaderSource(id, 1, &src, 0);
+			}
+			else
+			{
+				const char* src = source.c_str();
+				glShaderSource(id, 1, &src, 0);
+			}
+			glCompileShader(id);
 
-		unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-		const char *fragmentSrcC = fragmentSrc.c_str();
-		glShaderSource(fragmentShader, 1, &fragmentSrcC, 0);
-		glCompileShader(fragmentShader);
-		glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &isCompiled);
-		if (isCompiled == GL_FALSE)
+			int isCompiled = 0;
+			glGetShaderiv(id, GL_COMPILE_STATUS, &isCompiled);
+			if (isCompiled == GL_TRUE) [[likely]] { continue; }
+			errored = true;
+			#ifdef DEBUG
+				int errorLength = 0;
+				glGetShaderiv(id, GL_INFO_LOG_LENGTH, &errorLength);
+				char* error = (char*)(alloca(errorLength * sizeof(char)));
+				glGetShaderInfoLog(id, errorLength, &errorLength, error);
+				ENGINE_ERROR("OpenGLShader: shader with type {0} failed to compile with error {1}", type, error);
+			#endif
+			break;
+		}
+		if (errored) [[unlikely]]
 		{
-			int maxLength = 0;
-			glGetShaderiv(fragmentShader, GL_INFO_LOG_LENGTH, &maxLength);
-			char *infoLog = (char*)(alloca(maxLength * sizeof(char)));
-			glGetShaderInfoLog(fragmentShader, maxLength, &maxLength, infoLog);
-			ENGINE_ERROR("{0}", infoLog);
-			glDeleteShader(vertexShader);
-			glDeleteShader(fragmentShader);
+			for (auto& [type, Id] : this->ShaderIds) glDeleteShader(Id);
 			return;
 		}
 
 		this->id = glCreateProgram();
-		glAttachShader(this->id, vertexShader);
-		glAttachShader(this->id, fragmentShader);
+		for (auto& [type, Id] : this->ShaderIds) glAttachShader(this->id, Id);
 		glLinkProgram(this->id);
+
 		int isLinked = 0;
 		glGetProgramiv(this->id, GL_LINK_STATUS, &isLinked);
-		if (isLinked == GL_FALSE)
+		if (isLinked == GL_TRUE) [[likely]]
 		{
-			int maxLength = 0;
-			glGetProgramiv(this->id, GL_INFO_LOG_LENGTH, &maxLength);
-			char *infoLog = (char*)(alloca(maxLength * sizeof(char)));
-			glGetProgramInfoLog(this->id, maxLength, &maxLength, infoLog);
-			ENGINE_ERROR("{0}", infoLog);
-			glDeleteProgram(this->id);
-			glDeleteShader(vertexShader);
-			glDeleteShader(fragmentShader);
+			for (auto& [type, Id] : this->ShaderIds) glDetachShader(this->id, Id); 
 			return;
 		}
-
-		glDetachShader(this->id, vertexShader);
-		glDetachShader(this->id, fragmentShader);
+		#ifdef DEBUG
+			int errorLength = 0;
+			glGetProgramiv(this->id, GL_INFO_LOG_LENGTH, &errorLength);
+			char* error = (char*)(alloca(errorLength * sizeof(char)));
+			glGetProgramInfoLog(this->id, errorLength, &errorLength, error);
+			ENGINE_ERROR("OpenGLShader: failed to link shader program with error {0}", error);
+		#endif
+		glDeleteProgram(this->id);
+		for (auto& [type, Id] : this->ShaderIds) glDeleteShader(Id);
 	}
 	OpenGLShader::~OpenGLShader()
 	{
 		glDeleteProgram(this->id);
+		for (auto& [type, Id] : this->ShaderIds) glDeleteShader(Id);
 	}
 
 

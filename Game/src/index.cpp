@@ -39,35 +39,10 @@ public:
 			})
 		));
 		this->vao1->SetIndexBuffer(GameEngine::RenderAPI::IndexBuffer::Create(indices1, 6));
-
-		this->shader1 = GameEngine::RenderAPI::Shader::Create(R"(
-			#version 460 core
-			
-			layout(location = 0) in vec3 a_Position;
-
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-
-			out vec3 v_Position;
-
-			void main()
-			{
-				v_Position = a_Position;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
-			}
-		)", R"(
-			#version 460 core
-			
-			layout(location = 0) out vec4 Color;
-
-			in vec3 v_Position;
-
-			void main()
-			{
-				Color = vec4(v_Position * 0.5 + 0.5, 1.0);
-			}
-		)");
-
+		this->shader1 = GameEngine::RenderAPI::Shader::CreateFromFiles({
+			{ GameEngine::Render::ShaderType::Vertex, "assets/shaders/solid/vertex.glsl" },
+			{ GameEngine::Render::ShaderType::Fragment, "assets/shaders/solid/fragment.glsl" }
+		});
 
 		this->vao2 = GameEngine::RenderAPI::VertexArray::Create();
 		float vertices2[4 * 5] =
@@ -85,38 +60,10 @@ public:
 			})
 		)); 
 		this->vao2->SetIndexBuffer(GameEngine::RenderAPI::IndexBuffer::Create(indices2, 6));
-
-		this->shader2 = GameEngine::RenderAPI::Shader::Create(R"(
-			#version 460 core
-			
-			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec2 a_TexCoord;
-
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-
-			out vec2 v_TexCoord;
-
-			void main()
-			{
-				v_TexCoord = a_TexCoord;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
-			}
-		)", R"(
-			#version 460 core
-			
-			layout(location = 0) out vec4 Color;
-
-			in vec2 v_TexCoord;
-
-			uniform sampler2D u_Texture;
-
-			void main()
-			{
-				Color = texture(u_Texture, v_TexCoord);
-			}
-		)");
-
+		this->shader2 = GameEngine::RenderAPI::Shader::CreateFromFiles({
+			{ GameEngine::Render::ShaderType::Vertex, "assets/shaders/texture/vertex.glsl" },
+			{ GameEngine::Render::ShaderType::Fragment, "assets/shaders/texture/fragment.glsl" }
+		});
 		this->texture1 = GameEngine::RenderAPI::Texture::Create2D("assets/textures/avatar.png");
 		this->texture2 = GameEngine::RenderAPI::Texture::Create2D("assets/textures/avatar_template.png");
 	}
