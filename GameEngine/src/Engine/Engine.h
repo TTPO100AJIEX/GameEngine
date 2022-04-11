@@ -23,8 +23,8 @@ namespace GameEngine
 		Engine();
 		virtual ~Engine();
 
-		inline const std::unique_ptr<Window>& GetWindow() const { return(this->l_Window); }
-		inline const std::shared_ptr<Renderer>& GetRenderer() const { return(this->l_Renderer); }
+		const std::unique_ptr<Window>& GetWindow() const { return(this->l_Window); }
+		const std::shared_ptr<Renderer>& GetRenderer() const { return(this->l_Renderer); }
 
 		void Run();
 

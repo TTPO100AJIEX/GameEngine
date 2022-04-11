@@ -12,7 +12,7 @@ namespace GameEngine::Render
 	public:
 		virtual ~VertexBuffer() = default;
 
-		inline unsigned int GetID() const { return(this->id); }
+		unsigned int GetID() const { return(this->id); }
 
 		virtual void Bind() const = 0;
 		virtual void UnBind() const = 0;

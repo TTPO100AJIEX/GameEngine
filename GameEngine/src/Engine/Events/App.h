@@ -22,7 +22,7 @@ namespace GameEngine
 			}
 		#endif
 
-		inline Time GetFrameTime() { return(this->FrameTime); }
+		Time GetFrameTime() { return(this->FrameTime); }
 
 	};
 }

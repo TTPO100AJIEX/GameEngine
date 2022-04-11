@@ -1,6 +1,7 @@
 #pragma once
 
 #include "General/Camera/Camera.h"
+#include "General/ShaderLibrary/ShaderLibrary.h"
 
 #ifdef RENDER_USE_OPENGL
 	#include "OpenGL/OpenGLRenderer.h"
@@ -41,6 +42,10 @@ namespace GameEngine::RenderAPI
 	{
 		std::shared_ptr<::GameEngine::Render::Shader> CreateFromStrings(const std::unordered_map<::GameEngine::Render::ShaderType, const std::string>& data);
 		std::shared_ptr<::GameEngine::Render::Shader> CreateFromFiles(const std::unordered_map<::GameEngine::Render::ShaderType, const std::string>& data);
+		namespace Library
+		{
+			std::shared_ptr<::GameEngine::Render::ShaderLibrary> Create();
+		}
 	}
 
 	namespace Texture

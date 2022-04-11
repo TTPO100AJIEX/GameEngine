@@ -12,8 +12,8 @@ namespace GameEngine::Render
 		IndexBuffer(size_t Amount) : amount(Amount) {}
 		virtual ~IndexBuffer() = default;
 
-		inline unsigned int GetID() const { return(this->id); }
-		inline const size_t& GetAmount() const { return(this->amount); }
+		unsigned int GetID() const { return(this->id); }
+		const size_t& GetAmount() const { return(this->amount); }
 
 		virtual void Bind() const = 0;
 		virtual void UnBind() const = 0;

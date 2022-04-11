@@ -25,7 +25,7 @@ namespace GameEngine::Render
 			this->ShaderIds[type] = id;
 			if (fromFiles)
 			{
-				std::ifstream filein(source);
+				std::ifstream filein(source, std::ios::in);
 				if (!filein)
 				{
 					errored = true;

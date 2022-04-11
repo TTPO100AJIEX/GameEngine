@@ -25,10 +25,10 @@ namespace GameEngine
 		virtual void Update() = 0;
 
 		
-		virtual inline bool IsKeyPressed(const KeyCodes::Keys& keycode) const = 0;
-		virtual inline bool IsMouseButtonPressed(const KeyCodes::Keys& keycode) const = 0;
-		virtual inline std::pair<float, float> GetMousePosition() const = 0;
-		virtual inline float GetMouseX() const = 0;
-		virtual inline float GetMouseY() const = 0;
+		virtual bool IsKeyPressed(const KeyCodes::Keys& keycode) const = 0;
+		virtual bool IsMouseButtonPressed(const KeyCodes::Keys& keycode) const = 0;
+		virtual std::pair<float, float> GetMousePosition() const = 0;
+		virtual float GetMouseX() const = 0;
+		virtual float GetMouseY() const = 0;
 	};
 }

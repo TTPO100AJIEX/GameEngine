@@ -60,6 +60,13 @@ namespace GameEngine::RenderAPI
 			{
 				return(std::make_shared<::GameEngine::Render::OpenGLShader>(data, true));
 			}
+			namespace Library
+			{
+				std::shared_ptr<::GameEngine::Render::ShaderLibrary> Create()
+				{
+					return(std::make_shared<::GameEngine::Render::ShaderLibrary>());
+				}
+			}
 		}
 
 		namespace Texture

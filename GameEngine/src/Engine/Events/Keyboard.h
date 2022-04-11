@@ -23,7 +23,7 @@ namespace GameEngine
 			}
 		#endif
 
-		inline const KeyCodes::Keys& GetKey() { return(KeyCode); };
+		const KeyCodes::Keys& GetKey() { return(KeyCode); };
 	};
 
 	class KeyRelease : public Event

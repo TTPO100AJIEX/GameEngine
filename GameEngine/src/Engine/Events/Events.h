@@ -21,12 +21,12 @@ namespace GameEngine
 		Event(EventTypes eventType) : EventType(eventType) {};
 		virtual ~Event() = default;
 
-		inline EventTypes GetEventType() const { return(EventType); }
+		EventTypes GetEventType() const { return(EventType); }
 
 		#ifdef DEBUG
 			virtual std::string ToString() const = 0;
 		#endif
 
-		inline bool IsHandled() const { return(handled); }
+		bool IsHandled() const { return(handled); }
 	};
 }

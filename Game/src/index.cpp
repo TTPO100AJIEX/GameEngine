@@ -5,11 +5,11 @@ class Game : public GameEngine::Engine
 private:
 	std::shared_ptr<GameEngine::Render::Camera> camera;
 
+	std::shared_ptr<GameEngine::Render::ShaderLibrary> shaders;
+
 	std::shared_ptr<GameEngine::Render::VertexArray> vao1;
-	std::shared_ptr<GameEngine::Render::Shader> shader1;
 
 	std::shared_ptr<GameEngine::Render::VertexArray> vao2;
-	std::shared_ptr<GameEngine::Render::Shader> shader2;
 	glm::vec3 position2 = glm::vec3(0.0f);
 	float rotation2 = 0.0f;
 	float scale2 = 1.0f;
@@ -23,6 +23,16 @@ public:
 		this->GetRenderer()->SetClearColor({ 0.0f, 1.0f, 0.0f, 1.0f });
 
 		this->camera = GameEngine::RenderAPI::Camera::Create(-1.6f, 1.6f, -0.9f, 0.9f);
+
+		this->shaders = GameEngine::RenderAPI::Shader::Library::Create();
+		this->shaders->LoadFromFiles("solid", {
+			{ GameEngine::Render::ShaderType::Vertex, "assets/shaders/solid/vertex.glsl" },
+			{ GameEngine::Render::ShaderType::Fragment, "assets/shaders/solid/fragment.glsl" }
+		});
+		this->shaders->LoadFromFiles("texture", {
+			{ GameEngine::Render::ShaderType::Vertex, "assets/shaders/texture/vertex.glsl" },
+			{ GameEngine::Render::ShaderType::Fragment, "assets/shaders/texture/fragment.glsl" }
+		});
 
 		this->vao1 = GameEngine::RenderAPI::VertexArray::Create();
 		float vertices1[4 * 3] = 
@@ -39,10 +49,6 @@ public:
 			})
 		));
 		this->vao1->SetIndexBuffer(GameEngine::RenderAPI::IndexBuffer::Create(indices1, 6));
-		this->shader1 = GameEngine::RenderAPI::Shader::CreateFromFiles({
-			{ GameEngine::Render::ShaderType::Vertex, "assets/shaders/solid/vertex.glsl" },
-			{ GameEngine::Render::ShaderType::Fragment, "assets/shaders/solid/fragment.glsl" }
-		});
 
 		this->vao2 = GameEngine::RenderAPI::VertexArray::Create();
 		float vertices2[4 * 5] =
@@ -60,10 +66,7 @@ public:
 			})
 		)); 
 		this->vao2->SetIndexBuffer(GameEngine::RenderAPI::IndexBuffer::Create(indices2, 6));
-		this->shader2 = GameEngine::RenderAPI::Shader::CreateFromFiles({
-			{ GameEngine::Render::ShaderType::Vertex, "assets/shaders/texture/vertex.glsl" },
-			{ GameEngine::Render::ShaderType::Fragment, "assets/shaders/texture/fragment.glsl" }
-		});
+
 		this->texture1 = GameEngine::RenderAPI::Texture::Create2D("assets/textures/avatar.png");
 		this->texture2 = GameEngine::RenderAPI::Texture::Create2D("assets/textures/avatar_template.png");
 	}
@@ -118,7 +121,7 @@ public:
 					{
 						glm::mat4 transform = glm::translate(glm::mat4(1.0f), { 0.155f * (x - 4.5f), 0.155f * (y - 4.5f), 0.0f } );
 						transform *= glm::scale(glm::mat4(1.0f), glm::vec3(0.15f));
-						this->GetRenderer()->DrawIndexed(this->vao1, this->shader1, transform);
+						this->GetRenderer()->DrawIndexed(this->vao1, this->shaders->Get("solid"), transform);
 					}
 				}
 
@@ -126,15 +129,14 @@ public:
 				transform *= glm::rotate(glm::mat4(1.0f), this->rotation2, glm::vec3(0, 0, 1));
 				transform *= glm::scale(glm::mat4(1.0f), glm::vec3(scale2));
 
+				const std::shared_ptr<GameEngine::Render::Shader>& textureShader = this->shaders->Bind("texture");
 				this->texture1->Bind(1);
-				this->shader2->Bind();
-				this->shader2->UploadUniformInt("u_Texture", 1);
-				this->GetRenderer()->DrawIndexed(this->vao2, this->shader2, transform);
+				textureShader->UploadUniformInt("u_Texture", 1);
+				this->GetRenderer()->DrawIndexed(this->vao2, this->shaders->Get("texture"), transform);
 
-				this->texture2->Bind(1);
-				this->shader2->Bind();
-				this->shader2->UploadUniformInt("u_Texture", 1);
-				this->GetRenderer()->DrawIndexed(this->vao2, this->shader2, transform);
+				this->texture2->Bind(2);
+				textureShader->UploadUniformInt("u_Texture", 2);
+				this->GetRenderer()->DrawIndexed(this->vao2, this->shaders->Get("texture"), transform);
 
 
 				this->GetRenderer()->EndScene();

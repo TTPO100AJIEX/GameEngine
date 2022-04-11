@@ -20,12 +20,12 @@ namespace GameEngine
 		template <typename Rep, typename Period> Time(std::chrono::duration<Rep, Period>& duration) :
 			nanoseconds(TO_DURATION3(double, std::nano, duration)) {};
 
-		inline double GetNanoseconds() const { return (this->nanoseconds.count()); }
-		inline double GetMicroseconds() const { return (TO_DURATION3(double, std::micro, this->nanoseconds).count()); }
-		inline double GetMilliseconds() const { return (TO_DURATION3(double, std::milli, this->nanoseconds).count()); }
-		inline double GetSeconds() const { return (TO_DURATION2(double, this->nanoseconds).count()); }
+		double GetNanoseconds() const { return (this->nanoseconds.count()); }
+		double GetMicroseconds() const { return (TO_DURATION3(double, std::micro, this->nanoseconds).count()); }
+		double GetMilliseconds() const { return (TO_DURATION3(double, std::milli, this->nanoseconds).count()); }
+		double GetSeconds() const { return (TO_DURATION2(double, this->nanoseconds).count()); }
 
-		static inline friend std::ostream& operator<< (std::ostream& os, const Time& e)
+		static friend std::ostream& operator<< (std::ostream& os, const Time& e)
 		{
 			os << e.GetNanoseconds() << "ns";
 			return os;

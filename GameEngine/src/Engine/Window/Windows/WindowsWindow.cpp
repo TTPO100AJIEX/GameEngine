@@ -73,28 +73,28 @@ namespace GameEngine
 
 
 
-	inline bool WindowsWindow::IsKeyPressed(const KeyCodes::Keys& keycode) const
+	bool WindowsWindow::IsKeyPressed(const KeyCodes::Keys& keycode) const
 	{
 		int state = glfwGetKey(this->l_Window, static_cast<int>(KeyCodes::ToGLFW(keycode)));
 		return(state == GLFW_PRESS || state == GLFW_REPEAT);
 	}
-	inline bool WindowsWindow::IsMouseButtonPressed(const KeyCodes::Keys& keycode) const
+	bool WindowsWindow::IsMouseButtonPressed(const KeyCodes::Keys& keycode) const
 	{
 		int state = glfwGetMouseButton(this->l_Window, static_cast<int>(KeyCodes::ToGLFW(keycode)));
 		return(state == GLFW_PRESS);
 	}
-	inline std::pair<float, float> WindowsWindow::GetMousePosition() const
+	std::pair<float, float> WindowsWindow::GetMousePosition() const
 	{
 		double xpos, ypos;
 		glfwGetCursorPos(this->l_Window, &xpos, &ypos);
 		return { (float)(xpos), (float)(ypos) };
 	}
-	inline float WindowsWindow::GetMouseX() const
+	float WindowsWindow::GetMouseX() const
 	{
 		auto [x, y] = this->GetMousePosition();
 		return(x);
 	}
-	inline float WindowsWindow::GetMouseY() const
+	float WindowsWindow::GetMouseY() const
 	{
 		auto [x, y] = this->GetMousePosition();
 		return(y);

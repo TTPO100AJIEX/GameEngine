@@ -20,10 +20,10 @@ namespace GameEngine
 		virtual void Use(bool vSync) const override;
 		virtual void Update() override;
 
-		virtual inline bool IsKeyPressed(const KeyCodes::Keys& keycode) const override;
-		virtual inline bool IsMouseButtonPressed(const KeyCodes::Keys& keycode) const override;
-		virtual inline std::pair<float, float> GetMousePosition() const override;
-		virtual inline float GetMouseX() const override;
-		virtual inline float GetMouseY() const override;
+		virtual bool IsKeyPressed(const KeyCodes::Keys& keycode) const override;
+		virtual bool IsMouseButtonPressed(const KeyCodes::Keys& keycode) const override;
+		virtual std::pair<float, float> GetMousePosition() const override;
+		virtual float GetMouseX() const override;
+		virtual float GetMouseY() const override;
 	};
 }
