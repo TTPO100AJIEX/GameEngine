@@ -2,6 +2,8 @@
 
 #include "Events.h"
 
+#include "../Window/Window.h"
+
 namespace GameEngine
 {
 	class KeyPress : public Event
@@ -10,8 +12,11 @@ namespace GameEngine
 		const KeyCodes::Keys KeyCode;
 		const unsigned int RepeatCount;
 
+		const std::shared_ptr<Window> s_Window;
+
 	public:
-		KeyPress(KeyCodes::Keys keyCode, unsigned int repeatCount) : Event(EventTypes::KeyPress), KeyCode(keyCode), RepeatCount(repeatCount) {};
+		KeyPress(KeyCodes::Keys keyCode, unsigned int repeatCount, std::shared_ptr<Window> window)
+			: Event(EventTypes::KeyPress), KeyCode(keyCode), RepeatCount(repeatCount), s_Window(window) {};
 		virtual ~KeyPress() = default;
 
 		#ifdef DEBUG
@@ -24,6 +29,8 @@ namespace GameEngine
 		#endif
 
 		const KeyCodes::Keys& GetKey() { return(this->KeyCode); };
+
+		const std::shared_ptr<Window> GetWindow() { return(this->s_Window); }
 	};
 
 	class KeyRelease : public Event
@@ -31,8 +38,11 @@ namespace GameEngine
 	private:
 		const KeyCodes::Keys KeyCode;
 
+		const std::shared_ptr<Window> s_Window;
+
 	public:
-		KeyRelease(KeyCodes::Keys keyCode) : Event(EventTypes::KeyRelease), KeyCode(keyCode) {};
+		KeyRelease(KeyCodes::Keys keyCode, std::shared_ptr<Window> window) 
+			: Event(EventTypes::KeyRelease), KeyCode(keyCode), s_Window(window) {};
 		virtual ~KeyRelease() = default;
 
 		#ifdef DEBUG
@@ -44,7 +54,9 @@ namespace GameEngine
 			}
 		#endif
 
-		const KeyCodes::Keys& GetKey() { return(this->KeyCode); };
+		const KeyCodes::Keys& GetKey() { return(this->KeyCode); }
+
+		const std::shared_ptr<Window> GetWindow() { return(this->s_Window); }
 	};
 
 	class KeyType : public Event
@@ -52,8 +64,11 @@ namespace GameEngine
 	private:
 		const char Symbol;
 
+		const std::shared_ptr<Window> s_Window;
+
 	public:
-		KeyType(char symbol) : Event(EventTypes::KeyType), Symbol(symbol) {};
+		KeyType(char symbol, std::shared_ptr<Window> window) 
+			: Event(EventTypes::KeyType), Symbol(symbol), s_Window(window) {};
 		virtual ~KeyType() = default;
 
 		#ifdef DEBUG
@@ -65,6 +80,8 @@ namespace GameEngine
 			}
 		#endif
 
-		const char GetSymbol() { return(this->Symbol); };
+		const char GetSymbol() { return(this->Symbol); }
+
+		const std::shared_ptr<Window> GetWindow() { return(this->s_Window); }
 	};
 }

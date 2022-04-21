@@ -1,8 +1,15 @@
 #include <PrecompiledHeaders.h>
 
+#include "Render/RenderAPI.h"
+
 #include "Engine.h"
 
 #include "Window/Windows/WindowsWindow.h"
+
+#include "Events/App.h"
+#include "Events/Keyboard.h"
+#include "Events/Mouse.h"
+#include "Events/Window.h"
 
 namespace GameEngine
 {
@@ -61,6 +68,10 @@ namespace GameEngine
 
 	void Engine::OnEvent_Internal(Event& event)
 	{
+		if (event.GetEventType() != EventTypes::WindowOpen) [[likely]] 
+		{
+			event.SetEngine(this->shared_from_this());
+		}
 		switch (event.GetEventType())
 		{
 			[[unlikely]] case (EventTypes::WindowOpen):

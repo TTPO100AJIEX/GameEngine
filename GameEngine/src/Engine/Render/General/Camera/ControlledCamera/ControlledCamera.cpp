@@ -21,7 +21,7 @@ namespace GameEngine::Render
 
 	const std::shared_ptr<GameEngine::Render::Camera> ControlledCamera::GetCamera() { return(camera); }
 
-	void ControlledCamera::OnEvent(Event& event, const std::shared_ptr<::GameEngine::Window> window)
+	void ControlledCamera::OnEvent(Event& event)
 	{
 		switch (event.GetEventType())
 		{
@@ -30,7 +30,11 @@ namespace GameEngine::Render
 				GameEngine::AppTick& ev = static_cast<GameEngine::AppTick&>(event);
 				float multiplier = ev.GetFrameTime().GetSeconds();
 
-				float cameraRotation = this->camera->GetRotation();
+
+
+				auto window = event.GetEngine()->GetWindow(); //want
+
+				/*float cameraRotation = this->camera->GetRotation();
 				if (window->IsKeyPressed(GameEngine::KeyCodes::Keys::Q)) cameraRotation += this->RotateSpeed * multiplier;
 				else if (window->IsKeyPressed(GameEngine::KeyCodes::Keys::E)) cameraRotation -= this->RotateSpeed * multiplier;
 				this->camera->SetRotation(cameraRotation);
@@ -41,7 +45,7 @@ namespace GameEngine::Render
 				if (window->IsKeyPressed(GameEngine::KeyCodes::Keys::W)) cameraPosition.y -= this->MoveSpeed * multiplier;
 				else if (window->IsKeyPressed(GameEngine::KeyCodes::Keys::S)) cameraPosition.y += this->MoveSpeed * multiplier;
 				this->camera->SetPosition(cameraPosition);
-
+				*/
 				break;
 			}
 			case (GameEngine::EventTypes::MouseScroll):

@@ -1,18 +1,13 @@
 #pragma once
 
-#include "Render/RenderAPI.h"
-
 #include "Window/Window.h"
 #include "Render/General/Renderer.h"
 
-#include "Events/App.h"
-#include "Events/Keyboard.h"
-#include "Events/Mouse.h"
-#include "Events/Window.h"
+#include "Events/Events.h"
 
 namespace GameEngine
 {
-	class Engine
+	class Engine : public std::enable_shared_from_this<Engine>
 	{
 	private:
 		std::shared_ptr<Window> l_Window;

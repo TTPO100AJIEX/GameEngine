@@ -4,7 +4,7 @@
 
 namespace GameEngine
 {
-	class Window
+	class Window : public std::enable_shared_from_this<Window>
 	{
 	protected:
 		std::string Title;
