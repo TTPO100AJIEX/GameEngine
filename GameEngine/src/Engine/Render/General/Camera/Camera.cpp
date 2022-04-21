@@ -17,6 +17,11 @@ namespace GameEngine::Render
 		this->ViewProjectionMatrix = this->ProjectionMatrix * this->ViewMatrix;
 	}
 
+	void Camera::SetProjection(float left, float right, float bottom, float top)
+	{
+		this->ProjectionMatrix = glm::ortho(left, right, bottom, top, -1.0f, 1.0f);
+		this->RecalculateViewMatrix();
+	}
 
 	const glm::vec3& Camera::GetPosition() const { return(this->Position); }
 	void Camera::SetPosition(const glm::vec3& position)

@@ -5,7 +5,7 @@ namespace GameEngine::Render
 	class Texture
 	{
 	protected:
-		unsigned int id;
+		unsigned int id = 0;
 		std::string path;
 
 	public:
@@ -21,7 +21,7 @@ namespace GameEngine::Render
 	class Texture2D : public Texture
 	{
 	protected:
-		unsigned int width, height;
+		unsigned int width = 0, height = 0;
 
 	public:
 		Texture2D(const std::string& Path) : Texture(Path) {};

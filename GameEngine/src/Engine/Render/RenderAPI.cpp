@@ -17,6 +17,10 @@ namespace GameEngine::RenderAPI
 		{
 			return(std::make_shared<::GameEngine::Render::Camera>(left, right, bottom, top));
 		}
+		std::shared_ptr<::GameEngine::Render::ControlledCamera> CreateControlled(float width, float height, float zoom, float move_speed, float rotate_speed, float zoom_speed)
+		{
+			return(std::make_shared<::GameEngine::Render::ControlledCamera>(width, height, zoom, move_speed, rotate_speed, zoom_speed));
+		}
 	}
 
 	#ifdef RENDER_USE_OPENGL
@@ -30,7 +34,7 @@ namespace GameEngine::RenderAPI
 					return(std::make_shared<::GameEngine::Render::OpenGLLayout>(Elements));
 				}
 			}
-			std::shared_ptr<::GameEngine::Render::VertexBuffer> Create(void* Data, size_t Amount, const std::shared_ptr<::GameEngine::Render::VertexBufferLayout>& Layout)
+			std::shared_ptr<::GameEngine::Render::VertexBuffer> Create(void* Data, size_t Amount, const std::shared_ptr<::GameEngine::Render::VertexBufferLayout> Layout)
 			{
 				return(std::make_shared<::GameEngine::Render::OpenGLVertexBuffer>(Data, Amount, Layout));
 			}

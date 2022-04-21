@@ -15,7 +15,7 @@ namespace GameEngine
 	class Engine
 	{
 	private:
-		std::unique_ptr<Window> l_Window;
+		std::shared_ptr<Window> l_Window;
 		std::shared_ptr<Renderer> l_Renderer;
 		bool Running = false;
 
@@ -23,8 +23,8 @@ namespace GameEngine
 		Engine();
 		virtual ~Engine();
 
-		const std::unique_ptr<Window>& GetWindow() const { return(this->l_Window); }
-		const std::shared_ptr<Renderer>& GetRenderer() const { return(this->l_Renderer); }
+		const std::shared_ptr<Window> GetWindow() const { return(this->l_Window); }
+		const std::shared_ptr<Renderer> GetRenderer() const { return(this->l_Renderer); }
 
 		void Run();
 
@@ -33,5 +33,5 @@ namespace GameEngine
 	};
 
 	//To be defined in client
-	Engine* CreateGame();
+	std::shared_ptr<Engine> CreateGame();
 }

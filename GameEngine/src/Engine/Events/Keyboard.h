@@ -23,7 +23,7 @@ namespace GameEngine
 			}
 		#endif
 
-		const KeyCodes::Keys& GetKey() { return(KeyCode); };
+		const KeyCodes::Keys& GetKey() { return(this->KeyCode); };
 	};
 
 	class KeyRelease : public Event
@@ -43,6 +43,8 @@ namespace GameEngine
 				return(ss.str());
 			}
 		#endif
+
+		const KeyCodes::Keys& GetKey() { return(this->KeyCode); };
 	};
 
 	class KeyType : public Event
@@ -62,5 +64,7 @@ namespace GameEngine
 				return(ss.str());
 			}
 		#endif
+
+		const char GetSymbol() { return(this->Symbol); };
 	};
 }

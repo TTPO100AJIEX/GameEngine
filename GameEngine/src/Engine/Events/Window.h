@@ -22,6 +22,9 @@ namespace GameEngine
 				return(ss.str());
 			}
 		#endif
+
+		const int GetWidth() { return(this->Width); };
+		const int GetHeight() { return(this->Height); };
 	};
 
 	class WindowResize : public Event
@@ -42,6 +45,9 @@ namespace GameEngine
 				return(ss.str());
 			}
 		#endif
+
+		const int GetWidth() { return(this->Width); };
+		const int GetHeight() { return(this->Height); };
 	};
 
 	class WindowClose : public Event

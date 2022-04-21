@@ -22,9 +22,9 @@ namespace GameEngine
 		virtual void Clear() = 0;
 
 
-		virtual void BeginScene(const std::shared_ptr<Render::Camera>& camera) = 0;
+		virtual void BeginScene(const std::shared_ptr<Render::Camera> camera) = 0;
 
-		virtual void DrawIndexed(const std::shared_ptr<Render::VertexArray>& vertexArray, const std::shared_ptr<Render::Shader>& shader, const glm::mat4& transform = glm::mat4(1.0f)) = 0;
+		virtual void DrawIndexed(const std::shared_ptr<Render::VertexArray> vertexArray, const std::shared_ptr<Render::Shader> shader, const glm::mat4& transform = glm::mat4(1.0f)) = 0;
 
 		virtual void EndScene() = 0;
 	};

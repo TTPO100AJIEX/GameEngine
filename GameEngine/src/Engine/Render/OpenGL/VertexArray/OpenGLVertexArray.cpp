@@ -24,24 +24,24 @@ namespace GameEngine::Render
 	}
 
 
-	void OpenGLVertexArray::SetVertexBuffer(const std::shared_ptr<Render::OpenGLVertexBuffer>& l_vertexBuffer)
+	void OpenGLVertexArray::SetVertexBuffer(const std::shared_ptr<Render::OpenGLVertexBuffer> l_vertexBuffer)
 	{
 		this->vertexBuffer = l_vertexBuffer;
 		this->Bind();
 		this->vertexBuffer->Bind();
 	}
-	void OpenGLVertexArray::SetVertexBuffer(const std::shared_ptr<Render::VertexBuffer>& l_vertexBuffer)
+	void OpenGLVertexArray::SetVertexBuffer(const std::shared_ptr<Render::VertexBuffer> l_vertexBuffer)
 	{
 		this->SetVertexBuffer(std::static_pointer_cast<Render::OpenGLVertexBuffer>(l_vertexBuffer));
 	}
 
-	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<Render::OpenGLIndexBuffer>& l_indexBuffer)
+	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<Render::OpenGLIndexBuffer> l_indexBuffer)
 	{
 		this->indexBuffer = l_indexBuffer;
 		this->Bind();
 		this->indexBuffer->Bind();
 	}
-	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<Render::IndexBuffer>& l_indexBuffer)
+	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<Render::IndexBuffer> l_indexBuffer)
 	{
 		this->SetIndexBuffer(std::static_pointer_cast<Render::OpenGLIndexBuffer>(l_indexBuffer));
 	}

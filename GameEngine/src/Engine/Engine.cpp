@@ -11,7 +11,7 @@ namespace GameEngine
 		ENGINE_WARN("Engine created!");
 
 		#ifdef PLATFORM_WINDOWS
-			this->l_Window = std::make_unique<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
+			this->l_Window = std::make_shared<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
 			this->l_Window->Use(true);
 		#else
 			#error "One of [PLATFORM_WINDOWS] must be defined"

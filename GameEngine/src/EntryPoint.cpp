@@ -11,9 +11,8 @@
 			ENGINE_WARN("Initialized log!");
 		#endif
 
-		GameEngine::Engine* game = GameEngine::CreateGame();
+		std::shared_ptr<GameEngine::Engine> game = GameEngine::CreateGame();
 		game->Run();
-		delete game;
 
 		return 0;
 	}

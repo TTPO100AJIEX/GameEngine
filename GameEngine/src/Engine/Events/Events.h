@@ -14,7 +14,6 @@ namespace GameEngine
 	class Event
 	{
 	protected:
-		bool handled = false;
 		const EventTypes EventType;
 
 	public:
@@ -26,7 +25,5 @@ namespace GameEngine
 		#ifdef DEBUG
 			virtual std::string ToString() const = 0;
 		#endif
-
-		bool IsHandled() const { return(handled); }
 	};
 }

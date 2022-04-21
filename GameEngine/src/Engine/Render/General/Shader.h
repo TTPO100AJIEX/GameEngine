@@ -5,7 +5,7 @@ namespace GameEngine::Render
 	class Shader
 	{
 	protected:
-		unsigned int id;
+		unsigned int id = 0;
 		std::unordered_map <ShaderType, unsigned int> ShaderIds;
 
 	public:

@@ -22,6 +22,9 @@ namespace GameEngine
 				return(ss.str());
 			}
 		#endif
+
+		const double GetX() { return(this->X); };
+		const double GetY() { return(this->Y); };
 	};
 
 	class MouseScroll : public Event
@@ -42,6 +45,9 @@ namespace GameEngine
 				return(ss.str());
 			}
 		#endif
+
+		const double GetX() { return(this->X); };
+		const double GetY() { return(this->Y); };
 	};
 
 	class MouseButtonPress : public Event
@@ -61,6 +67,8 @@ namespace GameEngine
 				return(ss.str());
 			}
 		#endif
+
+		const KeyCodes::Keys& GetKey() { return(this->Key); };
 	};
 
 	class MouseButtonRelease : public Event
@@ -80,5 +88,7 @@ namespace GameEngine
 				return(ss.str());
 			}
 		#endif
+
+		const KeyCodes::Keys& GetKey() { return(this->Key); };
 	};
 }

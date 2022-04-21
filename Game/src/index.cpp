@@ -3,7 +3,7 @@
 class Game : public GameEngine::Engine
 {
 private:
-	std::shared_ptr<GameEngine::Render::Camera> camera;
+	std::shared_ptr<GameEngine::Render::ControlledCamera> camera;
 
 	std::shared_ptr<GameEngine::Render::ShaderLibrary> shaders;
 
@@ -22,7 +22,7 @@ public:
 	{
 		this->GetRenderer()->SetClearColor({ 0.0f, 1.0f, 0.0f, 1.0f });
 
-		this->camera = GameEngine::RenderAPI::Camera::Create(-1.6f, 1.6f, -0.9f, 0.9f);
+		this->camera = GameEngine::RenderAPI::Camera::CreateControlled(1280.0f, 720.0f, 0.0025f, 1.0f, 1.0f, 0.00025f);
 
 		this->shaders = GameEngine::RenderAPI::Shader::Library::Create();
 		this->shaders->LoadFromFiles("solid", {
@@ -81,25 +81,11 @@ public:
 		{
 			[[likely]] case (GameEngine::EventTypes::AppTick): 
 			{
-				this->GetRenderer()->Clear();
+				this->camera->OnEvent(event, this->GetWindow());
+
 
 				GameEngine::AppTick& ev = static_cast<GameEngine::AppTick&>(event);
 				float multiplier = ev.GetFrameTime().GetSeconds();
-
-
-				float cameraRotation = this->camera->GetRotation();
-				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::Q)) cameraRotation += 0.5f * multiplier;
-				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::E)) cameraRotation -= 0.5f * multiplier;
-				this->camera->SetRotation(cameraRotation);
-
-				glm::vec3 cameraPosition = this->camera->GetPosition();
-				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::D)) cameraPosition.x -= 0.25f * multiplier;
-				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::A)) cameraPosition.x += 0.25f * multiplier;
-				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::W)) cameraPosition.y -= 0.25f * multiplier;
-				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::S)) cameraPosition.y += 0.25f * multiplier;
-				this->camera->SetPosition(cameraPosition);
-
-
 				if (this->GetWindow()->IsMouseButtonPressed(GameEngine::KeyCodes::Keys::MOUSE_BUTTON_1)) this->rotation2 += 0.5f * multiplier;
 				else if (this->GetWindow()->IsMouseButtonPressed(GameEngine::KeyCodes::Keys::MOUSE_BUTTON_2)) this->rotation2 -= 0.5f * multiplier;
 
@@ -110,9 +96,10 @@ public:
 
 				if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::EQUAL)) this->scale2 += 0.25f * multiplier;
 				else if (this->GetWindow()->IsKeyPressed(GameEngine::KeyCodes::Keys::MINUS)) this->scale2 -= 0.25f * multiplier;
-				
 
-				this->GetRenderer()->BeginScene(this->camera);
+
+				this->GetRenderer()->Clear();
+				this->GetRenderer()->BeginScene(this->camera->GetCamera());
 
 
 				for (int x = 0; x < 10; x++)
@@ -129,7 +116,7 @@ public:
 				transform *= glm::rotate(glm::mat4(1.0f), this->rotation2, glm::vec3(0, 0, 1));
 				transform *= glm::scale(glm::mat4(1.0f), glm::vec3(scale2));
 
-				const std::shared_ptr<GameEngine::Render::Shader>& textureShader = this->shaders->Bind("texture");
+				const std::shared_ptr<GameEngine::Render::Shader> textureShader = this->shaders->Bind("texture");
 				this->texture1->Bind(1);
 				textureShader->UploadUniformInt("u_Texture", 1);
 				this->GetRenderer()->DrawIndexed(this->vao2, this->shaders->Get("texture"), transform);
@@ -144,14 +131,14 @@ public:
 			}
 			[[unlikely]] default:
 			{
-				GAME_TRACE(event.ToString());
+				this->camera->OnEvent(event, this->GetWindow());
 			}
 		}
 	}
 };
 
 
-GameEngine::Engine* GameEngine::CreateGame()
+std::shared_ptr<GameEngine::Engine> GameEngine::CreateGame()
 {
-	return(new Game());
+	return(std::make_shared<Game>());
 }

@@ -6,7 +6,7 @@
 
 namespace GameEngine::Render
 {
-	void ShaderLibrary::Add(const std::string& name, const std::shared_ptr<Shader>& shader)
+	void ShaderLibrary::Add(const std::string& name, const std::shared_ptr<Shader> shader)
 	{
 		#ifdef DEBUG
 			if (this->Exists(name)) ENGINE_WARN("ShaderLibrary::Add: overriding a shader with name {0}!", name);
@@ -32,13 +32,13 @@ namespace GameEngine::Render
 	{
 		return(this->shaders.contains(name));
 	}
-	const std::shared_ptr<Shader>& ShaderLibrary::Get(const std::string& name) const
+	const std::shared_ptr<Shader> ShaderLibrary::Get(const std::string& name) const
 	{
 		#ifdef DEBUG
 			if (!this->Exists(name)) 
 			{
 				ENGINE_WARN("ShaderLibrary::Get: shader with name {0} does not exist!", name); 
-				return(nullptr);
+				return(NULL);
 			}
 		#endif
 		return(this->shaders.at(name));
@@ -50,7 +50,7 @@ namespace GameEngine::Render
 			if (!this->Exists(name)) 
 			{
 				ENGINE_WARN("ShaderLibrary::Remove: shader with name {0} does not exist!", name); 
-				return(nullptr);
+				return(NULL);
 			}
 		#endif
 		std::shared_ptr<Shader> save = this->shaders.at(name);
@@ -58,9 +58,9 @@ namespace GameEngine::Render
 		return(save);
 	}
 
-	const std::shared_ptr<Shader>& ShaderLibrary::Bind(const std::string& name) const
+	const std::shared_ptr<Shader> ShaderLibrary::Bind(const std::string& name) const
 	{
-		const std::shared_ptr<Shader>& shader = this->Get(name);
+		const std::shared_ptr<Shader> shader = this->Get(name);
 		#ifdef DEBUG
 			if (!shader)
 			{

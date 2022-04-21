@@ -1,6 +1,9 @@
 #pragma once
 
 #include "General/Camera/Camera.h"
+
+#include "General/Camera/ControlledCamera/ControlledCamera.h"
+
 #include "General/ShaderLibrary/ShaderLibrary.h"
 
 #ifdef RENDER_USE_OPENGL
@@ -19,15 +22,16 @@ namespace GameEngine::RenderAPI
 	namespace Camera
 	{
 		std::shared_ptr<::GameEngine::Render::Camera> Create(float left, float right, float bottom, float top);
+		std::shared_ptr<::GameEngine::Render::ControlledCamera> CreateControlled(float width, float height, float zoom, float move_speed, float rotate_speed, float zoom_speed);
 	}
-
+	
 	namespace VertexBuffer
 	{
 		namespace Layout
 		{
 			std::shared_ptr<::GameEngine::Render::VertexBufferLayout> Create(const std::initializer_list<::GameEngine::Render::VertexBufferLayoutElement>& Elements);
 		}
-		std::shared_ptr<::GameEngine::Render::VertexBuffer> Create(void* Data, size_t Amount, const std::shared_ptr<::GameEngine::Render::VertexBufferLayout>& Layout);
+		std::shared_ptr<::GameEngine::Render::VertexBuffer> Create(void* Data, size_t Amount, const std::shared_ptr<::GameEngine::Render::VertexBufferLayout> Layout);
 	}
 	namespace IndexBuffer
 	{
