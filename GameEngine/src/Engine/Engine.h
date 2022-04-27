@@ -3,10 +3,12 @@
 #include "Window/Window.h"
 #include "Render/General/Renderer.h"
 
-#include "Events/Events.h"
+//#include "Events/Events.h"
 
 namespace GameEngine
 {
+	class Event;
+
 	class Engine : public std::enable_shared_from_this<Engine>
 	{
 	private:

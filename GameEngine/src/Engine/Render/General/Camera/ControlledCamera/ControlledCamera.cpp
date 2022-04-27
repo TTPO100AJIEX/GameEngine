@@ -34,7 +34,7 @@ namespace GameEngine::Render
 
 				auto window = event.GetEngine()->GetWindow(); //want
 
-				/*float cameraRotation = this->camera->GetRotation();
+				float cameraRotation = this->camera->GetRotation();
 				if (window->IsKeyPressed(GameEngine::KeyCodes::Keys::Q)) cameraRotation += this->RotateSpeed * multiplier;
 				else if (window->IsKeyPressed(GameEngine::KeyCodes::Keys::E)) cameraRotation -= this->RotateSpeed * multiplier;
 				this->camera->SetRotation(cameraRotation);
@@ -45,7 +45,7 @@ namespace GameEngine::Render
 				if (window->IsKeyPressed(GameEngine::KeyCodes::Keys::W)) cameraPosition.y -= this->MoveSpeed * multiplier;
 				else if (window->IsKeyPressed(GameEngine::KeyCodes::Keys::S)) cameraPosition.y += this->MoveSpeed * multiplier;
 				this->camera->SetPosition(cameraPosition);
-				*/
+				
 				break;
 			}
 			case (GameEngine::EventTypes::MouseScroll):

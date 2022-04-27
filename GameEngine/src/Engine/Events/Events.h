@@ -1,6 +1,6 @@
 #pragma once
 
-//#include "../Engine.h" //circular dependency
+#include "../Engine.h" //circular dependency
 
 namespace GameEngine
 {
