@@ -1,14 +1,11 @@
 #pragma once
 
-#include "Render/RenderAPI.h"
-
-#include "Window/Window.h"
-#include "Render/General/Renderer.h"
-
-#include "Events/App.h"
-#include "Events/Keyboard.h"
-#include "Events/Mouse.h"
-#include "Events/Window.h"
+namespace GameEngine
+{
+	class Window;
+	class Renderer;
+	class Event;
+}
 
 namespace GameEngine
 {
