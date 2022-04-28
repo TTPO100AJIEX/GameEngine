@@ -81,7 +81,7 @@ public:
 		{
 			[[likely]] case (GameEngine::EventTypes::AppTick): 
 			{
-				this->camera->OnEvent(event, this->GetWindow());
+				this->camera->OnEvent(event);
 
 
 				GameEngine::AppTick& ev = static_cast<GameEngine::AppTick&>(event);
@@ -131,7 +131,7 @@ public:
 			}
 			[[unlikely]] default:
 			{
-				this->camera->OnEvent(event, this->GetWindow());
+				this->camera->OnEvent(event);
 			}
 		}
 	}

@@ -20,6 +20,6 @@ namespace GameEngine::Render
 		ControlledCamera(float width, float height, float zoom, float move_speed, float rotate_speed, float zoom_speed);
 		const std::shared_ptr<GameEngine::Render::Camera> GetCamera();
 
-		void OnEvent(Event& event, const std::shared_ptr<::GameEngine::Window> window);
+		void OnEvent(Event& event);
 	};
 }

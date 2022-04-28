@@ -7,6 +7,7 @@
 #include <chrono>
 
 #include <memory>
+#include <optional>
 #include <functional>
 #include <utility>
 #include <new>

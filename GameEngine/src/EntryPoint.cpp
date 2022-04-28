@@ -2,6 +2,15 @@
 
 #include "Engine/Engine.h"
 
+
+#include "Engine/Events/App.h"
+#include "Engine/Events/Keyboard.h"
+#include "Engine/Events/Mouse.h"
+#include "Engine/Events/Window.h"
+
+#include "Engine/Render/RenderAPI.h"
+
+
 #ifdef PLATFORM_WINDOWS
 
 	int main(int argc, char** argv)

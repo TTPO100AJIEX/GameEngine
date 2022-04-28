@@ -1,7 +1,11 @@
 #pragma once
 
+#include "../Engine.h" //circular dependency
+
 namespace GameEngine
 {
+	//class Engine; //does not help
+
 	enum class EventTypes : uint8_t
 	{
 		None = 0,
@@ -16,6 +20,9 @@ namespace GameEngine
 	protected:
 		const EventTypes EventType;
 
+		//std::optional<const std::shared_ptr<Engine>> s_Engine;
+		std::shared_ptr<Engine> s_Engine;
+
 	public:
 		Event(EventTypes eventType) : EventType(eventType) {};
 		virtual ~Event() = default;
@@ -25,5 +32,14 @@ namespace GameEngine
 		#ifdef DEBUG
 			virtual std::string ToString() const = 0;
 		#endif
+
+		void SetEngine(std::shared_ptr<Engine> engine)
+		{
+			this->s_Engine = engine;
+		}
+		std::shared_ptr<Engine>& GetEngine()
+		{
+			return(this->s_Engine);
+		}
 	};
 }

@@ -39,7 +39,6 @@ namespace GameEngine
 		switch_GLFW(GLFW_status::ON);
 
 		this->l_Window = glfwCreateWindow(this->Width, this->Height, this->Title.c_str(), NULL, NULL);
-		this->Use(true);
 
 		glfwSetWindowUserPointer(this->l_Window, this);
 
@@ -64,6 +63,7 @@ namespace GameEngine
 	{
 		glfwMakeContextCurrent(this->l_Window);
 		glfwSwapInterval((vSync) ? 1 : 0);
+
 	}
 	void WindowsWindow::Update()
 	{
