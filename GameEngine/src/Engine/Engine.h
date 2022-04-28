@@ -17,9 +17,6 @@ namespace GameEngine
 		bool Running = false;
 
 	public:
-		static std::unique_ptr<Engine> CreateGame(); //To be defined in client
-
-
 		Engine();
 		virtual ~Engine();
 
