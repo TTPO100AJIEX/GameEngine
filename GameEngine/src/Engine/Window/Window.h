@@ -1,10 +1,12 @@
 #pragma once
 
-#include "../Events/Events.h"
+//#include "../Events/Events.h"
 
 namespace GameEngine
 {
-	class Window
+	class Event;
+
+	class Window : public std::enable_shared_from_this<Window>
 	{
 	protected:
 		std::string Title;

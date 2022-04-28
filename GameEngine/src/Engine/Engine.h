@@ -7,9 +7,13 @@ namespace GameEngine
 	class Event;
 }
 
+//#include "Events/Events.h"
+
 namespace GameEngine
 {
-	class Engine
+	class Event;
+
+	class Engine : public std::enable_shared_from_this<Engine>
 	{
 	private:
 		std::shared_ptr<Window> l_Window;
