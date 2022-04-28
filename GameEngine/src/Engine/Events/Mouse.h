@@ -1,8 +1,11 @@
 #pragma once
 
-#include "Events.h"
+#include "Event.h"
 
-#include "../Window/Window.h"
+namespace GameEngine
+{
+	class Window;
+}
 
 namespace GameEngine
 {
@@ -12,10 +15,10 @@ namespace GameEngine
 		const double X;
 		const double Y;
 
-		const std::shared_ptr<Window> s_Window;
+		const Window* s_Window;
 
 	public:
-		MouseMove(double x, double y, std::shared_ptr<Window> window) 
+		MouseMove(double x, double y, const Window* window)
 			: Event(EventTypes::MouseMove), X(x), Y(y), s_Window(window) {};
 		virtual ~MouseMove() = default;
 
@@ -31,7 +34,7 @@ namespace GameEngine
 		const double GetX() { return(this->X); };
 		const double GetY() { return(this->Y); };
 
-		const std::shared_ptr<Window> GetWindow() { return(this->s_Window); }
+		const Window* GetWindow() { return(this->s_Window); }
 	};
 
 	class MouseScroll : public Event
@@ -40,10 +43,10 @@ namespace GameEngine
 		const double X;
 		const double Y;
 
-		const std::shared_ptr<Window> s_Window;
+		const Window* s_Window;
 
 	public:
-		MouseScroll(double x, double y, std::shared_ptr<Window> window) 
+		MouseScroll(double x, double y, const Window* window)
 			: Event(EventTypes::MouseScroll), X(x), Y(y), s_Window(window) {};
 		virtual ~MouseScroll() = default;
 
@@ -59,7 +62,7 @@ namespace GameEngine
 		const double GetX() { return(this->X); };
 		const double GetY() { return(this->Y); };
 
-		const std::shared_ptr<Window> GetWindow() { return(this->s_Window); }
+		const Window* GetWindow() { return(this->s_Window); }
 	};
 
 	class MouseButtonPress : public Event
@@ -67,10 +70,10 @@ namespace GameEngine
 	private:
 		const KeyCodes::Keys Key;
 
-		const std::shared_ptr<Window> s_Window;
+		const Window* s_Window;
 
 	public:
-		MouseButtonPress(KeyCodes::Keys key, std::shared_ptr<Window> window) 
+		MouseButtonPress(KeyCodes::Keys key, const Window* window)
 			: Event(EventTypes::MouseButtonPress), Key(key), s_Window(window) {};
 		virtual ~MouseButtonPress() = default;
 
@@ -85,7 +88,7 @@ namespace GameEngine
 
 		const KeyCodes::Keys& GetKey() { return(this->Key); };
 
-		const std::shared_ptr<Window> GetWindow() { return(this->s_Window); }
+		const Window* GetWindow() { return(this->s_Window); }
 	};
 
 	class MouseButtonRelease : public Event
@@ -93,10 +96,10 @@ namespace GameEngine
 	private:
 		const KeyCodes::Keys Key;
 
-		const std::shared_ptr<Window> s_Window;
+		const Window* s_Window;
 
 	public:
-		MouseButtonRelease(KeyCodes::Keys key, std::shared_ptr<Window> window) 
+		MouseButtonRelease(KeyCodes::Keys key, const Window* window)
 			: Event(EventTypes::MouseButtonRelease), Key(key), s_Window(window) {};
 		virtual ~MouseButtonRelease() = default;
 
@@ -111,6 +114,6 @@ namespace GameEngine
 
 		const KeyCodes::Keys& GetKey() { return(this->Key); };
 
-		const std::shared_ptr<Window> GetWindow() { return(this->s_Window); }
+		const Window* GetWindow() { return(this->s_Window); }
 	};
 }

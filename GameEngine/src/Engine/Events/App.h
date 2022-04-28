@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Events.h"
+#include "Event.h"
 
 namespace GameEngine
 {
@@ -8,7 +8,6 @@ namespace GameEngine
 	{
 	private:
 		Time FrameTime;
-
 	public:
 		AppTick(Time frameTime) : Event(EventTypes::AppTick), FrameTime(frameTime) {};
 		virtual ~AppTick() = default;

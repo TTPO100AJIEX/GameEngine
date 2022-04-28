@@ -7,25 +7,24 @@ namespace GameEngine
 	class Event;
 }
 
-//#include "Events/Events.h"
-
 namespace GameEngine
 {
-	class Event;
-
-	class Engine : public std::enable_shared_from_this<Engine>
+	class Engine
 	{
 	private:
-		std::shared_ptr<Window> l_Window;
-		std::shared_ptr<Renderer> l_Renderer;
+		std::unique_ptr<Window> l_Window;
+		std::unique_ptr<Renderer> l_Renderer;
 		bool Running = false;
 
 	public:
+		static std::unique_ptr<Engine> CreateGame(); //To be defined in client
+
+
 		Engine();
 		virtual ~Engine();
 
-		const std::shared_ptr<Window> GetWindow() const { return(this->l_Window); }
-		const std::shared_ptr<Renderer> GetRenderer() const { return(this->l_Renderer); }
+		Window* GetWindow() const { return(this->l_Window.get()); }
+		Renderer* GetRenderer() const { return(this->l_Renderer.get()); }
 
 		void Run();
 
@@ -33,6 +32,4 @@ namespace GameEngine
 		virtual void OnEvent(Event& event) = 0;
 	};
 
-	//To be defined in client
-	std::shared_ptr<Engine> CreateGame();
 }

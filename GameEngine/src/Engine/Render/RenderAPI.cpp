@@ -2,12 +2,33 @@
 
 #include "RenderAPI.h"
 
+
+#include "General/Camera/Camera.h"
+#include "General/Camera/ControlledCamera/ControlledCamera.h"
+
+#include "General/ShaderLibrary/ShaderLibrary.h"
+
+#ifdef RENDER_USE_OPENGL
+	#include "OpenGL/OpenGLRenderer.h"
+
+	#include "OpenGL/VertexArray/OpenGLVertexArray.h"
+	#include "OpenGL/VertexBuffer/OpenGLVertexBuffer.h"
+	#include "OpenGL/VertexBufferLayout/OpenGLLayout.h"
+	#include "OpenGL/IndexBuffer/OpenGLIndexBuffer.h"
+
+	#include "OpenGL/Shader/OpenGLShader.h"
+
+	#include "OpenGL/Texture/Texture2D/OpenGLTexture2D.h"
+#else
+	#error "One of [RENDER_USE_OPENGL] must be defined"
+#endif
+
 namespace GameEngine::RenderAPI
 {
 	#ifdef RENDER_USE_OPENGL
-		std::shared_ptr<::GameEngine::Renderer> Create()
+		std::unique_ptr<::GameEngine::Renderer> Create()
 		{
-			return(std::make_shared<::GameEngine::OpenGLRenderer>());
+			return(std::make_unique<::GameEngine::OpenGLRenderer>());
 		}
 	#endif
 
@@ -36,7 +57,7 @@ namespace GameEngine::RenderAPI
 			}
 			std::shared_ptr<::GameEngine::Render::VertexBuffer> Create(void* Data, size_t Amount, const std::shared_ptr<::GameEngine::Render::VertexBufferLayout> Layout)
 			{
-				return(std::make_shared<::GameEngine::Render::OpenGLVertexBuffer>(Data, Amount, Layout));
+				return(std::make_shared<::GameEngine::Render::OpenGLVertexBuffer>(Data, Amount, std::dynamic_pointer_cast<::GameEngine::Render::OpenGLLayout>(Layout)));
 			}
 		}
 		namespace IndexBuffer
@@ -81,7 +102,5 @@ namespace GameEngine::RenderAPI
 			}
 		}
 
-	#else
-		#error "One of [RENDER_USE_OPENGL] must be defined"
 	#endif
 }

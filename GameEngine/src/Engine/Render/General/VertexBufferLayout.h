@@ -21,5 +21,6 @@ namespace GameEngine::Render
 
 		virtual void Use() const = 0;
 
+		virtual size_t GetStride() const = 0;
 	};
 }

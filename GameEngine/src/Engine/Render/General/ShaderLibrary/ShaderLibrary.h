@@ -1,6 +1,9 @@
 #pragma once
 
-#include "../Shader.h"
+namespace GameEngine::Render
+{
+	class Shader;
+}
 
 namespace GameEngine::Render
 {

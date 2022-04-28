@@ -1,15 +1,20 @@
 #include <PrecompiledHeaders.h>
 
-#include "Render/RenderAPI.h"
-
 #include "Engine.h"
 
-#include "Window/Windows/WindowsWindow.h"
 
-#include "Events/App.h"
-#include "Events/Keyboard.h"
-#include "Events/Mouse.h"
-#include "Events/Window.h"
+#ifdef PLATFORM_WINDOWS
+	#include "Window/Windows/WindowsWindow.h"
+#endif
+
+#include "Render/RenderAPI.h"
+
+#include "Engine/Events/Event.h"
+#include "Engine/Events/App.h"
+#include "Engine/Events/Keyboard.h"
+#include "Engine/Events/Mouse.h"
+#include "Engine/Events/Window.h"
+
 
 namespace GameEngine
 {
@@ -18,11 +23,11 @@ namespace GameEngine
 		ENGINE_WARN("Engine created!");
 
 		#ifdef PLATFORM_WINDOWS
-			this->l_Window = std::make_shared<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
-			this->l_Window->Use(true);
+			this->l_Window = std::make_unique<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
 		#else
 			#error "One of [PLATFORM_WINDOWS] must be defined"
 		#endif
+		this->l_Window->Use(true);
 
 		this->l_Renderer = RenderAPI::Create();
 	}
@@ -56,8 +61,8 @@ namespace GameEngine
 				}
 			#endif
 			
-			std::chrono::duration<double, std::nano> tmp = NowTimestamp - PrevTimestamp;
-			AppTick AppTickEvent(tmp);
+			std::chrono::duration<double, std::nano> delta_time = NowTimestamp - PrevTimestamp;
+			AppTick AppTickEvent(delta_time);
 			this->OnEvent_Internal(AppTickEvent);
 
 			PrevTimestamp = NowTimestamp;
@@ -68,10 +73,7 @@ namespace GameEngine
 
 	void Engine::OnEvent_Internal(Event& event)
 	{
-		if (event.GetEventType() != EventTypes::WindowOpen) [[likely]] 
-		{
-			event.SetEngine(this->shared_from_this());
-		}
+		event.SetEngine(this);
 		switch (event.GetEventType())
 		{
 			[[unlikely]] case (EventTypes::WindowOpen):

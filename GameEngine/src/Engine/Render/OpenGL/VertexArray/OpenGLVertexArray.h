@@ -1,8 +1,11 @@
 #pragma once
 
 #include "../../General/VertexArray.h"
-#include "../VertexBuffer/OpenGLVertexBuffer.h"
-#include "../IndexBuffer/OpenGLIndexBuffer.h"
+namespace GameEngine::Render
+{
+	class OpenGLVertexBuffer;
+	class OpenGLIndexBuffer;
+}
 
 namespace GameEngine::Render
 {

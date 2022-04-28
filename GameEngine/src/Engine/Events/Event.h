@@ -1,11 +1,12 @@
 #pragma once
 
-#include "../Engine.h" //circular dependency
+namespace GameEngine
+{
+	class Engine;
+}
 
 namespace GameEngine
 {
-	//class Engine; //does not help
-
 	enum class EventTypes : uint8_t
 	{
 		None = 0,
@@ -20,8 +21,7 @@ namespace GameEngine
 	protected:
 		const EventTypes EventType;
 
-		//std::optional<const std::shared_ptr<Engine>> s_Engine;
-		std::shared_ptr<Engine> s_Engine;
+		std::optional<const Engine*> s_Engine;
 
 	public:
 		Event(EventTypes eventType) : EventType(eventType) {};
@@ -33,13 +33,19 @@ namespace GameEngine
 			virtual std::string ToString() const = 0;
 		#endif
 
-		void SetEngine(std::shared_ptr<Engine> engine)
+		void SetEngine(Engine* engine)
 		{
+			#ifdef DEBUG
+				if (this->s_Engine.has_value()) [[unlikely]] { ENGINE_WARN("SetEngine used on Event that already has s_Engine defined!"); }
+			#endif
 			this->s_Engine = engine;
 		}
-		std::shared_ptr<Engine>& GetEngine()
+		const Engine* GetEngine()
 		{
-			return(this->s_Engine);
+			#ifdef DEBUG
+				if (!this->s_Engine.has_value()) [[unlikely]] { ENGINE_WARN("GetEngine used on Event that does not have s_Engine defined!"); }
+			#endif
+			return(this->s_Engine.value_or(nullptr));
 		}
 	};
 }

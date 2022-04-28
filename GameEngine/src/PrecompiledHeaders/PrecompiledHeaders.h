@@ -22,7 +22,9 @@
 
 
 #include <GLAD/glad.h>
-#include <GLFW/glfw3.h>
+#ifdef PLATFORM_WINDOWS
+	#include <GLFW/glfw3.h>
+#endif
 
 #include <GLM/glm.hpp>
 #include <GLM/gtc/type_ptr.hpp>
@@ -32,9 +34,13 @@
 #include <Log/Log.h>
 
 #include <Engine/Core/KeyCodes/KeyCodes.h>
-#include <Engine/Core/KeyCodes/GLFW/GLFW.h>
+#ifdef PLATFORM_WINDOWS
+	#include <Engine/Core/KeyCodes/GLFW/GLFW.h>
+#endif
 #include <Engine/Core/ShaderDataType/ShaderDataType.h>
-#include <Engine/Core/ShaderDataType/OpenGL/OpenGL.h>
 #include <Engine/Core/ShaderType/ShaderType.h>
-#include <Engine/Core/ShaderType/OpenGL/OpenGL.h>
+#ifdef RENDER_USE_OPENGL
+	#include <Engine/Core/ShaderType/OpenGL/OpenGL.h>
+	#include <Engine/Core/ShaderDataType/OpenGL/OpenGL.h>
+#endif
 #include <Engine/Core/Time/Time.h>

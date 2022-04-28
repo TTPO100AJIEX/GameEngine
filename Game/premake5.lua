@@ -17,6 +17,7 @@ project "Game"
 
 	includedirs
 	{
+        "src",
 		"%{wks.location}/GameEngine/Dependencies",
 		"%{wks.location}/GameEngine/src",
 		"%{wks.location}/GameEngine/src/PrecompiledHeaders"
@@ -26,19 +27,9 @@ project "Game"
 	{
 		"GameEngine"
 	}
-
-	defines
-	{
-        "RENDER_USE_OPENGL"
-	}
 	
 	filter "system:windows"
 		systemversion "latest"
-
-		defines
-		{
-			"PLATFORM_WINDOWS"
-		}
 
 	filter "configurations:Debug"
 		defines "DEBUG"

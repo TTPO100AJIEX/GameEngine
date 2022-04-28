@@ -1,8 +1,12 @@
 #pragma once
 
-#include "Camera/Camera.h"
-#include "VertexArray.h"
-#include "Shader.h"
+namespace GameEngine::Render
+{
+	class Camera;
+	class VertexArray;
+	class Shader;
+}
+
 
 namespace GameEngine
 {

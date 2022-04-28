@@ -1,8 +1,11 @@
 #pragma once
 
-#include "Events.h"
+#include "Event.h"
 
-#include "../Window/Window.h"
+namespace GameEngine
+{
+	class Window;
+}
 
 namespace GameEngine
 {
@@ -40,10 +43,10 @@ namespace GameEngine
 		const int Width;
 		const int Height;
 
-		const std::shared_ptr<Window> s_Window;
+		const Window* s_Window;
 
 	public:
-		WindowResize(int width, int height, std::shared_ptr<Window> window) 
+		WindowResize(int width, int height, const Window* window)
 			: Event(EventTypes::WindowResize), Width(width), Height(height), s_Window(window) {};
 		virtual ~WindowResize() = default;
 
@@ -59,16 +62,16 @@ namespace GameEngine
 		const int GetWidth() { return(this->Width); };
 		const int GetHeight() { return(this->Height); };
 
-		const std::shared_ptr<Window> GetWindow() { return(this->s_Window); }
+		const Window* GetWindow() { return(this->s_Window); }
 	};
 
 	class WindowClose : public Event
 	{
 	private:
-		const std::shared_ptr<Window> s_Window;
+		const Window* s_Window;
 
 	public:
-		WindowClose(std::shared_ptr<Window> window) 
+		WindowClose(const Window* window)
 			: Event(EventTypes::WindowClose), s_Window(window) {};
 		virtual ~WindowClose() = default;
 
@@ -78,7 +81,7 @@ namespace GameEngine
 				return("WindowClose");
 			}
 		#endif
-
-		const std::shared_ptr<Window> GetWindow() { return(this->s_Window); }
+			
+		const Window* GetWindow() { return(this->s_Window); }
 	};
 }

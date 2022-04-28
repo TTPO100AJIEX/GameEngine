@@ -2,7 +2,6 @@
 
 #include "../../../General/Textures.h"
 
-
 namespace GameEngine::Render
 {
 	class OpenGLTexture2D : public Texture2D

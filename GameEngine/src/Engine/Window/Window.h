@@ -1,12 +1,13 @@
 #pragma once
 
-//#include "../Events/Events.h"
-
 namespace GameEngine
 {
 	class Event;
+}
 
-	class Window : public std::enable_shared_from_this<Window>
+namespace GameEngine
+{
+	class Window
 	{
 	protected:
 		std::string Title;
@@ -20,6 +21,8 @@ namespace GameEngine
 		Window(unsigned int width, unsigned int height, const std::string& title, std::function<void(Event&)> event_callback) : 
 			Width(width), Height(height), Title(title), Event_Callback(event_callback) {};
 		virtual ~Window() = default;
+
+		Window* get_raw_this() { return(this); }
 
 		virtual void SetSize(unsigned int width, unsigned int height) = 0;
 

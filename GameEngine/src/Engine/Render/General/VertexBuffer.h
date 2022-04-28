@@ -1,7 +1,5 @@
 #pragma once
 
-#include "VertexBufferLayout.h"
-
 namespace GameEngine::Render
 {
 	class VertexBuffer

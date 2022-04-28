@@ -1,9 +1,13 @@
 #pragma once
 
-#include "../Camera.h"
-
-#include "../../../../Events/Events.h"
-#include "../../../../Window/Window.h"
+namespace GameEngine
+{
+	class Event;
+}
+namespace GameEngine::Render
+{
+	class Camera;
+}
 
 namespace GameEngine::Render
 {
@@ -18,8 +22,8 @@ namespace GameEngine::Render
 
 	public:
 		ControlledCamera(float width, float height, float zoom, float move_speed, float rotate_speed, float zoom_speed);
-		const std::shared_ptr<GameEngine::Render::Camera> GetCamera();
+		const std::shared_ptr<GameEngine::Render::Camera> GetCamera() { return(camera); }
 
-		void OnEvent(Event& event);
+		void OnEvent(::GameEngine::Event& event);
 	};
 }

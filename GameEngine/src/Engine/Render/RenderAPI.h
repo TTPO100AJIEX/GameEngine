@@ -1,23 +1,25 @@
 #pragma once
 
-#include "General/Camera/Camera.h"
 
+#include "General/Renderer.h"
+
+#include "General/Camera/Camera.h"
 #include "General/Camera/ControlledCamera/ControlledCamera.h"
 
+#include "General/VertexBuffer.h"
+#include "General/VertexBufferLayout.h"
+#include "General/IndexBuffer.h"
+#include "General/VertexArray.h"
+
+#include "General/Shader.h"
 #include "General/ShaderLibrary/ShaderLibrary.h"
 
-#ifdef RENDER_USE_OPENGL
-	#include "OpenGL/OpenGLRenderer.h"
-	#include "OpenGL/VertexArray/OpenGLVertexArray.h"
-	#include "OpenGL/VertexBuffer/OpenGLVertexBuffer.h"
-	#include "OpenGL/IndexBuffer/OpenGLIndexBuffer.h"
-	#include "OpenGL/Shader/OpenGLShader.h"
-	#include "OpenGL/Texture/Texture2D/OpenGLTexture2D.h"
-#endif
+#include "General/Textures.h"
+
 
 namespace GameEngine::RenderAPI
 {
-	std::shared_ptr<::GameEngine::Renderer> Create();
+	std::unique_ptr<::GameEngine::Renderer> Create();
 
 	namespace Camera
 	{

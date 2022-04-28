@@ -2,6 +2,9 @@
 
 #include "OpenGLVertexArray.h"
 
+#include "../VertexBuffer/OpenGLVertexBuffer.h"
+#include "../IndexBuffer/OpenGLIndexBuffer.h"
+
 namespace GameEngine::Render
 {
 	OpenGLVertexArray::OpenGLVertexArray()

@@ -3,6 +3,7 @@
 #include "ShaderLibrary.h"
 
 #include "../../RenderAPI.h"
+#include "../Shader.h"
 
 namespace GameEngine::Render
 {
