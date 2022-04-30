@@ -31,7 +31,7 @@ namespace GameEngine::Render
 			[[likely]] case (GameEngine::EventTypes::AppTick):
 			{
 				GameEngine::AppTick& ev = static_cast<GameEngine::AppTick&>(event);
-				float multiplier = ev.GetFrameTime().GetSeconds();
+				float multiplier = (float)(ev.GetFrameTime().GetSeconds());
 
 
 				::GameEngine::Window* window = event.GetEngine()->GetWindow();

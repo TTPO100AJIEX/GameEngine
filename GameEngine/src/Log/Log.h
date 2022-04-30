@@ -1,6 +1,7 @@
 #pragma once
 
 #ifdef DEBUG
+	#include <string>
 	#include <spdlog/spdlog.h>
 
 	namespace GameEngine::Log

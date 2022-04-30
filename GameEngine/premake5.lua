@@ -28,13 +28,15 @@ project "GameEngine"
     links
     {
         "GLFW",
-        "opengl32.lib",
         "Dwmapi.lib",
-        "GLAD"
+        "GLAD",
+        "opengl32.lib"
     }
 
 	defines
 	{
+        "BUILD_ENGINE",
+        
         "RENDER_USE_OPENGL",
 		"GLFW_INCLUDE_NONE",
 		"STB_IMAGE_IMPLEMENTATION"
