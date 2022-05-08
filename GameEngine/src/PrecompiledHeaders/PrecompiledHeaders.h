@@ -21,14 +21,14 @@
 #include <unordered_map>
 
 
+#include <GLM/glm.hpp>
+#include <GLM/gtc/type_ptr.hpp>
+#include <GLM/gtc/matrix_transform.hpp>
+
 #include <GLAD/glad.h>
 #ifdef PLATFORM_WINDOWS
 	#include <GLFW/glfw3.h>
 #endif
-
-#include <GLM/glm.hpp>
-#include <GLM/gtc/type_ptr.hpp>
-#include <GLM/gtc/matrix_transform.hpp>
 
 
 #include <Log/Log.h>

@@ -2,7 +2,7 @@ project "GameEngine"
     kind "StaticLib"
     language "C++"
 	cppdialect "C++20"
-    flags { "MultiProcessorCompile", "OmitDefaultLibrary", "ShadowedVariables" }
+    flags { "MultiProcessorCompile", "ShadowedVariables" }
 	staticruntime "On"
     optimize "Full"
 

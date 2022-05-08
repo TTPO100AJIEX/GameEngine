@@ -19,9 +19,7 @@ namespace GameEngine::Render
 	ControlledCamera::ControlledCamera(float width, float height, float zoom, float move_speed, float rotate_speed, float zoom_speed)
 		: Width(width), Height(height), Zoom(zoom), MoveSpeed(move_speed), RotateSpeed(rotate_speed), ZoomSpeed(zoom_speed)
 	{
-		float renderWidth = this->Width * this->Zoom / 2;
-		float renderHeight = this->Height * this->Zoom / 2;
-		this->camera = ::GameEngine::RenderAPI::Camera::Create(-renderWidth, renderWidth, -renderHeight, renderHeight);
+		this->camera = ::GameEngine::RenderAPI::Camera::Create(0, this->Width * this->Zoom, 0, this->Height * this->Zoom);
 	}
 
 	void ControlledCamera::OnEvent(Event& event)
@@ -30,7 +28,7 @@ namespace GameEngine::Render
 		{
 			[[likely]] case (GameEngine::EventTypes::AppTick):
 			{
-				GameEngine::AppTick& ev = static_cast<GameEngine::AppTick&>(event);
+				::GameEngine::AppTick& ev = static_cast<::GameEngine::AppTick&>(event);
 				float multiplier = (float)(ev.GetFrameTime().GetSeconds());
 
 
@@ -54,19 +52,8 @@ namespace GameEngine::Render
 			{
 				::GameEngine::MouseScroll& ev = static_cast<::GameEngine::MouseScroll&>(event);
 				this->Zoom -= this->ZoomSpeed * (float)ev.GetY();
-				this->Zoom = std::max(this->Zoom, 0.0001f);
-				float renderWidth = this->Width * this->Zoom / 2;
-				float renderHeight = this->Height * this->Zoom / 2;
-				this->camera->SetProjection(-renderWidth, renderWidth, -renderHeight, renderHeight);
-				break;
-			}
-			case (GameEngine::EventTypes::WindowResize):
-			{
-				::GameEngine::WindowResize& ev = static_cast<::GameEngine::WindowResize&>(event);
-				this->Width = this->Height * ev.GetWidth() / ev.GetHeight();
-				float renderWidth = this->Width * this->Zoom / 2;
-				float renderHeight = this->Height * this->Zoom / 2;
-				this->camera->SetProjection(-renderWidth, renderWidth, -renderHeight, renderHeight);
+				this->Zoom = std::max(this->Zoom, 0.01f);
+				this->camera->SetProjection(0, this->Width * this->Zoom, 0, this->Height * this->Zoom);
 				break;
 			}
 			default: { }

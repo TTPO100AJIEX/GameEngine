@@ -1,6 +1,6 @@
 #include <PrecompiledHeaders.h>
 
-#include "Game.cpp"
+#include "Game.h"
 
 int main(int argc, char** argv)
 {

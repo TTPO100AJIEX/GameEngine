@@ -27,7 +27,7 @@ namespace GameEngine
 		#else
 			#error "One of [PLATFORM_WINDOWS] must be defined"
 		#endif
-		this->l_Window->Use(true);
+		this->l_Window->Use(false);
 
 		this->l_Renderer = RenderAPI::Create();
 	}
@@ -89,10 +89,25 @@ namespace GameEngine
 				ENGINE_INFO("Window Destroyed ({0})! Running: {1}", event.ToString(), this->Running);
 				break;
 			}
+			[[unlikely]] case (EventTypes::WindowResize):
+			{
+				GameEngine::WindowResize& ev = static_cast<GameEngine::WindowResize&>(event);
+				if (ev.GetHeight() == 0 || ev.GetWidth() == 0)
+				{
+					this->Minimized = true;
+					this->OnEvent(event);
+					ENGINE_WARN("Window has been minimized: {0}", ev.ToString());
+					break;
+				}
+				this->l_Renderer->SetViewport(0, 0, ev.GetWidth(), ev.GetHeight());
+				this->Minimized = false;
+				this->OnEvent(event);
+				break;
+			}
 			[[likely]] case (EventTypes::AppTick): 
 			{
 				this->l_Window->Update();
-				if (!this->Running) [[unlikely]] { return; }
+				if (this->Minimized || !this->Running) [[unlikely]] { break; }
 				[[fallthrough]];
 			}
 			[[likely]] default:

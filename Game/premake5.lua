@@ -2,7 +2,7 @@ project "Game"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++20"
-    flags { "MultiProcessorCompile", "OmitDefaultLibrary", "ShadowedVariables" }
+    flags { "MultiProcessorCompile", "ShadowedVariables" }
 	staticruntime "On"
 	optimize "Full"
 

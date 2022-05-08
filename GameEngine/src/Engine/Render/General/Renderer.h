@@ -22,8 +22,9 @@ namespace GameEngine
 	public:
 		virtual ~Renderer() = default;
 
-		virtual void SetClearColor(const glm::vec4& Color) = 0;
-		virtual void Clear() = 0;
+		virtual void SetClearColor(const glm::vec4& Color) const = 0;
+		virtual void Clear() const = 0;
+		virtual void SetViewport(int x, int y, int width, int height) const = 0;
 
 
 		virtual void BeginScene(const std::shared_ptr<Render::Camera> camera) = 0;

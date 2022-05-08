@@ -24,6 +24,7 @@ namespace GameEngine
 
 		Window* get_raw_this() { return(this); }
 
+		std::pair<unsigned int, unsigned int> GetSize() { return(std::make_pair(this->Width, this->Height)); }
 		virtual void SetSize(unsigned int width, unsigned int height) = 0;
 
 		virtual void Use(bool vSync) const = 0;

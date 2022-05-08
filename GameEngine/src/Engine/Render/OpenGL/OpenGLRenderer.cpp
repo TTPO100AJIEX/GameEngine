@@ -13,13 +13,17 @@
 
 namespace GameEngine
 {
-	void OpenGLRenderer::SetClearColor(const glm::vec4& Color)
+	void OpenGLRenderer::SetClearColor(const glm::vec4& Color) const
 	{
 		glClearColor(Color.r, Color.g, Color.b, Color.a);
 	}
-	void OpenGLRenderer::Clear()
+	void OpenGLRenderer::Clear() const
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	}
+	void OpenGLRenderer::SetViewport(int x, int y, int width, int height) const
+	{
+		glViewport(x, y, width, height);
 	}
 	
 	OpenGLRenderer::OpenGLRenderer()
@@ -61,7 +65,7 @@ namespace GameEngine
 		shader->UploadUniformMat4("u_ViewProjection", this->SceneData.ViewProjectionMatrix);
 		shader->UploadUniformMat4("u_Transform", transform);
 		vertexArray->Bind();
-		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetAmount(), GL_UNSIGNED_INT, nullptr);
+		glDrawElements(GL_TRIANGLES, (unsigned int)(vertexArray->GetIndexBuffer()->GetAmount()), GL_UNSIGNED_INT, nullptr);
 		//this->DrawIndexed(std::static_pointer_cast<Render::OpenGLVertexArray>(vertexArray), std::static_pointer_cast<Render::OpenGLShader>(shader), transform);
 	}
 

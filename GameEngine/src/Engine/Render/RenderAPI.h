@@ -16,7 +16,6 @@
 
 #include "General/Textures.h"
 
-
 namespace GameEngine::RenderAPI
 {
 	std::unique_ptr<::GameEngine::Renderer> Create();

@@ -17,8 +17,9 @@ namespace GameEngine
 		OpenGLRenderer();
 		virtual ~OpenGLRenderer();
 
-		virtual void SetClearColor(const glm::vec4& Color) override;
-		virtual void Clear() override;
+		virtual void SetClearColor(const glm::vec4& Color) const override;
+		virtual void Clear() const override;
+		virtual void SetViewport(int x, int y, int width, int height) const override;
 
 
 		virtual void BeginScene(const std::shared_ptr<Render::Camera> camera) override;

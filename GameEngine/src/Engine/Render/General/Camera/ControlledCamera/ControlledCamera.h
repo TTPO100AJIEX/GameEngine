@@ -3,6 +3,7 @@
 namespace GameEngine
 {
 	class Event;
+	class Engine;
 }
 namespace GameEngine::Render
 {

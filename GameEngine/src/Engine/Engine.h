@@ -17,6 +17,7 @@ namespace GameEngine
 		std::unique_ptr<Window> l_Window;
 		std::unique_ptr<Renderer> l_Renderer;
 		bool Running = false;
+		bool Minimized = false;
 
 	public:
 		Engine();
