@@ -37,13 +37,17 @@ namespace GameEngine::Render
 				float cameraRotation = this->camera->GetRotation();
 				if (window->IsKeyPressed(::GameEngine::KeyCodes::Keys::Q)) cameraRotation += this->RotateSpeed * multiplier;
 				else if (window->IsKeyPressed(::GameEngine::KeyCodes::Keys::E)) cameraRotation -= this->RotateSpeed * multiplier;
+				if (cameraRotation > 180.0f) cameraRotation -= 360.0f;
+				if (cameraRotation <= -180.0f) cameraRotation += 360.0f;
 				this->camera->SetRotation(cameraRotation);
 
 				glm::vec3 cameraPosition = this->camera->GetPosition();
-				if (window->IsKeyPressed(::GameEngine::KeyCodes::Keys::D)) cameraPosition.x -= this->MoveSpeed * multiplier;
-				else if (window->IsKeyPressed(::GameEngine::KeyCodes::Keys::A)) cameraPosition.x += this->MoveSpeed * multiplier;
-				if (window->IsKeyPressed(::GameEngine::KeyCodes::Keys::W)) cameraPosition.y -= this->MoveSpeed * multiplier;
-				else if (window->IsKeyPressed(::GameEngine::KeyCodes::Keys::S)) cameraPosition.y += this->MoveSpeed * multiplier;
+				glm::vec2 movement(0.0f);
+				if (window->IsKeyPressed(::GameEngine::KeyCodes::Keys::D)) movement.x -= this->MoveSpeed * multiplier;
+				else if (window->IsKeyPressed(::GameEngine::KeyCodes::Keys::A)) movement.x += this->MoveSpeed * multiplier;
+				if (window->IsKeyPressed(::GameEngine::KeyCodes::Keys::W)) movement.y -= this->MoveSpeed * multiplier;
+				else if (window->IsKeyPressed(::GameEngine::KeyCodes::Keys::S)) movement.y += this->MoveSpeed * multiplier;
+				cameraPosition += glm::vec3(glm::rotate(movement, cameraRotation), 0.0f);
 				this->camera->SetPosition(cameraPosition);
 				
 				break;

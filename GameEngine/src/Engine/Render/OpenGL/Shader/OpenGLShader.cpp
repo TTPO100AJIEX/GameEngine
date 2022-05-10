@@ -71,11 +71,8 @@ namespace GameEngine::Render
 
 		int isLinked = 0;
 		glGetProgramiv(this->id, GL_LINK_STATUS, &isLinked);
-		if (isLinked == GL_TRUE) [[likely]]
-		{
-			for (auto& [type, Id] : this->ShaderIds) glDetachShader(this->id, Id); 
-			return;
-		}
+		for (auto& [type, Id] : this->ShaderIds) { glDetachShader(this->id, Id); glDeleteShader(Id); }
+		if (isLinked == GL_TRUE) [[likely]] { return; }
 		#ifdef DEBUG
 			int errorLength = 0;
 			glGetProgramiv(this->id, GL_INFO_LOG_LENGTH, &errorLength);
@@ -84,12 +81,10 @@ namespace GameEngine::Render
 			ENGINE_ERROR("OpenGLShader: failed to link shader program with error {0}", error);
 		#endif
 		glDeleteProgram(this->id);
-		for (auto& [type, Id] : this->ShaderIds) glDeleteShader(Id);
 	}
 	OpenGLShader::~OpenGLShader()
 	{
 		glDeleteProgram(this->id);
-		for (auto& [type, Id] : this->ShaderIds) glDeleteShader(Id);
 	}
 
 

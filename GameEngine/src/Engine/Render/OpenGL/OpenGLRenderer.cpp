@@ -37,6 +37,12 @@ namespace GameEngine
 		ENGINE_INFO("OpenGL vendor: {0}", glGetString(GL_VENDOR));
 		ENGINE_INFO("OpenGL hardware: {0}", glGetString(GL_RENDERER));
 		ENGINE_INFO("OpenGL version: {0}", glGetString(GL_VERSION));
+		int versionMajor, versionMinor;
+		glGetIntegerv(GL_MAJOR_VERSION, &versionMajor);
+		glGetIntegerv(GL_MINOR_VERSION, &versionMinor);
+		ENGINE_INFO("OpenGL major version: {0}", versionMajor);
+		ENGINE_INFO("OpenGL minor version: {0}", versionMinor);
+		if (versionMajor < 4 || (versionMajor == 4 && versionMinor < 5)) { ENGINE_CRITICAL("Engine requires OpenGL version 4.5.0 or above!"); return; }
 
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

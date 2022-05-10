@@ -1,10 +1,13 @@
 #pragma once
 
+#include <Engine/Core/PlatformDetection.h>
+
 #include <fstream>
 #include <sstream>
 
 #include <cstdint>
 #include <chrono>
+#include <cmath>
 
 #include <memory>
 #include <optional>
@@ -24,6 +27,7 @@
 #include <GLM/glm.hpp>
 #include <GLM/gtc/type_ptr.hpp>
 #include <GLM/gtc/matrix_transform.hpp>
+#include <GLM/gtx/rotate_vector.hpp>
 
 #include <GLAD/glad.h>
 #ifdef PLATFORM_WINDOWS
