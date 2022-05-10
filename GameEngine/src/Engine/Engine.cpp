@@ -27,7 +27,7 @@ namespace GameEngine
 		#else
 			#error "One of [PLATFORM_WINDOWS] must be defined"
 		#endif
-		this->l_Window->Use(false);
+		this->l_Window->Use(true);
 
 		this->l_Renderer = RenderAPI::Create();
 	}

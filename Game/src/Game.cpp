@@ -16,8 +16,9 @@ Game::Game()
 		{ GameEngine::Render::ShaderType::Vertex, "assets/shaders/texture/vertex.glsl" },
 		{ GameEngine::Render::ShaderType::Fragment, "assets/shaders/texture/fragment.glsl" }
 	});
-	this->texture1 = GameEngine::RenderAPI::Texture::Create2D("assets/textures/avatar.png");
-	this->texture2 = GameEngine::RenderAPI::Texture::Create2D("assets/textures/avatar_template.png");
+	this->textures = GameEngine::RenderAPI::Texture::Library::Create();
+	this->textures->Load2D("avatar", "assets/textures/avatar.png");
+	this->textures->Load2D("avatar_template", "assets/textures/avatar_template.png");
 
 	this->vao1 = GameEngine::RenderAPI::VertexArray::Create();
 	float vertices1[4 * 3] =
@@ -93,17 +94,16 @@ void Game::OnEvent(GameEngine::Event& event)
 				}
 			}
 
-			/*glm::mat4 transform = glm::translate(glm::mat4(1.0f), this->position2);
+			glm::mat4 transform = glm::translate(glm::mat4(1.0f), this->position2);
 			transform *= glm::rotate(glm::mat4(1.0f), this->rotation2, glm::vec3(0, 0, 1));
-			transform *= glm::scale(glm::mat4(1.0f), glm::vec3(this->scale2));*/
-			glm::mat4 transform = glm::scale(glm::mat4(1.0f), glm::vec3(this->scale2));
+			transform *= glm::scale(glm::mat4(1.0f), glm::vec3(this->scale2));
 
 			const std::shared_ptr<GameEngine::Render::Shader> textureShader = this->shaders->Bind("texture");
-			this->texture1->Bind(1);
+			this->textures->Bind("avatar", 1);
 			textureShader->UploadUniformInt("u_Texture", 1);
 			this->GetRenderer()->DrawIndexed(this->vao2, textureShader, transform);
 
-			this->texture2->Bind(2);
+			this->textures->Bind("avatar_template", 2);
 			textureShader->UploadUniformInt("u_Texture", 2);
 			this->GetRenderer()->DrawIndexed(this->vao2, textureShader, transform);
 

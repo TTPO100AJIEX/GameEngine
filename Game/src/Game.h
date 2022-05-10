@@ -16,8 +16,7 @@ private:
 	float rotation2 = 0.0f;
 	float scale2 = 1.0f;
 
-	std::shared_ptr<GameEngine::Render::Texture2D> texture1;
-	std::shared_ptr<GameEngine::Render::Texture2D> texture2;
+	std::shared_ptr<GameEngine::Render::TextureLibrary> textures;
 
 public:
 	Game();

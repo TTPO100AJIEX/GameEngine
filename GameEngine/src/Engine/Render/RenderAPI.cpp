@@ -2,12 +2,6 @@
 
 #include "RenderAPI.h"
 
-
-#include "General/Camera/Camera.h"
-#include "General/Camera/ControlledCamera/ControlledCamera.h"
-
-#include "General/ShaderLibrary/ShaderLibrary.h"
-
 #ifdef RENDER_USE_OPENGL
 	#include "OpenGL/OpenGLRenderer.h"
 
@@ -99,6 +93,13 @@ namespace GameEngine::RenderAPI
 			std::shared_ptr<::GameEngine::Render::Texture2D> Create2D(const std::string& path)
 			{
 				return(std::make_shared<::GameEngine::Render::OpenGLTexture2D>(path));
+			}
+			namespace Library
+			{
+				std::shared_ptr<::GameEngine::Render::TextureLibrary> Create()
+				{
+					return(std::make_shared<::GameEngine::Render::TextureLibrary>());
+				}
 			}
 		}
 

@@ -15,6 +15,7 @@
 #include "General/ShaderLibrary/ShaderLibrary.h"
 
 #include "General/Textures.h"
+#include "General/TextureLibrary/TextureLibrary.h"
 
 namespace GameEngine::RenderAPI
 {
@@ -56,5 +57,9 @@ namespace GameEngine::RenderAPI
 	namespace Texture
 	{
 		std::shared_ptr<::GameEngine::Render::Texture2D> Create2D(const std::string& path);
+		namespace Library
+		{
+			std::shared_ptr<::GameEngine::Render::TextureLibrary> Create();
+		}
 	}
 }

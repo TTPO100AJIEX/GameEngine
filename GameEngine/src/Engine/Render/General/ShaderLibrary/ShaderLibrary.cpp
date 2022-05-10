@@ -39,7 +39,7 @@ namespace GameEngine::Render
 			if (!this->Exists(name)) 
 			{
 				ENGINE_WARN("ShaderLibrary::Get: shader with name {0} does not exist!", name); 
-				return(NULL);
+				return(nullptr);
 			}
 		#endif
 		return(this->shaders.at(name));
@@ -51,7 +51,7 @@ namespace GameEngine::Render
 			if (!this->Exists(name)) 
 			{
 				ENGINE_WARN("ShaderLibrary::Remove: shader with name {0} does not exist!", name); 
-				return(NULL);
+				return(nullptr);
 			}
 		#endif
 		std::shared_ptr<Shader> save = this->shaders.at(name);

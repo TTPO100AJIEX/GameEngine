@@ -29,5 +29,8 @@ namespace GameEngine::Render
 
 		unsigned int GetWidth() const { return(this->width); }
 		unsigned int GetHeight() const { return(this->height); }
+
+		virtual void Bind(uint32_t slot = 0) const = 0;
+		virtual void UnBind() const = 0;
 	};
 }

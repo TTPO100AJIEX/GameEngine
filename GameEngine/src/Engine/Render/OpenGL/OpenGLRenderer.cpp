@@ -51,14 +51,6 @@ namespace GameEngine
 		this->SceneData.ViewProjectionMatrix = camera->GetViewProjectionMatrix();
 	}
 
-	/*void OpenGLRenderer::DrawIndexed(const std::shared_ptr<Render::OpenGLVertexArray> vertexArray, const std::shared_ptr<Render::OpenGLShader> shader, const glm::mat4& transform)
-	{
-		shader->Bind();
-		shader->UploadUniformMat4("u_ViewProjection", this->SceneData.ViewProjectionMatrix);
-		shader->UploadUniformMat4("u_Transform", transform);
-		vertexArray->Bind();
-		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetAmount(), GL_UNSIGNED_INT, nullptr);
-	}*/
 	void OpenGLRenderer::DrawIndexed(const std::shared_ptr<Render::VertexArray> vertexArray, const std::shared_ptr<Render::Shader> shader, const glm::mat4& transform)
 	{
 		shader->Bind();
@@ -66,7 +58,6 @@ namespace GameEngine
 		shader->UploadUniformMat4("u_Transform", transform);
 		vertexArray->Bind();
 		glDrawElements(GL_TRIANGLES, (unsigned int)(vertexArray->GetIndexBuffer()->GetAmount()), GL_UNSIGNED_INT, nullptr);
-		//this->DrawIndexed(std::static_pointer_cast<Render::OpenGLVertexArray>(vertexArray), std::static_pointer_cast<Render::OpenGLShader>(shader), transform);
 	}
 
 	void OpenGLRenderer::EndScene()
