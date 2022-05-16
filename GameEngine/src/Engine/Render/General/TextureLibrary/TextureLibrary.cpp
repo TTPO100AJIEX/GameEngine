@@ -19,7 +19,7 @@ namespace GameEngine::Render
 		#ifdef DEBUG
 			if (this->Exists(name)) ENGINE_WARN("TextureLibrary::Load2D: overriding a texture with name {0}!", name);
 		#endif
-		this->textures[name] = ::GameEngine::RenderAPI::Texture::Create2D(path);
+		this->textures[name] = RenderAPI::Texture::Create2D(path);
 	}
 
 	bool TextureLibrary::Exists(const std::string& name) const

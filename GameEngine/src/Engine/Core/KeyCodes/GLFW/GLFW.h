@@ -42,6 +42,6 @@ namespace GameEngine::KeyCodes
 		Menu = GLFW_KEY_MENU
 	};
 
-	GLFWKeys ToGLFW(const Keys& keycode);
-	Keys FromGLFW(const GLFWKeys& keycode);
+	int ToGLFW(const Keys& keycode);
+	Keys FromGLFW(int& keycode);
 }

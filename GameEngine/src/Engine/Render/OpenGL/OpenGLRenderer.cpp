@@ -1,6 +1,6 @@
 #include <PrecompiledHeaders.h>
 
-#include "OpenGLRenderer.h"
+#include <GLAD/glad.h>
 
 #include "VertexBuffer/OpenGLVertexBuffer.h"
 #include "VertexBufferLayout/OpenGLLayout.h"
@@ -10,6 +10,8 @@
 #include "Texture/Texture2D/OpenGLTexture2D.h"
 
 #include "../General/Camera/Camera.h"
+
+#include "OpenGLRenderer.h"
 
 namespace GameEngine
 {
@@ -26,9 +28,9 @@ namespace GameEngine
 		glViewport(x, y, width, height);
 	}
 	
-	OpenGLRenderer::OpenGLRenderer()
+	OpenGLRenderer::OpenGLRenderer(const void* ProcAdressFunction)
 	{
-		if (!gladLoadGLLoader((GLADloadproc)(glfwGetProcAddress)))
+		if (!gladLoadGLLoader((GLADloadproc)(ProcAdressFunction)))
 		{
 			ENGINE_CRITICAL("Failed to initialize OpenGL context (GLAD)");
 			return;

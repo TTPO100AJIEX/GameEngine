@@ -2,6 +2,8 @@
 
 #include "../Window.h"
 
+struct GLFWwindow;
+
 namespace GameEngine
 {
 	class WindowsWindow : public Window
@@ -15,9 +17,11 @@ namespace GameEngine
 		WindowsWindow(unsigned int width, unsigned int height, const std::string& title, std::function<void(Event&)> event_callback);
 		virtual ~WindowsWindow();
 
+		virtual void Use(bool vSync) const override;
+		virtual const void* GetProcAdressFunction() const override;
+
 		virtual void SetSize(unsigned int width, unsigned int height) override;
 
-		virtual void Use(bool vSync) const override;
 		virtual void Update() override;
 
 		virtual bool IsKeyPressed(const KeyCodes::Keys& keycode) const override;

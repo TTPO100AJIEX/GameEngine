@@ -29,7 +29,7 @@ namespace GameEngine
 		#endif
 		this->l_Window->Use(true);
 
-		this->l_Renderer = RenderAPI::Create();
+		this->l_Renderer = RenderAPI::Create(this->l_Window->GetProcAdressFunction());
 	}
 	Engine::~Engine()
 	{

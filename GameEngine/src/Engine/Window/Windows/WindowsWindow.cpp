@@ -1,5 +1,8 @@
 #include <PrecompiledHeaders.h>
 
+#include <GLFW/glfw3.h>
+#include "../../Core/KeyCodes/GLFW/GLFW.h"
+
 #include "WindowsWindow.h"
 
 namespace GameEngine
@@ -11,25 +14,34 @@ namespace GameEngine
 	enum class GLFW_status : uint8_t { ON, OFF };
 	static void switch_GLFW(GLFW_status status)
 	{
-		static bool GLFW_initialized = false;
-		if (status == GLFW_status::ON)
+		static unsigned int GLFW_initialization_count = 0;
+		switch(status)
 		{
-			if (GLFW_initialized) return;
-			if (!glfwInit()) [[unlikely]]
+			case (GLFW_status::ON):
 			{
-				ENGINE_CRITICAL("Failed to initialize GLFW!");
-				return;
+				GLFW_initialization_count++;
+				if (GLFW_initialization_count > 1) return;
+				if (!glfwInit()) [[unlikely]]
+				{
+					ENGINE_CRITICAL("Failed to initialize GLFW!");
+					return;
+				}
+				ENGINE_WARN("Initialized GLFW!");
+				glfwSetErrorCallback(GLFWErrorCallback);
+				break;
 			}
-			ENGINE_WARN("Initialized GLFW!");
-			glfwSetErrorCallback(GLFWErrorCallback);
-			GLFW_initialized = true;
-		}
-		else
-		{
-			if (!GLFW_initialized) return;
-			glfwTerminate();
-			GLFW_initialized = false;
-			ENGINE_WARN("Terminated GLFW!");
+			case (GLFW_status::OFF):
+			{
+				GLFW_initialization_count--;
+				if (GLFW_initialization_count > 0) return;
+				glfwTerminate();
+				ENGINE_WARN("Terminated GLFW!");
+				break;
+			}
+			default: 
+			{
+				ENGINE_WARN("switch_GLFW: weird status value {0}!", status);
+			}
 		}
 	}
 
@@ -50,6 +62,15 @@ namespace GameEngine
 		switch_GLFW(GLFW_status::OFF);
 	}
 
+	void WindowsWindow::Use(bool vSync) const
+	{
+		glfwMakeContextCurrent(this->l_Window);
+		glfwSwapInterval((vSync) ? 1 : 0);
+	}
+	const void* WindowsWindow::GetProcAdressFunction() const
+	{
+		return(glfwGetProcAddress);
+	}
 
 	void WindowsWindow::SetSize(unsigned int Width, unsigned int Height)
 	{
@@ -59,12 +80,6 @@ namespace GameEngine
 	}
 
 
-	void WindowsWindow::Use(bool vSync) const
-	{
-		glfwMakeContextCurrent(this->l_Window);
-		glfwSwapInterval((vSync) ? 1 : 0);
-
-	}
 	void WindowsWindow::Update()
 	{
 		glfwSwapBuffers(this->l_Window);

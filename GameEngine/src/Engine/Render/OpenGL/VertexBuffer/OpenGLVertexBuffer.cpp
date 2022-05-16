@@ -1,8 +1,9 @@
 #include <PrecompiledHeaders.h>
 
-#include "OpenGLVertexBuffer.h"
-
+#include <GLAD/glad.h>
 #include "../VertexBufferLayout/OpenGLLayout.h"
+
+#include "OpenGLVertexBuffer.h"
 
 namespace GameEngine::Render
 {

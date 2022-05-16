@@ -1,5 +1,9 @@
 #include <PrecompiledHeaders.h>
 
+#include <GLAD/glad.h>
+
+#include "OpenGL.h"
+
 namespace GameEngine::Render
 {
 	std::tuple<int, int, size_t> ShaderDataTypeToOpenGL(const ShaderDataType& type)

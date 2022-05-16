@@ -14,7 +14,7 @@ namespace GameEngine
 	class OpenGLRenderer : public Renderer
 	{
 	public:
-		OpenGLRenderer();
+		OpenGLRenderer(const void* ProcAdressFunction);
 		virtual ~OpenGLRenderer();
 
 		virtual void SetClearColor(const glm::vec4& Color) const override;

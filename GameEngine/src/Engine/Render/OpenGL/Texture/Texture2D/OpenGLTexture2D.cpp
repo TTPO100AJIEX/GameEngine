@@ -1,5 +1,6 @@
 #include <PrecompiledHeaders.h>
 
+#include <GLAD/glad.h>
 #include <stb/stb_image.h>
 
 #include "OpenGLTexture2D.h"

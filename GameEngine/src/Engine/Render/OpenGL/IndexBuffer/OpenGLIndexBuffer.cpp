@@ -1,5 +1,7 @@
 #include <PrecompiledHeaders.h>
 
+#include <GLAD/glad.h>
+
 #include "OpenGLIndexBuffer.h"
 
 namespace GameEngine::Render

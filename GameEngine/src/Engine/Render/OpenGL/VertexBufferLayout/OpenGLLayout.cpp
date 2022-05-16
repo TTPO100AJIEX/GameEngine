@@ -1,5 +1,8 @@
 #include <PrecompiledHeaders.h>
 
+#include <GLAD/glad.h>
+#include "../../../Core/ShaderDataType/OpenGL/OpenGL.h"
+
 #include "OpenGLLayout.h"
 
 namespace GameEngine::Render

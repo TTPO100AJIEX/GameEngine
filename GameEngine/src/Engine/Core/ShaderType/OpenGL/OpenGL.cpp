@@ -1,5 +1,9 @@
 #include <PrecompiledHeaders.h>
 
+#include <GLAD/glad.h>
+
+#include "OpenGL.h"
+
 namespace GameEngine::Render
 {
 	unsigned int ShaderTypeToOpenGL(const ShaderType& type)

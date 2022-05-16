@@ -1,5 +1,8 @@
 #include <PrecompiledHeaders.h>
 
+#include <GLFW/glfw3.h>
+#include "../../Core/KeyCodes/GLFW/GLFW.h"
+
 #include "WindowsWindow.h"
 
 #include "../../Events/Window.h"
@@ -33,19 +36,19 @@ namespace GameEngine
 			{
 				case GLFW_PRESS:
 				{
-					KeyPress KeyPressEvent(KeyCodes::FromGLFW(static_cast<KeyCodes::GLFWKeys>(key)), 0, window_data.get_raw_this());
+					KeyPress KeyPressEvent(KeyCodes::FromGLFW(key), 0, window_data.get_raw_this());
 					window_data.Event_Callback(KeyPressEvent);
 					break;
 				}
 				case GLFW_RELEASE:
 				{
-					KeyRelease KeyReleaseEvent(KeyCodes::FromGLFW(static_cast<KeyCodes::GLFWKeys>(key)), window_data.get_raw_this());
+					KeyRelease KeyReleaseEvent(KeyCodes::FromGLFW(key), window_data.get_raw_this());
 					window_data.Event_Callback(KeyReleaseEvent);
 					break;
 				}
 				case GLFW_REPEAT:
 				{
-					KeyPress KeyPressEvent(KeyCodes::FromGLFW(static_cast<KeyCodes::GLFWKeys>(key)), 1, window_data.get_raw_this());
+					KeyPress KeyPressEvent(KeyCodes::FromGLFW(key), 1, window_data.get_raw_this());
 					window_data.Event_Callback(KeyPressEvent);
 					break;
 				}
@@ -80,13 +83,13 @@ namespace GameEngine
 			{
 				case GLFW_PRESS:
 				{
-					MouseButtonPress MouseButtonPressEvent(KeyCodes::FromGLFW(static_cast<KeyCodes::GLFWKeys>(button)), window_data.get_raw_this());
+					MouseButtonPress MouseButtonPressEvent(KeyCodes::FromGLFW(button), window_data.get_raw_this());
 					window_data.Event_Callback(MouseButtonPressEvent);
 					break;
 				}
 				case GLFW_RELEASE:
 				{
-					MouseButtonRelease MouseButtonReleaseEvent(KeyCodes::FromGLFW(static_cast<KeyCodes::GLFWKeys>(button)), window_data.get_raw_this());
+					MouseButtonRelease MouseButtonReleaseEvent(KeyCodes::FromGLFW(button), window_data.get_raw_this());
 					window_data.Event_Callback(MouseButtonReleaseEvent);
 					break;
 				}

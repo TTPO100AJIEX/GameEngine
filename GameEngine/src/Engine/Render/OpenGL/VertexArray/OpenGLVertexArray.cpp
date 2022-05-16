@@ -1,9 +1,10 @@
 #include <PrecompiledHeaders.h>
 
-#include "OpenGLVertexArray.h"
-
+#include <GLAD/glad.h>
 #include "../VertexBuffer/OpenGLVertexBuffer.h"
 #include "../IndexBuffer/OpenGLIndexBuffer.h"
+
+#include "OpenGLVertexArray.h"
 
 namespace GameEngine::Render
 {

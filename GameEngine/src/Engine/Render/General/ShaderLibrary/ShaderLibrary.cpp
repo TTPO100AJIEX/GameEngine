@@ -14,19 +14,19 @@ namespace GameEngine::Render
 		#endif
 		this->shaders[name] = shader;
 	}
-	void ShaderLibrary::LoadFromStrings(const std::string& name, const std::unordered_map<::GameEngine::Render::ShaderType, const std::string>& data)
+	void ShaderLibrary::LoadFromStrings(const std::string& name, const std::unordered_map<Render::ShaderType, const std::string>& data)
 	{
 		#ifdef DEBUG
 			if (this->Exists(name)) ENGINE_WARN("ShaderLibrary::LoadFromStrings: overriding a shader with name {0}!", name);
 		#endif
-		this->shaders[name] = ::GameEngine::RenderAPI::Shader::CreateFromStrings(data);
+		this->shaders[name] = RenderAPI::Shader::CreateFromStrings(data);
 	}
-	void ShaderLibrary::LoadFromFiles(const std::string& name, const std::unordered_map<::GameEngine::Render::ShaderType, const std::string>& data)
+	void ShaderLibrary::LoadFromFiles(const std::string& name, const std::unordered_map<Render::ShaderType, const std::string>& data)
 	{
 		#ifdef DEBUG
 			if (this->Exists(name)) ENGINE_WARN("ShaderLibrary::LoadFromFiles: overriding a shader with name {0}!", name);
 		#endif
-		this->shaders[name] = ::GameEngine::RenderAPI::Shader::CreateFromFiles(data);
+		this->shaders[name] = RenderAPI::Shader::CreateFromFiles(data);
 	}
 
 	bool ShaderLibrary::Exists(const std::string& name) const

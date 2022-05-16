@@ -29,22 +29,10 @@
 #include <GLM/gtc/matrix_transform.hpp>
 #include <GLM/gtx/rotate_vector.hpp>
 
-#include <GLAD/glad.h>
-#ifdef PLATFORM_WINDOWS
-	#include <GLFW/glfw3.h>
-#endif
-
 
 #include <Log/Log.h>
 
 #include <Engine/Core/KeyCodes/KeyCodes.h>
-#ifdef PLATFORM_WINDOWS
-	#include <Engine/Core/KeyCodes/GLFW/GLFW.h>
-#endif
 #include <Engine/Core/ShaderDataType/ShaderDataType.h>
 #include <Engine/Core/ShaderType/ShaderType.h>
-#ifdef RENDER_USE_OPENGL
-	#include <Engine/Core/ShaderType/OpenGL/OpenGL.h>
-	#include <Engine/Core/ShaderDataType/OpenGL/OpenGL.h>
-#endif
 #include <Engine/Core/Time/Time.h>

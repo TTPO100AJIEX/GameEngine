@@ -22,12 +22,14 @@ namespace GameEngine
 			Width(width), Height(height), Title(title), Event_Callback(event_callback) {};
 		virtual ~Window() = default;
 
+		virtual void Use(bool vSync) const = 0;
+		virtual const void* GetProcAdressFunction() const = 0;
 		Window* get_raw_this() { return(this); }
 
 		std::pair<unsigned int, unsigned int> GetSize() { return(std::make_pair(this->Width, this->Height)); }
 		virtual void SetSize(unsigned int width, unsigned int height) = 0;
 
-		virtual void Use(bool vSync) const = 0;
+
 		virtual void Update() = 0;
 
 		

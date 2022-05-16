@@ -84,11 +84,11 @@ void Game::OnEvent(GameEngine::Event& event)
 			this->GetRenderer()->Clear();
 			this->GetRenderer()->BeginScene(this->camera->GetCamera());
 
-			for (int x = 0; x < 13; x++)
+			for (int x = 0; x < 18; x++)
 			{
-				for (int y = 0; y < 7; y++)
+				for (int y = 0; y < 13; y++)
 				{
-					glm::mat4 transform = glm::scale(glm::mat4(1.0f), glm::vec3(0.15f));
+					glm::mat4 transform = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 					transform *= glm::translate(glm::mat4(1.0f), { 925.0f * x, 925.0f * y, 0.0f });
 					this->GetRenderer()->DrawIndexed(this->vao1, this->shaders->Get("solid"), transform);
 				}
