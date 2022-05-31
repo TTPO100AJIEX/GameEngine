@@ -1,5 +1,5 @@
 #pragma once
-
+/*
 #include <GameEngine.h>
 
 class Game : public GameEngine::Engine
@@ -23,4 +23,4 @@ public:
 	~Game();
 
 	virtual void OnEvent(GameEngine::Event& event) override;
-};
+};*/

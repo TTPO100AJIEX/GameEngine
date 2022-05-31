@@ -2,9 +2,9 @@
 
 #ifndef BUILD_ENGINE
 
-	#include "Common/PrecompiledHeaders/PrecompiledHeaders.h"
+	#include "PrecompiledHeaders/PrecompiledHeaders.h"
 
-	/*#include "Engine/Engine.h"
+	#include "Engine/Engine.h"
 
 
 	#include "Engine/Events/Event.h"
@@ -15,6 +15,6 @@
 
 	#include "Engine/Window/Window.h"
 
-	#include "Engine/Render/RenderAPI.h"*/
+	#include "Engine/Render/RenderAPI.h"
 
 #endif

@@ -1,6 +1,7 @@
 #include <PrecompiledHeaders.h>
 
-#include "Game.h"
+//#include "Game.h"
+#include <GameEngine.h>
 
 int main(int argc, char** argv)
 {
@@ -9,8 +10,8 @@ int main(int argc, char** argv)
 		GAME_WARN("Initialized log!");
 	#endif
 
-	std::unique_ptr<Game> game = std::make_unique<Game>();
-	game->Run();
+	//std::unique_ptr<Game> game = std::make_unique<Game>();
+	//game->Run();
 
 	return 0;
 }

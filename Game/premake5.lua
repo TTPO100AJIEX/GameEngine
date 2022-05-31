@@ -23,8 +23,12 @@ project "Game"
         "Dependencies",
         "src",
         "src/PrecompiledHeaders",
-		"%{wks.location}/GameEngine/Dependencies",
-		"%{wks.location}/GameEngine/src"
+
+		"%{wks.location}/GameEngine/src",
+        "%{wks.location}/GameEngine/src/Common",
+        "%{wks.location}/GameEngine/src/Common/PrecompiledHeaders",
+        "%{wks.location}/GameEngine/src/Platform",
+        "%{wks.location}/GameEngine/Dependencies",
 	}
 
 	links

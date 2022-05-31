@@ -1,5 +1,5 @@
 #include <PrecompiledHeaders.h>
-
+/*
 #include "Game.h"
 
 Game::Game()
@@ -116,4 +116,4 @@ void Game::OnEvent(GameEngine::Event& event)
 			this->camera->OnEvent(event);
 		}
 	}
-}
+}*/

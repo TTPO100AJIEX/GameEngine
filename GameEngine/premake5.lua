@@ -10,19 +10,21 @@ project "GameEngine"
     objdir ("%{wks.location}/bin/intermediates/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}/%{prj.name}")
 
     pchheader "PrecompiledHeaders.h"
-    pchsource "src/PrecompiledHeaders/PrecompiledHeaders.cpp"
+    pchsource "src/Common/PrecompiledHeaders/PrecompiledHeaders.cpp"
 
     files
     {
-        "src/**.h",
-        "src/**.cpp"
+        "src/Common/**.h",
+        "src/Common/**.cpp"
     }
 
     includedirs
     {
         "Dependencies",
         "src",
-        "src/PrecompiledHeaders"
+        "src/Common",
+        "src/Common/PrecompiledHeaders",
+        "src/Platform"
     }
 
     links
@@ -37,7 +39,6 @@ project "GameEngine"
 	{
         "BUILD_ENGINE",
         
-        "RENDER_USE_OPENGL",
 		"GLFW_INCLUDE_NONE",
 		"STB_IMAGE_IMPLEMENTATION"
 	}
