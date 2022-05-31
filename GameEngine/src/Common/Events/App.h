@@ -8,6 +8,7 @@ namespace GameEngine
 	{
 	private:
 		Time FrameTime;
+
 	public:
 		AppTick(Time frameTime) : Event(EventTypes::AppTick), FrameTime(frameTime) {};
 		virtual ~AppTick() = default;
@@ -22,6 +23,5 @@ namespace GameEngine
 		#endif
 
 		Time GetFrameTime() { return(this->FrameTime); }
-
 	};
 }

@@ -33,7 +33,7 @@ namespace GameEngine
 			virtual std::string ToString() const = 0;
 		#endif
 
-		void SetEngine(Engine* engine)
+		void SetEngine(const Engine* engine)
 		{
 			#ifdef DEBUG
 				if (this->s_Engine.has_value()) [[unlikely]] { ENGINE_WARN("SetEngine used on Event that already has s_Engine defined!"); }
