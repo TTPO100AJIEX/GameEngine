@@ -6,7 +6,6 @@
 
 	#include "Common/Engine.h"
 
-
 	#include "Common/Events/Event.h"
 	#include "Common/Events/App.h"
 	#include "Common/Events/Keyboard.h"
