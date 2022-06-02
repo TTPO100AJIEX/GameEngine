@@ -19,7 +19,7 @@ namespace GameEngine
 		Engine();
 		virtual ~Engine();
 
-		//Window* GetWindow() const { return(this->l_Window.get()); }
+		Window* GetActiveWindow() const { return(this->l_Window.get()); }
 
 		void Run();
 

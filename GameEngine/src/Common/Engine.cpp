@@ -9,6 +9,7 @@
 #include "Events/Window.h"
 
 #include <Platform/Window/Window.h>
+#include <Platform/Renderer/Renderer.h>
 
 namespace GameEngine
 {

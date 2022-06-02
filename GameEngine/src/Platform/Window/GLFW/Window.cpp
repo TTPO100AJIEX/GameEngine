@@ -45,7 +45,8 @@ namespace GameEngine
 	}
 
 	
-	Window::Window(unsigned int width, unsigned int height, const std::string& title, std::function<void(Event&)> event_callback) : _Window(width, height, title, event_callback)
+	Window::Window(unsigned int width, unsigned int height, const std::string& title, std::function<void(Event&)> event_callback) :
+		Width(width), Height(height), Title(title), EventCallback(event_callback)
 	{
 		switch_GLFW(GLFW_status::ON);
 		this->l_Window = glfwCreateWindow(this->Width, this->Height, this->Title.c_str(), NULL, NULL);
@@ -68,6 +69,10 @@ namespace GameEngine
 		return(glfwGetProcAddress);
 	}*/
 
+	std::pair<unsigned int, unsigned int> Window::GetSize() const
+	{
+		return(std::make_pair(this->Width, this->Height));
+	}
 	void Window::SetSize(unsigned int Width, unsigned int Height)
 	{
 		this->Width = Width;

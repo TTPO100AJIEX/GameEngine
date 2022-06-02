@@ -21,7 +21,11 @@ project "GameEngine"
         "src/Platform/Window/GLFW/**.h",
         "src/Platform/Window/GLFW/**.cpp",
         "src/Platform/KeyCodes/GLFW/**.h",
-        "src/Platform/KeyCodes/GLFW/**.cpp"
+        "src/Platform/KeyCodes/GLFW/**.cpp",
+
+        "src/Platform/Renderer/*.h",
+        "src/Platform/Renderer/OpenGL/**.h",
+        "src/Platform/Renderer/OpenGL/**.cpp",
     }
 
     includedirs
@@ -41,6 +45,8 @@ project "GameEngine"
 
 	defines
 	{
+		"RENDERER_USE_OPENGL",
+        
 		"GLFW_INCLUDE_NONE",
 		"STB_IMAGE_IMPLEMENTATION"
 	}

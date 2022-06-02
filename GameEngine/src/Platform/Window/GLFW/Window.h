@@ -1,35 +1,43 @@
 #pragma once
 
-#include "../_Window.h"
-
 struct GLFWwindow;
+namespace GameEngine
+{
+	class Event;
+}
 
 namespace GameEngine
 {
-	class Window : public _Window
+	class Window
 	{
 	private:
+		std::string Title;
+		unsigned int Width;
+		unsigned int Height;
+		std::function<void(Event&)> EventCallback;
+
 		GLFWwindow* l_Window;
 
-		virtual void RegisterEvents() const override;
+		void RegisterEvents() const;
 
 	public:
 		Window(unsigned int width, unsigned int height, const std::string& title, std::function<void(Event&)> event_callback);
-		virtual ~Window();
+		~Window();
 
-		virtual void Use(bool vSync) const override;
-		//virtual const void* GetProcAdressFunction() const override;
+		void Use(bool vSync) const;
+		//const void* GetProcAdressFunction() const;
 
-		virtual void SetSize(unsigned int width, unsigned int height) override;
-
-
-		virtual void Update() override;
+		std::pair<unsigned int, unsigned int> GetSize() const;
+		void SetSize(unsigned int width, unsigned int height);
 
 
-		virtual bool IsKeyPressed(const KeyCodes::Keys& keycode) const override;
-		virtual bool IsMouseButtonPressed(const KeyCodes::Keys& keycode) const override;
-		virtual std::pair<double, double> GetMousePosition() const override;
-		virtual double GetMouseX() const override;
-		virtual double GetMouseY() const override;
+		void Update();
+
+
+		bool IsKeyPressed(const KeyCodes::Keys& keycode) const;
+		bool IsMouseButtonPressed(const KeyCodes::Keys& keycode) const;
+		std::pair<double, double> GetMousePosition() const;
+		double GetMouseX() const;
+		double GetMouseY() const;
 	};
 }
