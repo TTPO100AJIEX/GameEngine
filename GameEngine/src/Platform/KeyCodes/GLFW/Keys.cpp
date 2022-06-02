@@ -2,13 +2,13 @@
 
 #include <GLFW/glfw3.h>
 
-#include "GLFW.h"
+#include "Keys.h"
 
 namespace GameEngine::KeyCodes
 {
 	int ToGLFW(const Keys& keycode)
 	{
-		switch(keycode)
+		switch (keycode)
 		{
 			case(Keys::MOUSE_BUTTON_1): { return(GLFW_MOUSE_BUTTON_1); break; }
 			case(Keys::MOUSE_BUTTON_2): { return(GLFW_MOUSE_BUTTON_2); break; }
@@ -157,9 +157,9 @@ namespace GameEngine::KeyCodes
 	}
 
 
-	Keys FromGLFW(int& keycode)
+	Keys FromGLFW(const int& keycode)
 	{
-		switch(keycode)
+		switch (keycode)
 		{
 			case(GLFW_MOUSE_BUTTON_1): { return(Keys::MOUSE_BUTTON_1); break; }
 			case(GLFW_MOUSE_BUTTON_2): { return(Keys::MOUSE_BUTTON_2); break; }

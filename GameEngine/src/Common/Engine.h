@@ -2,7 +2,7 @@
 
 namespace GameEngine
 {
-	//class Window;
+	class Window;
 	class Event;
 }
 
@@ -11,7 +11,7 @@ namespace GameEngine
 	class Engine
 	{
 	private:
-		//std::unique_ptr<Window> l_Window;
+		std::unique_ptr<Window> l_Window;
 		bool Running = false;
 		bool Minimized = false;
 

@@ -15,16 +15,20 @@ project "GameEngine"
     files
     {
         "src/Common/**.h",
-        "src/Common/**.cpp"
+        "src/Common/**.cpp",
+
+        "src/Platform/Window/*.h",
+        "src/Platform/Window/GLFW/**.h",
+        "src/Platform/Window/GLFW/**.cpp",
+        "src/Platform/KeyCodes/GLFW/**.h",
+        "src/Platform/KeyCodes/GLFW/**.cpp"
     }
 
     includedirs
     {
         "Dependencies",
         "src",
-        "src/Common",
-        "src/Common/PrecompiledHeaders",
-        "src/Platform"
+        "src/Common/PrecompiledHeaders"
     }
 
     links
@@ -37,8 +41,6 @@ project "GameEngine"
 
 	defines
 	{
-        "BUILD_ENGINE",
-        
 		"GLFW_INCLUDE_NONE",
 		"STB_IMAGE_IMPLEMENTATION"
 	}

@@ -1,10 +1,10 @@
 #include <pch.h>
-/*
+
 #include "Game.h"
 
 Game::Game()
 {
-	this->GetRenderer()->SetClearColor({ 0.0f, 1.0f, 0.0f, 1.0f });
+	/*this->GetRenderer()->SetClearColor({0.0f, 1.0f, 0.0f, 1.0f});
 	this->camera = GameEngine::RenderAPI::Camera::CreateControlled(1920.0f, 1080.0f, 1.0f, 300.0f, 1.0f, 0.05f);
 
 	this->shaders = GameEngine::RenderAPI::Shader::Library::Create();
@@ -51,7 +51,7 @@ Game::Game()
 			{ GameEngine::Render::ShaderDataType::Float2, false }
 		})
 	));
-	this->vao2->SetIndexBuffer(GameEngine::RenderAPI::IndexBuffer::Create(indices2, 6));
+	this->vao2->SetIndexBuffer(GameEngine::RenderAPI::IndexBuffer::Create(indices2, 6));*/
 }
 Game::~Game()
 {
@@ -60,7 +60,7 @@ Game::~Game()
 
 void Game::OnEvent(GameEngine::Event& event)
 {
-	switch (event.GetEventType())
+	/*switch (event.GetEventType())
 	{
 		[[likely]] case (GameEngine::EventTypes::AppTick):
 		{
@@ -115,5 +115,5 @@ void Game::OnEvent(GameEngine::Event& event)
 		{
 			this->camera->OnEvent(event);
 		}
-	}
-}*/
+	}*/
+}

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Core/PlatformDetection.h>
+#include <Common/Core/PlatformDetection.h>
 
 
 #include <fstream>
@@ -31,9 +31,9 @@
 #include <GLM/gtx/rotate_vector.hpp>
 
 
-#include <Log/Log.h>
+#include <Common/Log/Log.h>
 
-#include <Core/KeyCodes/KeyCodes.h>
-#include <Core/ShaderDataType/ShaderDataType.h>
-#include <Core/ShaderType/ShaderType.h>
-#include <Core/Time/Time.h>
+#include <Common/Core/KeyCodes/KeyCodes.h>
+#include <Common/Core/ShaderDataType/ShaderDataType.h>
+#include <Common/Core/ShaderType/ShaderType.h>
+#include <Common/Core/Time/Time.h>

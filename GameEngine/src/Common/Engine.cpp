@@ -8,36 +8,32 @@
 #include "Events/Mouse.h"
 #include "Events/Window.h"
 
+#include <Platform/Window/Window.h>
 
 namespace GameEngine
 {
 	Engine::Engine()
 	{
-		/*ENGINE_WARN("Engine created!");
-
-		#ifdef PLATFORM_WINDOWS
-			this->l_Window = std::make_unique<WindowsWindow>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
-		#else
-			#error "One of [PLATFORM_WINDOWS] must be defined"
-		#endif
+		ENGINE_INFO("Engine created!");
+		this->l_Window = std::make_unique<Window>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
 		this->l_Window->Use(true);
 
-		this->l_Renderer = RenderAPI::Create(this->l_Window->GetProcAdressFunction());*/
+		/*this->l_Renderer = RenderAPI::Create(this->l_Window->GetProcAdressFunction());*/
 	}
 	Engine::~Engine()
 	{
-		ENGINE_WARN("Engine destroyed!");
+		ENGINE_INFO("Engine destroyed!");
 	}
 
 	void Engine::Run()
 	{
 		ENGINE_INFO("Started!");
 
-		/*std::chrono::clock::time_point PrevTimestamp = std::chrono::clock::now();
+		std::chrono::clock::time_point PrevTimestamp = std::chrono::clock::now();
 
 		#ifdef DEBUG
 			std::chrono::clock::time_point LastFPSOutputTimestamp = std::chrono::clock::now();
-			int fps = 0;
+			unsigned int fps = 0;
 		#endif
 
 		while (this->Running) [[likely]]
@@ -54,19 +50,17 @@ namespace GameEngine
 				}
 			#endif
 			
-			std::chrono::duration<double, std::nano> delta_time = NowTimestamp - PrevTimestamp;
-			AppTick AppTickEvent(delta_time);
+			AppTick AppTickEvent { NowTimestamp - PrevTimestamp };
 			this->OnEvent_Internal(AppTickEvent);
-
 			PrevTimestamp = NowTimestamp;
-		}*/
+		}
 
 		ENGINE_INFO("Terminated!");
 	}
 
 	void Engine::OnEvent_Internal(Event& event)
 	{
-		/*event.SetEngine(this);
+		event.SetEngine(this);
 		switch (event.GetEventType())
 		{
 			[[unlikely]] case (EventTypes::WindowOpen):
@@ -84,7 +78,7 @@ namespace GameEngine
 			}
 			[[unlikely]] case (EventTypes::WindowResize):
 			{
-				GameEngine::WindowResize& ev = static_cast<GameEngine::WindowResize&>(event);
+				/*GameEngine::WindowResize& ev = static_cast<GameEngine::WindowResize&>(event);
 				if (ev.GetHeight() == 0 || ev.GetWidth() == 0)
 				{
 					this->Minimized = true;
@@ -95,7 +89,7 @@ namespace GameEngine
 				this->l_Renderer->SetViewport(0, 0, ev.GetWidth(), ev.GetHeight());
 				this->Minimized = false;
 				this->OnEvent(event);
-				break;
+				break;*/
 			}
 			[[likely]] case (EventTypes::AppTick): 
 			{
@@ -107,6 +101,6 @@ namespace GameEngine
 			{
 				this->OnEvent(event);
 			}
-		}*/
+		}
 	}
 }

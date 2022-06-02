@@ -6,10 +6,6 @@
 #define TO_DURATION3(type1, type2, value) std::chrono::duration_cast<std::chrono::duration<type1, type2>>(value)
 namespace GameEngine
 {
-	Time::Time(double ns) : nanoseconds(ns) {};
-	template <typename Rep, typename Period> Time::Time(std::chrono::duration<Rep, Period>& duration) :
-		nanoseconds(TO_DURATION3(double, std::nano, duration)) {};
-
 	double Time::GetNanoseconds() const { return (this->nanoseconds.count()); }
 	double Time::GetMicroseconds() const { return (TO_DURATION3(double, std::micro, this->nanoseconds).count()); }
 	double Time::GetMilliseconds() const { return (TO_DURATION3(double, std::milli, this->nanoseconds).count()); }

@@ -25,9 +25,7 @@ project "Game"
         "src/pch",
 
 		"%{wks.location}/GameEngine/src",
-        "%{wks.location}/GameEngine/src/Common",
         "%{wks.location}/GameEngine/src/Common/PrecompiledHeaders",
-        "%{wks.location}/GameEngine/src/Platform",
         "%{wks.location}/GameEngine/Dependencies",
 	}
 
