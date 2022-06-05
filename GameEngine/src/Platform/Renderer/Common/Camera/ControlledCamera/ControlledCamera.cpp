@@ -39,7 +39,7 @@ namespace GameEngine::Renderer
 				if (cameraRotation > 180.0f) cameraRotation -= 360.0f;
 				if (cameraRotation <= -180.0f) cameraRotation += 360.0f;
 				this->camera->SetRotation(cameraRotation);
-				
+
 				glm::vec3 cameraPosition = this->camera->GetPosition();
 				glm::vec2 movement(0.0f);
 				if (window->IsKeyPressed(KeyCodes::Keys::D)) movement.x -= this->MoveSpeed * multiplier;

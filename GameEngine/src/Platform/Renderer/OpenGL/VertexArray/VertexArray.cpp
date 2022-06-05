@@ -31,10 +31,10 @@ namespace GameEngine::Renderer
 
 	void VertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer> l_vertexBuffer)
 	{
-		this->vertexBuffer = l_vertexBuffer;
+		this->vertexBuffers.push_back(l_vertexBuffer);
 		this->Bind();
-		this->vertexBuffer->Bind();
-		this->vertexBuffer->GetLayout().Use();
+		l_vertexBuffer->Bind();
+		l_vertexBuffer->GetLayout().Use();
 	}
 	void VertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer> l_indexBuffer)
 	{
@@ -43,6 +43,5 @@ namespace GameEngine::Renderer
 		this->indexBuffer->Bind();
 	}
 
-	const std::shared_ptr<VertexBuffer> VertexArray::GetVertexBuffer() const { return(this->vertexBuffer); }
 	const std::shared_ptr<IndexBuffer> VertexArray::GetIndexBuffer() const { return(this->indexBuffer); }
 }

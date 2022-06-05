@@ -12,8 +12,8 @@ namespace GameEngine::Renderer
 	{
 	private:
 		unsigned int id = 0;
-		std::shared_ptr<VertexBuffer> vertexBuffer;
 		std::shared_ptr<IndexBuffer> indexBuffer;
+		std::vector<std::shared_ptr<VertexBuffer>> vertexBuffers;
 
 	public:
 		VertexArray();
@@ -27,7 +27,6 @@ namespace GameEngine::Renderer
 		void AddVertexBuffer(const std::shared_ptr<VertexBuffer> vertexBuffer);
 		void SetIndexBuffer(const std::shared_ptr<IndexBuffer> indexBuffer);
 
-		const std::shared_ptr<VertexBuffer> GetVertexBuffer() const;
 		const std::shared_ptr<IndexBuffer> GetIndexBuffer() const;
 	};
 }
