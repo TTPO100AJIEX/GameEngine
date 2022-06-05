@@ -10,19 +10,35 @@ project "GameEngine"
     objdir ("%{wks.location}/bin/intermediates/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}/%{prj.name}")
 
     pchheader "PrecompiledHeaders.h"
-    pchsource "src/PrecompiledHeaders/PrecompiledHeaders.cpp"
+    pchsource "src/Common/PrecompiledHeaders/PrecompiledHeaders.cpp"
 
     files
     {
-        "src/**.h",
-        "src/**.cpp"
+        "src/Common/**.h",
+        "src/Common/**.cpp",
+
+        "src/Platform/Window/*.h",
+        "src/Platform/Window/GLFW/**.h",
+        "src/Platform/Window/GLFW/**.cpp",
+        "src/Platform/KeyCodes/GLFW/**.h",
+        "src/Platform/KeyCodes/GLFW/**.cpp",
+
+        "src/Platform/Renderer/*.h",
+        "src/Platform/Renderer/Common/**.h",
+        "src/Platform/Renderer/Common/**.cpp",
+        "src/Platform/Renderer/OpenGL/**.h",
+        "src/Platform/Renderer/OpenGL/**.cpp",
+        "src/Platform/ShaderType/OpenGL/**.h",
+        "src/Platform/ShaderType/OpenGL/**.cpp",
+        "src/Platform/ShaderDataType/OpenGL/**.h",
+        "src/Platform/ShaderDataType/OpenGL/**.cpp"
     }
 
     includedirs
     {
         "Dependencies",
         "src",
-        "src/PrecompiledHeaders"
+        "src/Common/PrecompiledHeaders"
     }
 
     links
@@ -35,9 +51,8 @@ project "GameEngine"
 
 	defines
 	{
-        "BUILD_ENGINE",
+		"RENDERER_USE_OPENGL",
         
-        "RENDER_USE_OPENGL",
 		"GLFW_INCLUDE_NONE",
 		"STB_IMAGE_IMPLEMENTATION"
 	}

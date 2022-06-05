@@ -9,8 +9,8 @@ project "Game"
 	targetdir ("%{wks.location}/bin/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}/%{prj.name}")
 	objdir ("%{wks.location}/bin/intermediates/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}/%{prj.name}")
 
-    pchheader "PrecompiledHeaders.h"
-    pchsource "src/PrecompiledHeaders/PrecompiledHeaders.cpp"
+    pchheader "pch.h"
+    pchsource "src/pch/pch.cpp"
 
 	files
 	{
@@ -22,14 +22,21 @@ project "Game"
 	{
         "Dependencies",
         "src",
-        "src/PrecompiledHeaders",
-		"%{wks.location}/GameEngine/Dependencies",
-		"%{wks.location}/GameEngine/src"
+        "src/pch",
+
+		"%{wks.location}/GameEngine/src",
+        "%{wks.location}/GameEngine/src/Common/PrecompiledHeaders",
+        "%{wks.location}/GameEngine/Dependencies",
 	}
 
 	links
 	{
 		"GameEngine"
+	}
+	
+	defines
+	{
+		"RENDERER_USE_OPENGL"
 	}
 	
 	filter "system:windows"
