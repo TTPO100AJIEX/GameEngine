@@ -79,6 +79,7 @@ void Game::OnEvent(GameEngine::Event& event)
 			GameEngine::Renderer::Clear();
 			GameEngine::Renderer::BeginScene(this->camera->GetCamera());
 
+
 			for (int x = 0; x < 18; x++)
 			{
 				for (int y = 0; y < 13; y++)
