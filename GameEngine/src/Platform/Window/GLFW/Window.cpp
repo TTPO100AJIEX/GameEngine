@@ -1,7 +1,7 @@
 #include <PrecompiledHeaders.h>
 
 #include <GLFW/glfw3.h>
-#include <Platform/KeyCodes/GLFW/Keys.h>
+#include <Platform/KeyCodes/GLFW/GLFW.h>
 
 #include "Window.h"
 
@@ -64,10 +64,10 @@ namespace GameEngine
 		glfwMakeContextCurrent(this->l_Window);
 		glfwSwapInterval(vSync ? 1 : 0);
 	}
-	/*const void* Window::GetProcAdressFunction() const
+	const void* Window::GetProcAdressFunction()
 	{
 		return(glfwGetProcAddress);
-	}*/
+	}
 
 	std::pair<unsigned int, unsigned int> Window::GetSize() const
 	{

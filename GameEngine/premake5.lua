@@ -24,8 +24,14 @@ project "GameEngine"
         "src/Platform/KeyCodes/GLFW/**.cpp",
 
         "src/Platform/Renderer/*.h",
+        "src/Platform/Renderer/Common/**.h",
+        "src/Platform/Renderer/Common/**.cpp",
         "src/Platform/Renderer/OpenGL/**.h",
         "src/Platform/Renderer/OpenGL/**.cpp",
+        "src/Platform/ShaderType/OpenGL/**.h",
+        "src/Platform/ShaderType/OpenGL/**.cpp",
+        "src/Platform/ShaderDataType/OpenGL/**.h",
+        "src/Platform/ShaderDataType/OpenGL/**.cpp"
     }
 
     includedirs

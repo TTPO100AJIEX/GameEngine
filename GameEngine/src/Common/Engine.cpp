@@ -19,7 +19,7 @@ namespace GameEngine
 		this->l_Window = std::make_unique<Window>(1280, 720, "Hello world", std::bind(&Engine::OnEvent_Internal, this, std::placeholders::_1));
 		this->l_Window->Use(true);
 
-		/*this->l_Renderer = RenderAPI::Create(this->l_Window->GetProcAdressFunction());*/
+		Renderer::Init();
 	}
 	Engine::~Engine()
 	{

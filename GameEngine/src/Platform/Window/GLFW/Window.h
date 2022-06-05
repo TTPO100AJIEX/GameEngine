@@ -25,7 +25,7 @@ namespace GameEngine
 		~Window();
 
 		void Use(bool vSync) const;
-		//const void* GetProcAdressFunction() const;
+		static const void* GetProcAdressFunction();
 
 		std::pair<unsigned int, unsigned int> GetSize() const;
 		void SetSize(unsigned int width, unsigned int height);

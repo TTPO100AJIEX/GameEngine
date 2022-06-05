@@ -6,7 +6,7 @@
 #include <Common/Events/Keyboard.h>
 #include <Common/Events/Mouse.h>
 #include <Common/Events/Window.h>
-#include <Platform/KeyCodes/GLFW/Keys.h>
+#include <Platform/KeyCodes/GLFW/GLFW.h>
 
 #include "Window.h"
 

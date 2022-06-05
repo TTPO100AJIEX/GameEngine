@@ -1,6 +1,6 @@
 #pragma once
 
-namespace GameEngine::Render
+namespace GameEngine::Renderer
 {
 	enum class ShaderType : uint8_t
 	{
